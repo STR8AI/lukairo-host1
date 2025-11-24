@@ -17,9 +17,34 @@ function init() {
   renderer.setPixelRatio(window.devicePixelRatio);
   container.appendChild(renderer.domElement);
 
-  // Globe
+  // Globe with texture support
   const geometry = new THREE.SphereGeometry(1, 64, 64);
-  const material = new THREE.MeshStandardMaterial({
+  
+  // Try to load texture, fallback to solid color if not available
+  const textureLoader = new THREE.TextureLoader();
+  let material;
+  
+  // Attempt to load earth texture
+  textureLoader.load(
+    'images/earth.jpg',
+    function(texture) {
+      // Success - use texture
+      material = new THREE.MeshStandardMaterial({
+        map: texture,
+        roughness: 0.8,
+        metalness: 0.1
+      });
+      globe.material = material;
+    },
+    undefined,
+    function(error) {
+      // Error or not found - use solid color (already set)
+      console.log('No texture found, using solid color');
+    }
+  );
+  
+  // Create globe with default material (will be replaced if texture loads)
+  material = new THREE.MeshStandardMaterial({
     color: 0x1e90ff,
     roughness: 0.8,
     metalness: 0.1

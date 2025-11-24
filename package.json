@@ -1,0 +1,24 @@
+{
+  "name": "lukairo-host1",
+  "version": "1.0.0",
+  "description": "LUKAIRO Globe - 3D Earth visualization with image processing",
+  "main": "index.html",
+  "scripts": {
+    "build": "gulp",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "globe",
+    "three.js",
+    "3d",
+    "visualization",
+    "earth"
+  ],
+  "author": "LUKAIRO",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-webserver": "^0.9.1"
+  }
+}
