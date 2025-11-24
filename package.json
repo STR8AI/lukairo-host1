@@ -1,0 +1,21 @@
+{
+  "name": "lukairo-host1",
+  "version": "1.0.0",
+  "description": "{ \t\"files.associations\": { \t\t\"wrangler.json\": \"jsonc\" \t} }",
+  "main": "globe.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.152.0"
+  },
+  "devDependencies": {
+    "vite": "^7.2.4"
+  }
+}
