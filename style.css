@@ -4,11 +4,64 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #000;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 #globe-container {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+}
+
+#earth-image {
+  width: 400px;
+  height: 400px;
+  filter: drop-shadow(0 0 30px rgba(79, 195, 247, 0.5));
+  animation: rotate 20s linear infinite;
+}
+
+.image-container h1 {
+  color: #4FC3F7;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  text-shadow: 0 0 20px rgba(79, 195, 247, 0.5);
+  letter-spacing: 0.3rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
