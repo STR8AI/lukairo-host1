@@ -1,7 +1,7 @@
 {
   "name": "lukairo-host1",
   "version": "1.0.0",
-  "description": "{ \t\"files.associations\": { \t\t\"wrangler.json\": \"jsonc\" \t} }",
+  "description": "LUKAIRO Globe - Interactive 3D globe visualization using Three.js",
   "main": "globe.js",
   "scripts": {
     "dev": "vite",
