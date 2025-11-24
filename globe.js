@@ -1,4 +1,8 @@
-let scene, camera, renderer, globe;
+- name: Build
+  run: |
+    npm install
+    gulp
+  working-directory: ./your-subdirectorylet scene, camera, renderer, globe;
 
 function init() {
   const container = document.getElementById('globe-container');
