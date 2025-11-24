@@ -39,18 +39,19 @@
     });
   };
 
-  // Cache for sorted navigation links (invalidated on root change)
+  // Cache for sorted navigation links (invalidated when links change)
   let cachedNavRoot = null;
   let cachedSortedLinks = null;
+  let cachedLinksCount = 0;
   
   // Highlight active nav based on URL path (improved logic)
   const activateNav = (root = document) => {
     const path = window.location.pathname.toLowerCase();
     const links = root.querySelectorAll(".sidebar a, .ghl-sidebar a");
     
-    // Use cached sorted links if available and root hasn't changed
+    // Use cached sorted links if available and root/count haven't changed
     let linksArray;
-    if (cachedNavRoot === root && cachedSortedLinks) {
+    if (cachedNavRoot === root && cachedLinksCount === links.length && cachedSortedLinks) {
       linksArray = cachedSortedLinks;
     } else {
       // Sort links by href length (longest first) to match most specific paths first
@@ -66,11 +67,24 @@
       });
       
       cachedNavRoot = root;
+      cachedLinksCount = links.length;
       cachedSortedLinks = linksArray;
     }
     
     // Remove all active classes first
     links.forEach(link => link.classList.remove("active"));
+    
+    // Handle root path
+    if (path === "/" || path === "") {
+      const homeLink = Array.from(links).find(link => {
+        const href = link.getAttribute("href");
+        return href === "/" || href === "";
+      });
+      if (homeLink) {
+        homeLink.classList.add("active");
+        return; // Exit early to avoid duplicate active classes
+      }
+    }
     
     // Find the best matching link
     for (const link of linksArray) {
@@ -79,15 +93,6 @@
         link.classList.add("active");
         break; // Only activate the most specific match
       }
-    }
-    
-    // Handle root path separately
-    if (path === "/" || path === "") {
-      const homeLink = Array.from(links).find(link => {
-        const href = link.getAttribute("href");
-        return href === "/" || href === "";
-      });
-      if (homeLink) homeLink.classList.add("active");
     }
   };
 
@@ -158,9 +163,10 @@
         if (!(node instanceof HTMLElement)) continue;
         
         // Check if node or its descendants contain relevant elements
+        // Use short-circuit evaluation to avoid unnecessary querySelector
         const hasRelevantContent = 
           (node.matches && node.matches(RELEVANT_SELECTORS)) ||
-          node.querySelector(RELEVANT_SELECTORS);
+          (!node.matches && node.querySelector(RELEVANT_SELECTORS));
         
         if (hasRelevantContent) {
           pendingNodes.add(node);
