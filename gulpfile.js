@@ -33,7 +33,7 @@ gulp.task('css', function() {
 
 // Copy JavaScript files
 gulp.task('js', function() {
-  return gulp.src('*.js')
+  return gulp.src(['*.js', '!gulpfile.js'])
     .pipe(gulp.dest('dist'));
 });
 
