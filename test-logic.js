@@ -5,9 +5,6 @@
 
 // Mock DOM environment
 const mockDocument = () => {
-  const elements = new Map();
-  let elementIdCounter = 0;
-  
   return {
     documentElement: {
       style: {

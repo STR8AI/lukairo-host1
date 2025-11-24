@@ -42,7 +42,7 @@
   // Cache for sorted navigation links (invalidated when links change)
   let cachedNavRoot = null;
   let cachedSortedLinks = null;
-  let cachedLinksCount = 0;
+  let cachedLinksHash = "";
   
   // Highlight active nav based on URL path (improved logic)
   const activateNav = (root = document) => {
@@ -50,9 +50,12 @@
     const links = root.querySelectorAll(".sidebar a, .ghl-sidebar a");
     const linksArr = Array.from(links); // Convert once for reuse
     
-    // Use cached sorted links if available and root/count haven't changed
+    // Create a hash of link hrefs to detect changes
+    const linksHash = linksArr.map(l => l.getAttribute("href") || "").join("|");
+    
+    // Use cached sorted links if available and links haven't changed
     let linksArray;
-    if (cachedNavRoot === root && cachedLinksCount === links.length && cachedSortedLinks) {
+    if (cachedNavRoot === root && cachedLinksHash === linksHash && cachedSortedLinks) {
       linksArray = cachedSortedLinks;
     } else {
       // Sort links by href length (longest first) to match most specific paths first
@@ -68,7 +71,7 @@
       });
       
       cachedNavRoot = root;
-      cachedLinksCount = links.length;
+      cachedLinksHash = linksHash;
       cachedSortedLinks = linksArray;
     }
     

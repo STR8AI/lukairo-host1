@@ -17,7 +17,7 @@
 ### Reference & Testing
 2. **lukairo-ui-original.js** - Original code with issues (reference only)
 3. **test-ui-enhanced.html** - Interactive test page with performance monitoring
-4. **test-logic.js** - Unit tests for core logic (all passing)
+4. **test-logic.js** - Unit tests for core logic (5/5 tests passing)
 
 ### Documentation
 5. **PERFORMANCE_IMPROVEMENTS.md** - Detailed optimization documentation
@@ -47,7 +47,7 @@
 - **Overall Runtime Overhead**: 60-75% improvement
 
 ### Quality Assurance
-- ✅ All unit tests pass (4/4 tests)
+- ✅ All unit tests pass (5/5 tests)
 - ✅ JavaScript syntax validated
 - ✅ CodeQL security scan: 0 alerts
 - ✅ Code review feedback addressed
@@ -68,7 +68,7 @@
 ```bash
 node test-logic.js
 ```
-Output: All 4 tests should pass (palette, debouncing, navigation, bug fix)
+Output: All 5 tests should pass (palette, debouncing, navigation, root path, bug fix)
 
 ### Manual Testing
 1. Open `test-ui-enhanced.html` in a browser
