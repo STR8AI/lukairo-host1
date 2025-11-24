@@ -1,25 +1,7 @@
-- name: Build
-  run: |
-    npm install
-    gulp
-  working-directory: ./your-subdirectorylet scene, camera, renderer, globe;
+let scene, camera, renderer, globe;
 
 function init() {
-  // Check if THREE.js is available
-  if (typeof THREE === 'undefined') {
-    console.log('Three.js not loaded - displaying fallback image');
-    return;
-  }
-  
   const container = document.getElementById('globe-container');
-  
-  // Check if container has the image-container child
-  const imageContainer = container.querySelector('.image-container');
-  if (imageContainer) {
-    // Image is already displayed, don't initialize Three.js globe
-    console.log('Image mode active - skipping Three.js initialization');
-    return;
-  }
 
   // Scene
   scene = new THREE.Scene();
