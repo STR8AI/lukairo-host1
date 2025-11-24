@@ -39,22 +39,35 @@
     });
   };
 
+  // Cache for sorted navigation links (invalidated on root change)
+  let cachedNavRoot = null;
+  let cachedSortedLinks = null;
+  
   // Highlight active nav based on URL path (improved logic)
   const activateNav = (root = document) => {
     const path = window.location.pathname.toLowerCase();
     const links = root.querySelectorAll(".sidebar a, .ghl-sidebar a");
     
-    // Sort links by href length (longest first) to match most specific paths first
-    const linksArray = Array.from(links).filter(link => {
-      const href = link.getAttribute("href");
-      return href && href !== "/" && href !== "#";
-    });
-    
-    linksArray.sort((a, b) => {
-      const hrefA = a.getAttribute("href") || "";
-      const hrefB = b.getAttribute("href") || "";
-      return hrefB.length - hrefA.length;
-    });
+    // Use cached sorted links if available and root hasn't changed
+    let linksArray;
+    if (cachedNavRoot === root && cachedSortedLinks) {
+      linksArray = cachedSortedLinks;
+    } else {
+      // Sort links by href length (longest first) to match most specific paths first
+      linksArray = Array.from(links).filter(link => {
+        const href = link.getAttribute("href");
+        return href && href !== "/" && href !== "#";
+      });
+      
+      linksArray.sort((a, b) => {
+        const hrefA = a.getAttribute("href") || "";
+        const hrefB = b.getAttribute("href") || "";
+        return hrefB.length - hrefA.length;
+      });
+      
+      cachedNavRoot = root;
+      cachedSortedLinks = linksArray;
+    }
     
     // Remove all active classes first
     links.forEach(link => link.classList.remove("active"));
@@ -125,6 +138,9 @@
   let mutationTimeout = null;
   let pendingNodes = new Set();
   
+  // Selectors for relevant content (extracted for maintainability)
+  const RELEVANT_SELECTORS = "button, .btn, .card, .panel, .ghl-button, .ghl-card, .ghl-panel, .ghl-sidebar, .sidebar";
+  
   const processMutations = () => {
     mutationTimeout = null;
     if (pendingNodes.size === 0) return;
@@ -143,8 +159,8 @@
         
         // Check if node or its descendants contain relevant elements
         const hasRelevantContent = 
-          (node.matches && node.matches("button, .btn, .card, .panel, .ghl-button, .ghl-card, .ghl-panel, .ghl-sidebar, .sidebar")) ||
-          node.querySelector("button, .btn, .card, .panel, .ghl-button, .ghl-card, .ghl-panel, .ghl-sidebar, .sidebar");
+          (node.matches && node.matches(RELEVANT_SELECTORS)) ||
+          node.querySelector(RELEVANT_SELECTORS);
         
         if (hasRelevantContent) {
           pendingNodes.add(node);

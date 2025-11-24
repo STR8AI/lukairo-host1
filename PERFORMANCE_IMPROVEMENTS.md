@@ -65,14 +65,31 @@ if (!p.classList.contains("lk-panel")) {
 ### 6. **Selector Optimization in MutationObserver**
 - **Issue**: Nested if-else with duplicate querySelector calls
 - **Impact**: Redundant DOM queries
-- **Fix**: Simplified to single check with combined selector
+- **Fix**: Extracted selector string to constant and simplified to single check with combined selector
 ```javascript
+const RELEVANT_SELECTORS = "button, .btn, .card, .panel, .ghl-button, .ghl-card, .ghl-panel, .ghl-sidebar, .sidebar";
+
 const hasRelevantContent = 
-  (node.matches && node.matches("button, .btn, .card, .panel, .ghl-button, .ghl-card, .ghl-panel, .ghl-sidebar, .sidebar")) ||
-  node.querySelector("button, .btn, .card, .panel, .ghl-button, .ghl-card, .ghl-panel, .ghl-sidebar, .sidebar");
+  (node.matches && node.matches(RELEVANT_SELECTORS)) ||
+  node.querySelector(RELEVANT_SELECTORS);
 ```
 
-### 7. **Memory Leak Prevention**
+### 7. **Navigation Link Caching**
+- **Issue**: Navigation links were sorted on every path change
+- **Impact**: O(n log n) sorting overhead on each navigation update
+- **Fix**: Cache sorted links per root element
+```javascript
+let cachedNavRoot = null;
+let cachedSortedLinks = null;
+
+if (cachedNavRoot === root && cachedSortedLinks) {
+  linksArray = cachedSortedLinks;
+} else {
+  // Sort and cache
+}
+```
+
+### 8. **Memory Leak Prevention**
 - **Issue**: Removed nodes were still processed by MutationObserver
 - **Impact**: Processing nodes no longer in DOM wastes resources
 - **Fix**: Added `document.contains(node)` check before processing
