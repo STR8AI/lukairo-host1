@@ -48,6 +48,7 @@
   const activateNav = (root = document) => {
     const path = window.location.pathname.toLowerCase();
     const links = root.querySelectorAll(".sidebar a, .ghl-sidebar a");
+    const linksArr = Array.from(links); // Convert once for reuse
     
     // Use cached sorted links if available and root/count haven't changed
     let linksArray;
@@ -55,7 +56,7 @@
       linksArray = cachedSortedLinks;
     } else {
       // Sort links by href length (longest first) to match most specific paths first
-      linksArray = Array.from(links).filter(link => {
+      linksArray = linksArr.filter(link => {
         const href = link.getAttribute("href");
         return href && href !== "/" && href !== "#";
       });
@@ -72,11 +73,11 @@
     }
     
     // Remove all active classes first
-    links.forEach(link => link.classList.remove("active"));
+    linksArr.forEach(link => link.classList.remove("active"));
     
     // Handle root path
     if (path === "/" || path === "") {
-      const homeLink = Array.from(links).find(link => {
+      const homeLink = linksArr.find(link => {
         const href = link.getAttribute("href");
         return href === "/" || href === "";
       });
@@ -166,7 +167,7 @@
         // Use short-circuit evaluation to avoid unnecessary querySelector
         const hasRelevantContent = 
           (node.matches && node.matches(RELEVANT_SELECTORS)) ||
-          (!node.matches && node.querySelector(RELEVANT_SELECTORS));
+          (node.querySelector && node.querySelector(RELEVANT_SELECTORS));
         
         if (hasRelevantContent) {
           pendingNodes.add(node);
