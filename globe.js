@@ -4,19 +4,24 @@ let scene, camera, renderer, globe;
 
 export function init() {
   const container = document.getElementById('globe-container');
+  if (!container) return;
 
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
   camera.position.set(0, 0, 3);
 
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
-  const geometry = new THREE.SphereGeometry(1, 32, 32);
-  const material = new THREE.MeshStandardMaterial({ color: 0x2194ce });
+  const geometry = new THREE.SphereGeometry(1, 64, 64);
+  const material = new THREE.MeshStandardMaterial({ color: 0x2194ce, roughness: 0.8, metalness: 0.1 });
   globe = new THREE.Mesh(geometry, material);
   scene.add(globe);
+
+  // Add ambient light for subtle illumination
+  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
 
   const light = new THREE.DirectionalLight(0xffffff, 1);
   light.position.set(5, 5, 5);
