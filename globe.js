@@ -4,6 +4,10 @@ let scene, camera, renderer, globe;
 
 export function init() {
   const container = document.getElementById('globe-container');
+  if (!container) {
+    console.error('Globe container element not found');
+    return;
+  }
 
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
