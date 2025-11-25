@@ -13,7 +13,7 @@ export function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
-  const geometry = new THREE.SphereGeometry(1, 32, 32);
+  const geometry = new THREE.SphereGeometry(1, 64, 64);
 
   // Attempt to load earth texture, fall back to solid color if it fails
   const textureLoader = new THREE.TextureLoader();
