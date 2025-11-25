@@ -62,4 +62,4 @@ gulp.task('build', gulp.parallel('html', 'css', 'js', 'images'));
 gulp.task('default', gulp.series('build'));
 
 // Development task
-gulp.task('dev', gulp.parallel('serve', 'watch'));
+gulp.task('dev', gulp.series('build', gulp.parallel('serve', 'watch')));
