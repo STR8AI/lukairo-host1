@@ -14,10 +14,24 @@ export function init() {
   container.appendChild(renderer.domElement);
 
   const geometry = new THREE.SphereGeometry(1, 32, 32);
-  const material = new THREE.MeshStandardMaterial({ color: 0x2194ce });
-  globe = new THREE.Mesh(geometry, material);
-  scene.add(globe);
 
+  // Attempt to load earth texture, fall back to solid color if it fails
+  const textureLoader = new THREE.TextureLoader();
+  textureLoader.load(
+    'images/earth.jpg',
+    function (texture) {
+      const material = new THREE.MeshStandardMaterial({ map: texture });
+      globe = new THREE.Mesh(geometry, material);
+      scene.add(globe);
+    },
+    undefined,
+    function () {
+      // On error, use solid color
+      const material = new THREE.MeshStandardMaterial({ color: 0x2194ce });
+      globe = new THREE.Mesh(geometry, material);
+      scene.add(globe);
+    }
+  );
   const light = new THREE.DirectionalLight(0xffffff, 1);
   light.position.set(5, 5, 5);
   scene.add(light);
