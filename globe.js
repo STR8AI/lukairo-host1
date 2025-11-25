@@ -39,6 +39,7 @@ export function init() {
   const light = new THREE.DirectionalLight(0xffffff, 1);
   light.position.set(5, 5, 5);
   scene.add(light);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
 
   window.addEventListener('resize', onWindowResize);
   animate();
