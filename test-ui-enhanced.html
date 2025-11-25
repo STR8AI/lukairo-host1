@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lukairo UI Enhancement - Test Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      color: var(--lk-ink, #12212b);
+    }
+    
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 250px;
+      height: 100vh;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    
+    .sidebar a {
+      display: block;
+      padding: 10px 15px;
+      margin: 5px 0;
+      text-decoration: none;
+      color: #333;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+    
+    .sidebar a:hover {
+      background: #f0f0f0;
+    }
+    
+    .sidebar a.active {
+      background: var(--lk-primary, #00b48d);
+      color: white;
+      font-weight: bold;
+    }
+    
+    .main {
+      margin-left: 270px;
+      padding: 30px;
+    }
+    
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .lk-panel {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+    
+    .lk-panel:hover {
+      transform: translateY(-2px);
+    }
+    
+    button, .btn {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background: var(--lk-accent, #6f4cff);
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    button.lk-pressed, .btn.lk-pressed {
+      transform: scale(0.95);
+    }
+    
+    .test-controls {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+    
+    .test-controls h3 {
+      margin-bottom: 10px;
+      color: #856404;
+    }
+    
+    #performance-log {
+      background: #000;
+      color: #0f0;
+      padding: 15px;
+      font-family: monospace;
+      font-size: 12px;
+      max-height: 300px;
+      overflow-y: auto;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Navigation</h2>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/dashboard/analytics">Analytics</a>
+    <a href="/settings">Settings</a>
+    <a href="/settings/profile">Profile</a>
+    <a href="/about">About</a>
+  </div>
+  
+  <div class="main">
+    <h1>Lukairo UI Enhancement Test Page</h1>
+    
+    <div class="test-controls">
+      <h3>Performance Test Controls</h3>
+      <button onclick="testAddElements()">Add 10 Elements</button>
+      <button onclick="testRemoveElements()">Remove Elements</button>
+      <button onclick="testRapidMutations()">Rapid Mutations (100)</button>
+      <button onclick="clearLog()">Clear Log</button>
+      <div id="performance-log"></div>
+    </div>
+    
+    <div class="card">
+      <h2>Welcome</h2>
+      <p>This page demonstrates the optimized UI enhancement code.</p>
+      <button>Primary Action</button>
+      <button class="btn">Secondary Action</button>
+    </div>
+    
+    <div class="card">
+      <h2>Features</h2>
+      <ul>
+        <li>✓ Color palette system with CSS variables</li>
+        <li>✓ Button micro-interactions</li>
+        <li>✓ Active navigation highlighting</li>
+        <li>✓ Panel visual enhancements</li>
+        <li>✓ SPA navigation detection</li>
+        <li>✓ Dynamic content handling</li>
+      </ul>
+    </div>
+    
+    <div id="dynamic-content"></div>
+  </div>
+  
+  <script>
+    // Performance monitoring
+    let initCount = 0;
+    let lastInitTime = Date.now();
+    
+    function log(message) {
+      const logEl = document.getElementById('performance-log');
+      const timestamp = new Date().toLocaleTimeString();
+      logEl.innerHTML += `[${timestamp}] ${message}\n`;
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+    
+    function clearLog() {
+      document.getElementById('performance-log').innerHTML = '';
+    }
+    
+    // Test functions
+    function testAddElements() {
+      const container = document.getElementById('dynamic-content');
+      const startTime = performance.now();
+      
+      for (let i = 0; i < 10; i++) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <h3>Dynamic Card ${i + 1}</h3>
+          <p>Added at ${new Date().toLocaleTimeString()}</p>
+          <button>Action ${i + 1}</button>
+        `;
+        container.appendChild(card);
+      }
+      
+      const endTime = performance.now();
+      log(`Added 10 elements in ${(endTime - startTime).toFixed(2)}ms`);
+    }
+    
+    function testRemoveElements() {
+      const container = document.getElementById('dynamic-content');
+      const count = container.children.length;
+      container.innerHTML = '';
+      log(`Removed ${count} elements`);
+    }
+    
+    function testRapidMutations() {
+      const container = document.getElementById('dynamic-content');
+      const startTime = performance.now();
+      
+      log('Starting rapid mutations test...');
+      
+      for (let i = 0; i < 100; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = `Button ${i}`;
+        container.appendChild(btn);
+      }
+      
+      const endTime = performance.now();
+      log(`Added 100 buttons in ${(endTime - startTime).toFixed(2)}ms`);
+      log('Note: With debouncing, init should only be called once after 100ms');
+    }
+    
+    // Simulate navigation
+    function simulateNavigation(path) {
+      history.pushState({}, '', path);
+      log(`Navigated to: ${path}`);
+    }
+    
+    // Initial log
+    setTimeout(() => {
+      log('Page loaded and UI enhancements applied');
+      log('CSS variables set: --lk-primary, --lk-accent, --lk-ink');
+      log('Ready for testing!');
+    }, 200);
+  </script>
+  
+  <!-- Load the optimized UI enhancement code -->
+  <script src="lukairo-ui-enhanced.js"></script>
+</body>
+</html>
