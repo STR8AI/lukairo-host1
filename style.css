@@ -1,3 +1,47 @@
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #0b0e17 0%, #05060a 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 10;
+  color: #e0e6f0;
+  font-family: system-ui, sans-serif;
+  letter-spacing: .5px;
+}
+
+.spinner {
+  width: 64px;
+  height: 64px;
+  border: 6px solid #1e2a38;
+  border-top: 6px solid #3ab7ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-overlay.loaded { opacity: 0; transition: opacity .4s ease; pointer-events: none; }
+
+.no-js {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:#0b0e17;
+  color:#fff;
+  font-size:1.1rem;
+  padding:2rem;
+  text-align:center;
+  z-index:20;
+}
+
 html, body {
   margin: 0;
   padding: 0;
