@@ -56,3 +56,141 @@ html, body {
   width: 100vw;
   height: 100vh;
 }
+
+/* Orbiting platforms container */
+.orbit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Individual platform orbit ring */
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  animation: orbit-spin 20s linear infinite;
+}
+
+.orbit-ring:nth-child(1) { animation-duration: 18s; }
+.orbit-ring:nth-child(2) { animation-duration: 22s; animation-direction: reverse; }
+.orbit-ring:nth-child(3) { animation-duration: 20s; }
+.orbit-ring:nth-child(4) { animation-duration: 24s; animation-direction: reverse; }
+.orbit-ring:nth-child(5) { animation-duration: 16s; }
+.orbit-ring:nth-child(6) { animation-duration: 26s; animation-direction: reverse; }
+
+/* Platform icon styling */
+.platform-icon {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 25, 35, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(58, 183, 255, 0.3);
+  pointer-events: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: counter-rotate 20s linear infinite;
+}
+
+.orbit-ring:nth-child(1) .platform-icon { animation-duration: 18s; }
+.orbit-ring:nth-child(2) .platform-icon { animation-duration: 22s; animation-direction: reverse; }
+.orbit-ring:nth-child(3) .platform-icon { animation-duration: 20s; }
+.orbit-ring:nth-child(4) .platform-icon { animation-duration: 24s; animation-direction: reverse; }
+.orbit-ring:nth-child(5) .platform-icon { animation-duration: 16s; }
+.orbit-ring:nth-child(6) .platform-icon { animation-duration: 26s; animation-direction: reverse; }
+
+.platform-icon:hover {
+  transform: scale(1.2);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(58, 183, 255, 0.5);
+}
+
+.platform-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+}
+
+/* Platform-specific colors */
+.platform-icon.twitter { background: linear-gradient(135deg, #1da1f2 0%, #0d8ecf 100%); }
+.platform-icon.instagram { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.platform-icon.youtube { background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); }
+.platform-icon.facebook { background: linear-gradient(135deg, #1877f2 0%, #0d5dc7 100%); }
+.platform-icon.linkedin { background: linear-gradient(135deg, #0077b5 0%, #005a8b 100%); }
+.platform-icon.tiktok { background: linear-gradient(135deg, #000 0%, #25f4ee 50%, #fe2c55 100%); }
+
+/* Orbit animation keyframes */
+@keyframes orbit-spin {
+  from { transform: translate(-50%, -50%) rotateZ(0deg); }
+  to { transform: translate(-50%, -50%) rotateZ(360deg); }
+}
+
+/* Counter-rotate to keep icons upright */
+@keyframes counter-rotate {
+  from { transform: rotateZ(0deg); }
+  to { transform: rotateZ(-360deg); }
+}
+
+/* Static fallback for no-JS */
+.no-js-content {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #0b0e17 0%, #05060a 70%);
+  color: #e0e6f0;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+  padding: 2rem;
+  z-index: 20;
+}
+
+.no-js-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #3ab7ff 0%, #1e90ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.no-js-content p {
+  font-size: 1.1rem;
+  max-width: 500px;
+  line-height: 1.6;
+  color: #a0a8b8;
+}
+
+.static-globe {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e90ff 0%, #0d5dc7 50%, #0b3d6a 100%);
+  box-shadow: 
+    inset -30px -30px 60px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(30, 144, 255, 0.3),
+    0 0 120px rgba(30, 144, 255, 0.2);
+  margin: 2rem 0;
+}
+
+.static-platforms {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.static-platforms .platform-icon {
+  position: relative;
+  animation: none;
+}
