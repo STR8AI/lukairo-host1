@@ -65,7 +65,14 @@ function createOrbitingPlatforms() {
     const icon = document.createElement('div');
     icon.className = `platform-icon ${platform.name}`;
     icon.setAttribute('aria-label', platform.name);
-    icon.innerHTML = platform.svg;
+    
+    // Parse SVG string safely using DOMParser (SVG data is hardcoded/trusted)
+    const parser = new DOMParser();
+    const svgDoc = parser.parseFromString(platform.svg, 'image/svg+xml');
+    const svgElement = svgDoc.documentElement;
+    if (svgElement && svgElement.nodeName === 'svg') {
+      icon.appendChild(svgElement);
+    }
     
     // Position icon on orbit ring at starting angle
     const angleRad = (platform.startAngle * Math.PI) / 180;

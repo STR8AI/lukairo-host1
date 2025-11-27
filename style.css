@@ -161,7 +161,6 @@ html, body {
   background: linear-gradient(135deg, #3ab7ff 0%, #1e90ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .no-js-content p {
