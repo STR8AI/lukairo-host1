@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lukairo UI Enhancement - Demo</title>
+  <link rel="stylesheet" href="lukairo-demo.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Navigation</h2>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/dashboard/analytics">Analytics</a>
+    <a href="/settings">Settings</a>
+    <a href="/settings/profile">Profile</a>
+    <a href="/about">About</a>
+  </div>
+  
+  <div class="main">
+    <h1>Lukairo UI Enhancement Demo</h1>
+    
+    <div class="test-controls">
+      <h3>Performance Test Controls</h3>
+      <button onclick="testAddElements()">Add 10 Elements</button>
+      <button onclick="testRemoveElements()">Remove Elements</button>
+      <button onclick="testRapidMutations()">Rapid Mutations (100)</button>
+      <button onclick="clearLog()">Clear Log</button>
+      <div id="performance-log"></div>
+    </div>
+    
+    <div class="card">
+      <h2>Welcome</h2>
+      <p>This page demonstrates the optimized UI enhancement code.</p>
+      <button>Primary Action</button>
+      <button class="btn">Secondary Action</button>
+    </div>
+    
+    <div class="card">
+      <h2>Features</h2>
+      <ul>
+        <li>✓ Color palette system with CSS variables</li>
+        <li>✓ Button micro-interactions</li>
+        <li>✓ Active navigation highlighting</li>
+        <li>✓ Panel visual enhancements</li>
+        <li>✓ SPA navigation detection</li>
+        <li>✓ Dynamic content handling</li>
+      </ul>
+    </div>
+    
+    <div id="dynamic-content"></div>
+  </div>
+  
+  <script>
+    // Performance monitoring
+    let initCount = 0;
+    let lastInitTime = Date.now();
+    
+    function log(message) {
+      const logEl = document.getElementById('performance-log');
+      const timestamp = new Date().toLocaleTimeString();
+      logEl.innerHTML += `[${timestamp}] ${message}\n`;
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+    
+    function clearLog() {
+      document.getElementById('performance-log').innerHTML = '';
+    }
+    
+    // Test functions
+    function testAddElements() {
+      const container = document.getElementById('dynamic-content');
+      const startTime = performance.now();
+      
+      for (let i = 0; i < 10; i++) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <h3>Dynamic Card ${i + 1}</h3>
+          <p>Added at ${new Date().toLocaleTimeString()}</p>
+          <button>Action ${i + 1}</button>
+        `;
+        container.appendChild(card);
+      }
+      
+      const endTime = performance.now();
+      log(`Added 10 elements in ${(endTime - startTime).toFixed(2)}ms`);
+    }
+    
+    function testRemoveElements() {
+      const container = document.getElementById('dynamic-content');
+      const count = container.children.length;
+      container.innerHTML = '';
+      log(`Removed ${count} elements`);
+    }
+    
+    function testRapidMutations() {
+      const container = document.getElementById('dynamic-content');
+      const startTime = performance.now();
+      
+      log('Starting rapid mutations test...');
+      
+      for (let i = 0; i < 100; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = `Button ${i}`;
+        container.appendChild(btn);
+      }
+      
+      const endTime = performance.now();
+      log(`Added 100 buttons in ${(endTime - startTime).toFixed(2)}ms`);
+      log('Note: With debouncing, init should only be called once after 100ms');
+    }
+    
+    // Simulate navigation
+    function simulateNavigation(path) {
+      history.pushState({}, '', path);
+      log(`Navigated to: ${path}`);
+    }
+    
+    // Initial log
+    setTimeout(() => {
+      log('Page loaded and UI enhancements applied');
+      log('CSS variables set: --lk-primary, --lk-accent, --lk-ink');
+      log('Ready for testing!');
+    }, 200);
+  </script>
+  
+  <!-- Load the optimized UI enhancement code -->
+  <script src="lukairo-ui-enhanced.js"></script>
+</body>
+</html>

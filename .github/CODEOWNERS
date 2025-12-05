@@ -1,0 +1,23 @@
+# CODEOWNERS file for LUKAIRO Host
+# This file defines who should review changes to different parts of the repository
+
+# Default owners for everything in the repo
+* @STR8AI
+
+# GitHub workflows and CI/CD configuration
+.github/ @STR8AI
+
+# Core globe visualization code
+globe.js @STR8AI
+index.html @STR8AI
+
+# UI enhancement library
+lukairo-ui-enhanced.js @STR8AI
+lukairo-ui-original.js @STR8AI
+
+# Build configuration
+gulpfile.js @STR8AI
+package.json @STR8AI
+
+# Documentation
+*.md @STR8AI
