@@ -107,7 +107,7 @@ node test-logic.js
 # Open test-ui-enhanced.html in browser
 ```
 
-Note: The `npm test` script is not yet configured. Use `node test-logic.js` for running existing unit tests.
+Note: The `npm test` script does not run automated tests yet. Use `node test-logic.js` for running existing unit tests.
 
 - Test in multiple Node.js versions (18.x, 20.x, 22.x)
 - Verify no memory leaks using browser DevTools
