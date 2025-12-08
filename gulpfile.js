@@ -37,6 +37,12 @@ gulp.task('js', function() {
     .pipe(gulp.dest('dist'));
 });
 
+// Copy _headers file
+gulp.task('headers', function() {
+  return gulp.src('_headers')
+    .pipe(gulp.dest('dist'));
+});
+
 // Development server
 gulp.task('serve', function() {
   return gulp.src('.')
@@ -56,7 +62,7 @@ gulp.task('watch', function() {
 });
 
 // Default build task
-gulp.task('build', gulp.parallel('html', 'css', 'js', 'images'));
+gulp.task('build', gulp.parallel('html', 'css', 'js', 'images', 'headers'));
 
 // Default task
 gulp.task('default', gulp.series('build'));

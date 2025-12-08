@@ -1,6 +1,6 @@
-import * as THREE from 'three';
 // Enhanced globe.js with overlay hide, keyboard pause, sRGB, tone mapping, and optional controls.
 // Includes orbiting platform icons for major social media platforms.
+// Uses global THREE object from CDN
 
 let scene, camera, renderer, globe;
 let rotateEnabled = true;

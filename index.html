@@ -13,14 +13,17 @@
   <meta name="twitter:title" content="LUKAIRO Globe" />
   <meta name="twitter:description" content="Interactive 3D globe visualization for LUKAIRO." />
   <link rel="icon" type="image/png" href="images/favicon.png" />
-  <!-- Preload Three.js -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js" as="script" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="globe-container"></div>
 
+  <!-- Load Three.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js" 
+          integrity="sha512-UQ6iXvRxAKDbCHp7z5LHKzQm3r7uVxQErh3FQc6l64cUBd2e9gFKYmwmC2XG/e3lUuG5dSWw8eYwzcJ7H+fFMw==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer"></script>
   <!-- Your globe logic -->
-  <script type="module" src="globe.js"></script>
+  <script src="globe.js"></script>
 </body>
 </html>
