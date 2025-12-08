@@ -1,6 +1,6 @@
-import * as THREE from 'three';
 // Enhanced globe.js with overlay hide, keyboard pause, sRGB, tone mapping, and optional controls.
 // Includes orbiting platform icons for major social media platforms.
+// Uses global THREE object from CDN
 
 let scene, camera, renderer, globe;
 let rotateEnabled = true;
@@ -92,6 +92,16 @@ function createOrbitingPlatforms() {
 
 function init() {
   const container = document.getElementById('globe-container');
+  
+  // Check if THREE is available
+  if (typeof THREE === 'undefined') {
+    console.error('Three.js not loaded');
+    const fallback = document.createElement('div');
+    fallback.style.cssText = 'position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #e0e6f0; font-family: system-ui, sans-serif; text-align: center; padding: 2rem;';
+    fallback.textContent = 'Unable to initialize the 3D visualization. Please ensure JavaScript is enabled.';
+    container.appendChild(fallback);
+    return;
+  }
 
   // Scene
   scene = new THREE.Scene();
@@ -106,13 +116,9 @@ camera.position.set(0, 0, 3);
   renderer.setSize(container.clientWidth, container.clientHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
   // Color management improvements
-  if (renderer.outputEncoding !== undefined) {
-    renderer.outputEncoding = THREE.sRGBEncoding;
-  }
-  if (renderer.toneMapping !== undefined) {
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.0;
-  }
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
   container.appendChild(renderer.domElement);
 
   // Globe geometry

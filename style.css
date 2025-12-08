@@ -55,6 +55,7 @@ html, body {
 #globe-container {
   width: 100vw;
   height: 100vh;
+  min-height: 400px;
 }
 
 /* Orbiting platforms container */
