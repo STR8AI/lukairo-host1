@@ -532,6 +532,7 @@ section {
   background: radial-gradient(circle at center, #0b0e17 0%, #05060a 70%);
 }
 
+/* Globe container for embedded/section use (distinct from standalone page in style.css) */
 #globe-container {
   width: 100%;
   height: 100%;
