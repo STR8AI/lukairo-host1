@@ -1,1 +1,12 @@
-{"name": "lukairo-host1", "version": "1.0.0", "devDependencies": {"gulp": "^4.0.2"}}
+{
+  "name": "lukairo-host1",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "gulp"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-webserver": "^0.9.1"
+  }
+}
