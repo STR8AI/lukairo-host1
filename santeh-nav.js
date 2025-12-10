@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         // Close mobile menu if open
         if (mobileMenu) {
-          mobileMenu.classList.remove('hidden');
+          mobileMenu.classList.add('hidden');
         }
       }
     });
