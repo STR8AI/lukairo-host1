@@ -116,7 +116,7 @@
 
       <button 
         type="submit"
-        class="santeh-btn-yellow w-full md:w-auto font-bold text-black py-4 px-10 rounded-lg shadow-lg hover:shadow-xl transition">
+        class="santeh-btn santeh-btn-yellow w-full md:w-auto font-bold text-black py-4 px-10 rounded-lg shadow-lg hover:shadow-xl transition">
         Submit Request
       </button>
     </form>
@@ -194,7 +194,7 @@
     </div>
 
     <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-      <p>&copy; 2024 Santeh Home Services. All rights reserved.</p>
+      <p>&copy; 2025 Santeh Home Services. All rights reserved.</p>
       <p class="text-sm mt-2">
         HVAC • Water Treatment • Air Quality • Filtration • Electrical • HEPA Systems
       </p>
@@ -203,26 +203,7 @@
 </footer>
 
 <!-- Mobile Menu Script -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuBtn && mobileMenu) {
-      mobileMenuBtn.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-      });
-
-      // Close mobile menu when clicking on a link
-      const mobileLinks = mobileMenu.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          mobileMenu.classList.add('hidden');
-        });
-      });
-    }
-  });
-</script>
+<script src="santeh-nav.js"></script>
 
 </body>
 </html>

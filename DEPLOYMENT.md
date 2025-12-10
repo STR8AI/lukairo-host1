@@ -39,7 +39,6 @@ The Santeh Home Services pages are ready for immediate deployment. No build step
 
 ### Option 4: CDN/Edge Deploy
 Compatible with:
-- Cloudflare Pages
 - Netlify
 - Vercel
 - AWS S3 + CloudFront

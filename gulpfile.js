@@ -21,7 +21,7 @@ gulp.task('images', function() {
 
 // Copy HTML files
 gulp.task('html', function() {
-  return gulp.src('*.html')
+  return gulp.src(['*.html', '_headers'])
     .pipe(gulp.dest('dist'));
 });
 
