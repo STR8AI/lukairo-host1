@@ -1,0 +1,59 @@
+<header class="w-full bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+    
+    <div class="flex items-center">
+      <a href="services.html">
+        <img 
+          src="https://storage.googleapis.com/msgsndr/1CVSJ7Bbx27ah4UVRGSg/media/69389f6bdaae4181d3990bdc.png"
+          class="h-16 w-auto"
+          alt="Santeh Home Services Logo">
+      </a>
+    </div>
+
+    <nav class="hidden md:flex space-x-8 text-lg font-semibold">
+      <a href="services.html#home" class="hover:text-yellow-500 transition">Home</a>
+      <a href="services.html#services" class="hover:text-yellow-500 transition">Services</a>
+      <a href="services.html#rescue" class="hover:text-yellow-500 transition">Rescue</a>
+      <a href="services.html#about" class="hover:text-yellow-500 transition">About</a>
+      <a href="contact.html" class="hover:text-yellow-500 transition">Contact</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden p-2" id="mobile-menu-btn" aria-label="Toggle menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="flex flex-col space-y-4 p-4">
+      <a href="services.html#home" class="hover:text-yellow-500 transition">Home</a>
+      <a href="services.html#services" class="hover:text-yellow-500 transition">Services</a>
+      <a href="services.html#rescue" class="hover:text-yellow-500 transition">Rescue</a>
+      <a href="services.html#about" class="hover:text-yellow-500 transition">About</a>
+      <a href="contact.html" class="hover:text-yellow-500 transition">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+  });
+</script>

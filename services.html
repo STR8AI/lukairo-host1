@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santeh Home Services - Premium HVAC, Water, and Electrical Service</title>
+  <meta name="description" content="Certified technicians delivering dependable heating, cooling, water treatment, and electrical service across the GTA — with real accountability and fast response.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom Santeh Styles */
+    .santeh-btn {
+      @apply font-semibold px-8 py-3 rounded-lg shadow-md transition duration-300;
+    }
+    
+    .santeh-btn-yellow {
+      @apply bg-yellow-400 text-black hover:bg-yellow-300;
+    }
+    
+    .santeh-btn-outline {
+      @apply bg-white/10 backdrop-blur-md border border-gray-300 text-gray-800 hover:bg-gray-100;
+    }
+    
+    .santeh-card {
+      @apply bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300;
+    }
+    
+    .santeh-light {
+      @apply bg-gray-50;
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+<!-- Header -->
+<header class="w-full bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+    
+    <div class="flex items-center">
+      <img 
+        src="https://storage.googleapis.com/msgsndr/1CVSJ7Bbx27ah4UVRGSg/media/69389f6bdaae4181d3990bdc.png"
+        class="h-16 w-auto"
+        alt="Santeh Home Services Logo">
+    </div>
+
+    <nav class="hidden md:flex space-x-8 text-lg font-semibold">
+      <a href="#home" class="hover:text-yellow-500 transition">Home</a>
+      <a href="#services" class="hover:text-yellow-500 transition">Services</a>
+      <a href="#rescue" class="hover:text-yellow-500 transition">Rescue</a>
+      <a href="#about" class="hover:text-yellow-500 transition">About</a>
+      <a href="contact.html" class="hover:text-yellow-500 transition">Contact</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden p-2" id="mobile-menu-btn" aria-label="Toggle menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="flex flex-col space-y-4 p-4">
+      <a href="#home" class="hover:text-yellow-500 transition">Home</a>
+      <a href="#services" class="hover:text-yellow-500 transition">Services</a>
+      <a href="#rescue" class="hover:text-yellow-500 transition">Rescue</a>
+      <a href="#about" class="hover:text-yellow-500 transition">About</a>
+      <a href="contact.html" class="hover:text-yellow-500 transition">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="relative h-[90vh] w-full flex items-center justify-center text-center text-white overflow-hidden">
+
+    <!-- Background Image -->
+    <div 
+      class="absolute inset-0 bg-cover bg-center" 
+      style="background-image: url('https://storage.googleapis.com/msgsndr/1CVSJ7Bbx27ah4UVRGSg/media/6938dc19169a424359020bc4.png');">
+    </div>
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/60"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-3xl mx-auto px-6">
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+            Premium HVAC, Water, and Electrical Service Across the GTA
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-200 mb-8">
+            Certified technicians delivering dependable heating, cooling, water treatment, 
+            and electrical service — with real accountability and fast response.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="contact.html" class="bg-yellow-400 text-black font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-yellow-300 transition">
+                Book a Technician
+            </a>
+
+            <a href="#rescue" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-3 rounded-lg hover:bg-white/20 transition">
+                My Old Company Disappeared
+            </a>
+        </div>
+    </div>
+
+</section>
+
+<!-- REQUIRED SPACER -->
+<div class="h-24 w-full"></div>
+
+<!-- Mission Section -->
+<section id="about" class="text-center py-24 bg-gray-50">
+
+  <h2 class="text-5xl font-bold mb-6">
+    Restoring Accountability in Home Services
+  </h2>
+
+  <p class="text-xl text-gray-700 max-w-4xl mx-auto mb-10 px-6">
+    Santeh Home Services was created for one purpose: to step in when other HVAC, water, and air
+    treatment companies fail their customers. From abandoned installs to unanswered service calls,
+    homeowners deserve a company that shows up, takes responsibility, and does the job properly.
+  </p>
+
+  <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12 px-6">
+    Our mission is simple — deliver reliable, certified, transparent service across every major
+    home system, backed by a leadership team that believes in doing things the right way.
+  </p>
+
+  <div class="flex flex-wrap justify-center gap-6 px-6">
+    <a href="contact.html" class="santeh-btn santeh-btn-yellow">Book a Technician</a>
+    <a href="#rescue" class="santeh-btn santeh-btn-outline">Service Recovery</a>
+  </div>
+
+  <p class="text-gray-500 text-sm mt-8 px-6">
+    HVAC • Water Treatment • Air Quality • Filtration • Electrical • HEPA Systems
+  </p>
+
+</section>
+
+<!-- Core Values Section -->
+<section id="services" class="py-20 px-6">
+
+  <h2 class="text-4xl font-bold text-center mb-12">
+    Our Core Values
+  </h2>
+
+  <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-16">
+    Santeh Home Services was built on principles that guide every technician, every service call,
+    and every homeowner interaction. These values define our commitment to restoring trust in the
+    home-service industry.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+
+    <!-- Accountability -->
+    <div class="santeh-card text-center">
+      <h3 class="text-2xl font-semibold mb-3">Accountability</h3>
+      <p class="text-gray-600">
+        We take responsibility for the work we perform — and for the work others left behind.
+        When we commit to something, we follow through. No excuses.
+      </p>
+    </div>
+
+    <!-- Technical Integrity -->
+    <div class="santeh-card text-center">
+      <h3 class="text-2xl font-semibold mb-3">Technical Integrity</h3>
+      <p class="text-gray-600">
+        Every repair, install, and tune-up follows certified procedures, safety standards, and
+        manufacturer-approved methods. The job is done correctly, not quickly.
+      </p>
+    </div>
+
+    <!-- Transparency -->
+    <div class="santeh-card text-center">
+      <h3 class="text-2xl font-semibold mb-3">Transparency</h3>
+      <p class="text-gray-600">
+        Homeowners deserve clear communication, honest assessments, and pricing with no surprises.
+        We keep you informed before, during, and after every service.
+      </p>
+    </div>
+
+    <!-- Reliability -->
+    <div class="santeh-card text-center">
+      <h3 class="text-2xl font-semibold mb-3">Reliability</h3>
+      <p class="text-gray-600">
+        We show up when others don't. We answer when others won't. Reliability is the foundation
+        of our service model and the backbone of our reputation.
+      </p>
+    </div>
+
+    <!-- Customer Protection -->
+    <div class="santeh-card text-center">
+      <h3 class="text-2xl font-semibold mb-3">Customer Protection</h3>
+      <p class="text-gray-600">
+        When homeowners are left stranded by previous companies, we step in to restore support,
+        service, and long-term protection for their home systems.
+      </p>
+    </div>
+
+    <!-- Excellence in Service -->
+    <div class="santeh-card text-center">
+      <h3 class="text-2xl font-semibold mb-3">Excellence in Service</h3>
+      <p class="text-gray-600">
+        Our teams are trained to deliver an exceptional service experience — from first contact to
+        final inspection. Professional, respectful, and dependable.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- What Sets Santeh Apart Section -->
+<section class="py-20 santeh-light px-6">
+
+  <h2 class="text-3xl font-bold text-center mb-8">
+    What Sets Santeh Apart
+  </h2>
+
+  <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-12">
+    The home-service industry has a growing problem: companies taking on customers they can't support.
+    When these companies collapse or disappear, homeowners are left without service, warranties,
+    or answers. Santeh was built to solve that problem permanently.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+
+    <!-- Precision Over Volume -->
+    <div class="santeh-card">
+      <h3 class="text-2xl font-semibold mb-3">Precision Over Volume</h3>
+      <p class="text-gray-600">
+        Most providers focus on maximizing new sales. We focus on delivering correct, 
+        high-quality service every single time — using certified procedures and strict standards.
+      </p>
+    </div>
+
+    <!-- Takeover & Recovery Expertise -->
+    <div class="santeh-card">
+      <h3 class="text-2xl font-semibold mb-3">Takeover & Recovery Expertise</h3>
+      <p class="text-gray-600">
+        When other companies vanish or fail to maintain equipment, Santeh steps in. We
+        restore systems, correct past issues, and provide ongoing support homeowners can rely on.
+      </p>
+    </div>
+
+    <!-- Zero-Risk Communication -->
+    <div class="santeh-card">
+      <h3 class="text-2xl font-semibold mb-3">Zero-Risk Communication</h3>
+      <p class="text-gray-600">
+        Homeowners always know what's happening and why. No hidden details. No unfinished service.
+        You receive documented updates before, during, and after every visit.
+      </p>
+    </div>
+
+    <!-- Long-Term Protection Mindset -->
+    <div class="santeh-card">
+      <h3 class="text-2xl font-semibold mb-3">Long-Term Protection Mindset</h3>
+      <p class="text-gray-600">
+        We don't treat your home like a one-time transaction. Our focus is long-term operational
+        protection — maintaining HVAC, water, air, and electrical systems for years to come.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Why Homeowners Trust Santeh Section -->
+<section id="rescue" class="py-20 px-6">
+
+  <h2 class="text-4xl font-bold text-center mb-12">
+    Why Homeowners Trust Santeh
+  </h2>
+
+  <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-16">
+    When homeowners lose support from their original HVAC, water, or air treatment provider,
+    Santeh steps in with reliability, accountability, and certified expertise.  
+    We don't make excuses — we solve problems.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+
+    <!-- Card 1 -->
+    <div class="santeh-card">
+      <h3 class="text-2xl font-semibold mb-3">We Fix What Others Leave Behind</h3>
+      <p class="text-gray-600">
+        From abandoned installs to failed maintenance plans, homeowners come to us when
+        previous providers disappear or refuse to honour their promises.
+      </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="santeh-card">
+      <h3 class="text-2xl font-semibold mb-3">Certified, Skilled Technicians</h3>
+      <p class="text-gray-600">
+        HVAC, water treatment, air quality, electrical, filtration, and mechanical systems — 
+        every technician is trained, licensed, and held to strict service standards.
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="santeh-card">
+      <h3 class="text-2xl font-semibold mb-3">Clear, Transparent Communication</h3>
+      <p class="text-gray-600">
+        Homeowners always know who is arriving, what the issue is, and what it costs.
+        No confusion. No unanswered calls. No hidden details.
+      </p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="santeh-card">
+      <h3 class="text-2xl font-semibold mb-3">Long-Term Protection & Support</h3>
+      <p class="text-gray-600">
+        We maintain and protect your systems for years, not days.  
+        Our service model is built around stability, reliability, and preventive care.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Service Coverage Section -->
+<section class="py-24 text-center max-w-5xl mx-auto px-6">
+
+  <h2 class="text-3xl font-bold mb-6">
+    Service Coverage Across the Greater Toronto Area
+  </h2>
+
+  <p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto">
+    Santeh Home Services provides certified HVAC, air, water treatment, and electrical service
+    across the Greater Toronto Area — with expanding technician coverage rolling out across
+    additional Ontario regions. Our teams are strategically positioned to deliver fast,
+    dependable support whenever homeowners need us.
+  </p>
+
+  <!-- Map Placeholder -->
+  <div class="bg-gray-200 rounded-2xl py-20 mb-12 text-gray-500 flex items-center justify-center">
+    <div class="text-center">
+      <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+      </svg>
+      <p class="font-semibold">GTA Service Map — Placeholder</p>
+    </div>
+  </div>
+
+  <!-- Regions -->
+  <div class="space-y-6">
+
+    <div class="bg-white rounded-xl shadow p-8 hover:shadow-lg transition">
+      <h3 class="font-bold text-xl mb-2">Toronto</h3>
+      <p class="text-gray-600">Full coverage for HVAC, water treatment, air quality, filtration, and electrical service.</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-8 hover:shadow-lg transition">
+      <h3 class="font-bold text-xl mb-2">Peel Region — Mississauga & Brampton</h3>
+      <p class="text-gray-600">Expanding certified technicians for heating, cooling, water systems, and HEPA air solutions.</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-8 hover:shadow-lg transition">
+      <h3 class="font-bold text-xl mb-2">York Region — Vaughan, Markham, Richmond Hill</h3>
+      <p class="text-gray-600">Scheduled expansion of HVAC, water treatment, and electrical service routes.</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-8 hover:shadow-lg transition">
+      <h3 class="font-bold text-xl mb-2">Durham Region — Pickering to Oshawa</h3>
+      <p class="text-gray-600">New coverage zones launching soon as Santeh continues expanding Ontario operations.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Leadership & Technical Team Section -->
+<section class="max-w-7xl mx-auto py-20 px-6 bg-gray-50">
+
+  <h2 class="text-4xl font-bold text-center mb-8">
+    Meet the Santeh Leadership & Technical Team
+  </h2>
+
+  <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-16">
+    Our team is built on accountability, professionalism, and certified expertise across HVAC, 
+    water treatment, air quality, electrical, and home comfort systems. When homeowners are left 
+    without support, our team steps in to deliver reliable service the right way.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-12">
+
+    <!-- Ann -->
+    <div class="santeh-card text-center">
+      <div class="bg-gray-300 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center text-gray-600 font-semibold text-lg">
+        Photo
+      </div>
+      <h3 class="text-2xl font-bold">Ann</h3>
+      <p class="text-yellow-600 font-semibold mb-3">Chief Executive Officer</p>
+      <p class="text-gray-600">
+        Leads Santeh's strategic direction, organizational growth, and operational excellence across all service divisions.
+      </p>
+    </div>
+
+    <!-- Christian -->
+    <div class="santeh-card text-center">
+      <div class="bg-gray-300 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center text-gray-600 font-semibold text-lg">
+        Photo
+      </div>
+      <h3 class="text-2xl font-bold">Christian</h3>
+      <p class="text-yellow-600 font-semibold mb-3">Chief Operating Officer</p>
+      <p class="text-gray-600">
+        Oversees field operations, technician performance, service protocols, and customer experience standards.
+      </p>
+    </div>
+
+    <!-- Omar -->
+    <div class="santeh-card text-center">
+      <div class="bg-gray-300 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center text-gray-600 font-semibold text-lg">
+        Photo
+      </div>
+      <h3 class="text-2xl font-bold">Omar</h3>
+      <p class="text-yellow-600 font-semibold mb-3">Service Technician</p>
+      <p class="text-gray-600">
+        Specializes in HVAC troubleshooting, maintenance, and customer on-site support.
+      </p>
+    </div>
+
+    <!-- Ted -->
+    <div class="santeh-card text-center">
+      <div class="bg-gray-300 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center text-gray-600 font-semibold text-lg">
+        Photo
+      </div>
+      <h3 class="text-2xl font-bold">Ted</h3>
+      <p class="text-yellow-600 font-semibold mb-3">Service Technician</p>
+      <p class="text-gray-600">
+        Experienced in air quality, filtration systems, and full-service HVAC installations.
+      </p>
+    </div>
+
+    <!-- Liam -->
+    <div class="santeh-card text-center">
+      <div class="bg-gray-300 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center text-gray-600 font-semibold text-lg">
+        Photo
+      </div>
+      <h3 class="text-2xl font-bold">Liam</h3>
+      <p class="text-yellow-600 font-semibold mb-3">Senior HVAC Technician</p>
+      <p class="text-gray-600">
+        Provides high-level heating and cooling repairs, replacements, and performance optimization.
+      </p>
+    </div>
+
+    <!-- Ava -->
+    <div class="santeh-card text-center">
+      <div class="bg-gray-300 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center text-gray-600 font-semibold text-lg">
+        Photo
+      </div>
+      <h3 class="text-2xl font-bold">Ava</h3>
+      <p class="text-yellow-600 font-semibold mb-3">Air Quality Specialist</p>
+      <p class="text-gray-600">
+        Focused on HEPA purification, IAQ testing, and home air treatment improvements.
+      </p>
+    </div>
+
+    <!-- Noah -->
+    <div class="santeh-card text-center">
+      <div class="bg-gray-300 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center text-gray-600 font-semibold text-lg">
+        Photo
+      </div>
+      <h3 class="text-2xl font-bold">Noah</h3>
+      <p class="text-yellow-600 font-semibold mb-3">Water Treatment Technician</p>
+      <p class="text-gray-600">
+        Installs and maintains softeners, RO systems, filtration units, and whole-home water solutions.
+      </p>
+    </div>
+
+    <!-- Sofia -->
+    <div class="santeh-card text-center">
+      <div class="bg-gray-300 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center text-gray-600 font-semibold text-lg">
+        Photo
+      </div>
+      <h3 class="text-2xl font-bold">Sofia</h3>
+      <p class="text-yellow-600 font-semibold mb-3">Service Coordinator</p>
+      <p class="text-gray-600">
+        Manages scheduling, dispatching, service communication, and technician workflow.
+      </p>
+    </div>
+
+    <!-- Ethan -->
+    <div class="santeh-card text-center">
+      <div class="bg-gray-300 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center text-gray-600 font-semibold text-lg">
+        Photo
+      </div>
+      <h3 class="text-2xl font-bold">Ethan</h3>
+      <p class="text-yellow-600 font-semibold mb-3">Electrical Technician</p>
+      <p class="text-gray-600">
+        Handles electrical diagnostics, repairs, panel updates, and safety compliance checks.
+      </p>
+    </div>
+
+    <!-- Mia -->
+    <div class="santeh-card text-center">
+      <div class="bg-gray-300 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center text-gray-600 font-semibold text-lg">
+        Photo
+      </div>
+      <h3 class="text-2xl font-bold">Mia</h3>
+      <p class="text-yellow-600 font-semibold mb-3">Customer Support Specialist</p>
+      <p class="text-gray-600">
+        Delivers homeowner communication, support ticket management, and service follow-up care.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-20 bg-yellow-400 text-center">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-6 text-black">
+      Ready to Experience Real Service?
+    </h2>
+    <p class="text-xl mb-8 text-gray-800">
+      Call us anytime: <strong>+1 431-450-9057</strong>
+    </p>
+    <a href="contact.html" class="bg-black text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-gray-800 transition inline-block">
+      Book a Technician Now
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      
+      <!-- Company Info -->
+      <div>
+        <h4 class="text-xl font-bold mb-4">Santeh Home Services</h4>
+        <p class="text-gray-400">
+          Premium HVAC, Water, and Electrical Service Across the GTA
+        </p>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Services</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li>HVAC Service & Repair</li>
+          <li>Water Treatment</li>
+          <li>Air Quality Systems</li>
+          <li>Electrical Service</li>
+          <li>HEPA & Filtration</li>
+        </ul>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#home" class="text-gray-400 hover:text-yellow-400 transition">Home</a></li>
+          <li><a href="#services" class="text-gray-400 hover:text-yellow-400 transition">Services</a></li>
+          <li><a href="#rescue" class="text-gray-400 hover:text-yellow-400 transition">Service Recovery</a></li>
+          <li><a href="#about" class="text-gray-400 hover:text-yellow-400 transition">About Us</a></li>
+          <li><a href="contact.html" class="text-gray-400 hover:text-yellow-400 transition">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+        <p class="text-gray-400 mb-2">
+          <strong>Phone:</strong><br>
+          +1 431-450-9057
+        </p>
+        <p class="text-gray-400">
+          <strong>Service Area:</strong><br>
+          Greater Toronto Area
+        </p>
+      </div>
+
+    </div>
+
+    <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+      <p>&copy; 2024 Santeh Home Services. All rights reserved.</p>
+      <p class="text-sm mt-2">
+        HVAC • Water Treatment • Air Quality • Filtration • Electrical • HEPA Systems
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile Menu Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close mobile menu when clicking on a link
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
