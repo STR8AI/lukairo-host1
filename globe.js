@@ -67,44 +67,34 @@ const platformIcons = [
  */
 function svgToTexture(svgString, backgroundColor, size = 128) {
   return new Promise((resolve, reject) => {
+    // Create a canvas to render the icon
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    
+    // Draw circular background with platform color
+    ctx.fillStyle = backgroundColor;
+    ctx.beginPath();
+    ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Modify SVG to use white fill for the icon
+    const whiteSvg = svgString.replace(/<path/g, '<path fill="#ffffff"');
+    
     // Create an image element to load the SVG
     const img = new Image();
     
     // Convert SVG string to data URL
-    const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+    const svgBlob = new Blob([whiteSvg], { type: 'image/svg+xml;charset=utf-8' });
     const url = URL.createObjectURL(svgBlob);
     
     img.onload = function() {
-      // Create a canvas to render the SVG
-      const canvas = document.createElement('canvas');
-      canvas.width = size;
-      canvas.height = size;
-      const ctx = canvas.getContext('2d');
-      
-      // Draw circular background
-      ctx.fillStyle = backgroundColor;
-      ctx.beginPath();
-      ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
-      ctx.fill();
-      
       // Draw white SVG icon in the center
       const iconSize = size * 0.5; // Icon takes 50% of canvas
       const iconOffset = (size - iconSize) / 2;
       
-      // Create a temporary canvas for the icon with white fill
-      const iconCanvas = document.createElement('canvas');
-      iconCanvas.width = size;
-      iconCanvas.height = size;
-      const iconCtx = iconCanvas.getContext('2d');
-      
-      // Draw icon in white
-      iconCtx.fillStyle = '#ffffff';
-      iconCtx.filter = 'brightness(0) invert(1)'; // Convert to white
-      iconCtx.drawImage(img, iconOffset, iconOffset, iconSize, iconSize);
-      
-      // Composite the white icon on top of the colored background
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.drawImage(iconCanvas, 0, 0);
+      ctx.drawImage(img, iconOffset, iconOffset, iconSize, iconSize);
       
       // Add a subtle border/glow effect
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
