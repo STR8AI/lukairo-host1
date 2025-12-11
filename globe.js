@@ -73,6 +73,12 @@ function svgToTexture(svgString, backgroundColor, size = 128) {
     canvas.height = size;
     const ctx = canvas.getContext('2d');
     
+    // Check if canvas context is available
+    if (!ctx) {
+      reject(new Error('Canvas 2D context not supported'));
+      return;
+    }
+    
     // Draw circular background with platform color
     ctx.fillStyle = backgroundColor;
     ctx.beginPath();
@@ -125,12 +131,25 @@ function svgToTexture(svgString, backgroundColor, size = 128) {
  * Creates Three.js sprite-based orbiting platform icons
  */
 async function createOrbitingPlatforms() {
-  // Create sprites for each platform
-  for (const platform of platformIcons) {
+  // Create all textures concurrently for better performance
+  const texturePromises = platformIcons.map(platform => 
+    svgToTexture(platform.svg, platform.color, 128)
+      .then(texture => ({ platform, texture }))
+      .catch(error => {
+        console.error(`Failed to create texture for ${platform.name}:`, error);
+        return null;
+      })
+  );
+  
+  const results = await Promise.all(texturePromises);
+  
+  // Create sprites from successfully created textures
+  for (const result of results) {
+    if (!result) continue; // Skip failed textures
+    
+    const { platform, texture } = result;
+    
     try {
-      // Convert SVG to texture
-      const texture = await svgToTexture(platform.svg, platform.color, 128);
-      
       // Create sprite material with the texture
       const material = new THREE.SpriteMaterial({
         map: texture,
@@ -281,10 +300,10 @@ function animate() {
     // Update angle based on speed
     spriteData.angle += spriteData.speed;
     
-    // Calculate position on circular orbit (XY plane)
+    // Calculate position on circular orbit (XY plane around globe)
     const x = Math.cos(spriteData.angle) * spriteData.orbitRadius;
     const y = Math.sin(spriteData.angle) * spriteData.orbitRadius;
-    const z = 0; // Keep in same plane for now
+    const z = 0; // Orbits in XY plane at z=0
     
     spriteData.sprite.position.set(x, y, z);
     
