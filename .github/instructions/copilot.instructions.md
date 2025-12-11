@@ -7,7 +7,7 @@ This repository contains the LUKAIRO Globe - a 3D Earth visualization project us
 ## Tech Stack
 
 - **Frontend**: HTML, CSS, JavaScript (ES6+)
-- **3D Library**: Three.js (loaded via CDN and as npm dependency)
+- **3D Library**: Three.js (installed as npm dependency, may also be loaded via CDN in some pages)
 - **Build Tool**: Gulp (primary) and Vite (secondary)
 - **Package Manager**: npm
 - **Deployment**: GitHub Pages (NOT Cloudflare)
@@ -23,7 +23,7 @@ npm install
 ```bash
 npm install  # Install dependencies first
 npx gulp     # Build with Gulp (primary build tool)
-# Note: npm run build uses Vite but Gulp is the main build system
+# Note: 'npm run build' uses Vite, but Gulp is the main build system for this project
 ```
 
 ### Running Tests
@@ -40,7 +40,7 @@ npx gulp dev
 
 ## Project Structure
 
-- `index.html` - Main entry point (currently empty, see lukairo-main.html)
+- `index.html` - Main entry point (currently empty file, use lukairo-main.html instead)
 - `lukairo-main.html` - Main globe visualization page
 - `lukairo-demo.html` - Demo page
 - `globe.js` - Core globe rendering logic using Three.js
