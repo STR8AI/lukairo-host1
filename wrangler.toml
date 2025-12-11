@@ -1,4 +1,4 @@
-name = "lukairo-host1"
+name = "lukairo-globe"
 main = "worker.js"
 compatibility_date = "2025-11-26"
 
