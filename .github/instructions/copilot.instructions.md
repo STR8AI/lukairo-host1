@@ -22,9 +22,12 @@ npm install
 ### Building the Project
 ```bash
 npm install  # Install dependencies first
-npx gulp     # Build with Gulp (primary build tool)
-# Note: 'npm run build' uses Vite, but Gulp is the main build system for this project
+npx gulp     # Build with Gulp (primary and recommended)
 ```
+
+**Build System Note**: The project has two build configurations:
+- **Gulp** (recommended): Use `npx gulp` for the complete build with image optimization and proper asset handling
+- **Vite**: Available via `npm run build` but not the primary build system for this project
 
 ### Running Tests
 ```bash
