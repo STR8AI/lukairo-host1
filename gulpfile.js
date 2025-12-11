@@ -2,6 +2,9 @@ const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const webserver = require('gulp-webserver');
 
+// Gulp 4 compatible task definitions using gulp.series() and gulp.parallel()
+// All tasks use function-based syntax for better compatibility
+
 // Image optimization task
 gulp.task('images', function() {
   return gulp.src('images/**/*')
