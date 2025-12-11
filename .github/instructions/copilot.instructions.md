@@ -7,8 +7,8 @@ This repository contains the LUKAIRO Globe - a 3D Earth visualization project us
 ## Tech Stack
 
 - **Frontend**: HTML, CSS, JavaScript (ES6+)
-- **3D Library**: Three.js (loaded via CDN)
-- **Build Tool**: Gulp
+- **3D Library**: Three.js (loaded via CDN and as npm dependency)
+- **Build Tool**: Gulp (primary) and Vite (secondary)
 - **Package Manager**: npm
 - **Deployment**: GitHub Pages (NOT Cloudflare)
 
@@ -21,9 +21,9 @@ npm install
 
 ### Building the Project
 ```bash
-npm run build
-# or directly with gulp
-gulp
+npm install  # Install dependencies first
+npx gulp     # Build with Gulp (primary build tool)
+# Note: npm run build uses Vite but Gulp is the main build system
 ```
 
 ### Running Tests
@@ -33,18 +33,33 @@ node test-logic.js
 
 ### Development Server
 ```bash
-gulp serve
+npx gulp serve  # Starts server on port 8000 with live reload
+# or for full development with watch
+npx gulp dev
 ```
 
 ## Project Structure
 
-- `index.html` - Main entry point for the globe visualization
+- `index.html` - Main entry point (currently empty, see lukairo-main.html)
+- `lukairo-main.html` - Main globe visualization page
+- `lukairo-demo.html` - Demo page
 - `globe.js` - Core globe rendering logic using Three.js
+- `engine.js` - Engine orchestration module
 - `style.css` - Main stylesheet
+- `lukairo-main.css` - Main page styles
+- `lukairo-demo.css` - Demo page styles
 - `lukairo-ui-enhanced.js` - Optimized UI enhancement library
+- `lukairo-ui-original.js` - Original UI implementation
 - `gulpfile.js` - Gulp build configuration
 - `test-logic.js` - Unit tests for UI logic
+- `test-ui-enhanced.html` - Test page for UI enhancements
+- `vite.config.js` - Vite configuration
 - `dist/` - Build output directory (git-ignored)
+- `images/` - Image assets
+- `.github/workflows/` - GitHub Actions workflows
+  - `deploy.yml` - GitHub Pages deployment workflow
+  - `cloudflare-pages.yml` - Cloudflare Pages workflow (not actively used)
+  - `npm-gulp.yml` - NPM and Gulp CI workflow
 
 ## Coding Conventions
 
@@ -83,5 +98,20 @@ The deployment workflow (`.github/workflows/deploy.yml`) handles:
 
 - Keep changes focused and minimal
 - Test locally before submitting
-- Ensure build passes (`npm run build`)
+- Ensure build passes (`npx gulp`)
+- Run tests with `node test-logic.js`
 - Follow existing code style and conventions
+
+## Important Notes
+
+- The project has multiple HTML entry points (lukairo-main.html, lukairo-demo.html, test-ui-enhanced.html)
+- When modifying build configuration, update `gulpfile.js` (primary) rather than `vite.config.js`
+- Image optimization is handled automatically by Gulp during build
+- The `dist/` directory is auto-generated and should not be manually edited
+- Always use `npx` prefix for Gulp commands to ensure proper execution (e.g., `npx gulp` not just `gulp`)
+
+## File Naming Conventions
+
+- UI files use `lukairo-` prefix (e.g., `lukairo-ui-enhanced.js`)
+- CSS files match their corresponding HTML files (e.g., `lukairo-main.css` for `lukairo-main.html`)
+- Test files use `test-` prefix (e.g., `test-logic.js`, `test-ui-enhanced.html`)
