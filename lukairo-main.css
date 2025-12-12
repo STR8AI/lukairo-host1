@@ -72,6 +72,9 @@
   --lk-transition-normal: 300ms ease;
   --lk-transition-slow: 500ms ease;
   
+  /* Rating Color */
+  --lk-rating-color: #ffa500;
+  
   /* Z-Index Scale */
   --lk-z-dropdown: 100;
   --lk-z-sticky: 200;
@@ -803,7 +806,7 @@ section {
 }
 
 .integration-rating {
-  color: #ffa500;
+  color: var(--lk-rating-color);
   font-size: 0.875rem;
   font-weight: 600;
 }
