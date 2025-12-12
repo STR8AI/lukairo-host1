@@ -817,7 +817,6 @@ section {
 }
 
 .btn-integration {
-  flex: 1;
   padding: 0.625rem var(--lk-spacing-md);
   font-size: 0.875rem;
   font-weight: 600;
@@ -828,6 +827,7 @@ section {
   cursor: pointer;
   transition: all var(--lk-transition-fast);
   text-align: center;
+  min-width: 120px;
 }
 
 .btn-integration:hover {
@@ -836,10 +836,14 @@ section {
   transform: translateY(-2px);
 }
 
+.integration-actions .btn-integration {
+  flex: 1;
+}
+
 .btn-integration.btn-small {
   padding: 0.5rem 0.875rem;
   font-size: 0.8125rem;
-  flex: 1;
+  min-width: 100px;
 }
 
 .integration-card--compact {
