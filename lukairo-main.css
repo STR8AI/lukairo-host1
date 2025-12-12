@@ -819,14 +819,9 @@ section {
 .btn-integration {
   padding: 0.625rem var(--lk-spacing-md);
   font-size: 0.875rem;
-  font-weight: 600;
   border: 2px solid var(--lk-primary);
   background: var(--lk-primary);
   color: white;
-  border-radius: var(--lk-border-radius);
-  cursor: pointer;
-  transition: all var(--lk-transition-fast);
-  text-align: center;
   min-width: 120px;
 }
 
