@@ -1,22 +1,33 @@
+<body>
+    <style>
+  #globe {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+  }
+</style>
+
+
+
+  <!-- GLOBE CANVAS -->
+  <canvas id="globe"></canvas>
+
+  <!-- HOME CONTENT -->
+  <main>
+    <h1>LUKAIRO</h1>
+    <p>Delivering Control. Returning Time.</p>
+
+    <a href="/engine">Enter the Engine</a>
+  </main>
+
+  <!-- GLOBE SCRIPT -->
+  <script src="/globe.js"></script>
+
+</body>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>LUKAIRO ENGINE</title>
-  <style>
-    #globe {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-    }
-
-    main {
-      position: relative;
-      z-index: 1;
-    }
-  </style>
-</head>
-<body>
-  <script src="/engine.qual.js"></script>
-</body>
-</html>
