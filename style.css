@@ -1,122 +1,47 @@
-.loading-overlay {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, #0b0e17 0%, #05060a 70%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  z-index: 10;
-  color: #e0e6f0;
-  font-family: system-ui, sans-serif;
-  letter-spacing: .5px;
-}
-
-.spinner {
-  width: 64px;
-  height: 64px;
-  border: 6px solid #1e2a38;
-  border-top: 6px solid #3ab7ff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.loading-overlay.loaded { opacity: 0; transition: opacity .4s ease; pointer-events: none; }
-
-.no-js {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:#0b0e17;
-  color:#fff;
-  font-size:1.1rem;
-  padding:2rem;
-  text-align:center;
-  z-index:20;
-}
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap");
 
 html, body {
   margin: 0;
   padding: 0;
+  background: #05070B;
+  color: #e4f7ff;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  background: #000;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-x: hidden;
+  font-family: "Orbitron", system-ui, sans-serif;
 }
 
-#globe-container {
+#lukairo-engine {
+  position: relative;
   width: 100vw;
   height: 100vh;
-}
-
-/* Static fallback for no-JS */
-.no-js-content {
-  position: fixed;
-  inset: 0;
+  background: radial-gradient(circle at center, #0b1020, #05070B);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, #0b0e17 0%, #05060a 70%);
-  color: #e0e6f0;
-  font-family: system-ui, sans-serif;
+}
+
+.lukairo-hud {
   text-align: center;
-  padding: 2rem;
-  z-index: 20;
+  pointer-events: none;
 }
 
-.no-js-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #3ab7ff 0%, #1e90ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.lukairo-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 0.35em;
+  text-shadow:
+    0 0 18px rgba(0,255,204,0.5),
+    0 0 48px rgba(90,140,255,0.8);
 }
 
-.no-js-content p {
-  font-size: 1.1rem;
-  max-width: 500px;
-  line-height: 1.6;
-  color: #a0a8b8;
+.lukairo-title span {
+  color: #7de5ff;
 }
 
-.static-globe {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #1e90ff 0%, #0d5dc7 50%, #0b3d6a 100%);
-  box-shadow: 
-    inset -30px -30px 60px rgba(0, 0, 0, 0.4),
-    0 0 60px rgba(30, 144, 255, 0.3),
-    0 0 120px rgba(30, 144, 255, 0.2);
-  margin: 2rem 0;
-}
-
-.static-platforms {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.static-platforms .platform-icon {
-  position: relative;
-  animation: none;
-}
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.lukairo-sub {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.4em;
+  color: #9fd1ff;
+  opacity: 0.85;
 }
