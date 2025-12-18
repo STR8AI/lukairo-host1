@@ -1,0 +1,5 @@
+cf-pages/
+├── index.html
+└── style.css
+git add cf-pages
+git commit -m "Serve clean Cloudflare Pages homepage"
