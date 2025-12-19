@@ -1,3 +1,5 @@
+const canvas = document.getElementById("globe");
+const ctx = canvas.getContext("2d");
 // Central engine orchestrator; wires renderer, state, physics, UI, and modules.
 import { Renderer } from "./core/renderer.js";
 import { createState } from "./core/state.js";

@@ -6,16 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <canvas id="scene"></canvas>
-  <div id="ui"></div>
+<canvas id="globe"></canvas>
+>
 
-  <script src="/engine.js"></script>
+  <div class="overlay">
+    <h1>LUKAIRO</h1>
+    <p>Infrastructure for modern service businesses.</p>
+    <button disabled>Enter the Engine</button>
+  </div>
+
+<script src="/main.js"></script>
+
 </body>
 </html>
 <script>
   // Initialize the engine
   const engine = new LukairoEngine({
-    canvas: document.getElementById('scene'),
+
     uiContainer: document.getElementById('ui')
   });
 
