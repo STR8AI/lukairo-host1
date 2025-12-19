@@ -118,3 +118,61 @@ The deployment workflow (`.github/workflows/deploy.yml`) handles:
 - UI files use `lukairo-` prefix (e.g., `lukairo-ui-enhanced.js`)
 - CSS files match their corresponding HTML files (e.g., `lukairo-main.css` for `lukairo-main.html`)
 - Test files use `test-` prefix (e.g., `test-logic.js`, `test-ui-enhanced.html`)
+
+## Plan: Review and Confirm Homepage Globe Files
+
+You referenced the following files for the homepage globe:
+- `cf-pages/index.html`
+- `cf-pages/main.js`
+- `cf-pages/styles.css` (optional for now)
+
+### Steps
+1. Ensure `cf-pages/index.html` includes a visible canvas and correct script/style links.
+2. Confirm `cf-pages/main.js` contains the logic to render the globe on the canvas.
+3. Optionally review or update `cf-pages/styles.css` for globe and layout styling.
+
+### Further Considerations
+1. Verify that the homepage renders the globe as intended with or without `styles.css`.
+2. Ensure all file paths are correct for deployment and local testing.
+
+## Plan: Update cf-pages/index.html with Inline CSS
+
+You want to update `cf-pages/index.html` to use the provided HTML structure and inline CSS for the homepage globe, bypassing Cloudflare MIME issues.
+
+### Steps
+1. Open `cf-pages/index.html` and replace its content with the provided HTML, including the inline `<style>` block.
+2. Ensure the `<canvas id="globe"></canvas>` and `.overlay` elements are present and styled as specified.
+3. Confirm the `<script src="/main.js"></script>` tag is included at the end of the body.
+
+### Further Considerations
+1. This inline CSS is a temporary solution; plan to revert to external CSS when possible.
+2. Verify that the homepage renders correctly after the update.
+
+## Plan: Update cf-pages/main.js with Visual-Only Globe Code
+
+You want to update `cf-pages/main.js` to contain the provided visual-only, dependency-free globe animation code.
+
+### Steps
+1. Open `cf-pages/main.js`.
+2. Replace its contents with the provided JavaScript code for the animated globe.
+3. Ensure the code uses only the canvas API and does not rely on any external libraries.
+
+### Further Considerations
+1. Confirm the animation works as expected with the updated `index.html`.
+2. No imports or dependencies should be present in `main.js`.
+
+## Plan: Commit and Push Homepage Globe Rendering Fix
+
+You want to:
+- Stage `cf-pages/index.html` and `cf-pages/main.js`
+- Commit with: "Fix homepage globe rendering"
+- Push to `main` on origin
+
+### Steps
+1. Run `git add cf-pages/index.html cf-pages/main.js` to stage the updated files.
+2. Run `git commit -m "Fix homepage globe rendering"` to commit the changes.
+3. Run `git push origin main` to push to the remote repository.
+
+### Further Considerations
+1. Confirm the homepage globe renders and animates as intended after deployment.
+2. Ensure only the intended files are included in the commit.
