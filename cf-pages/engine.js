@@ -1,6 +1,7 @@
-// This file is intentionally left as a loader for the qualification engine.
-// It loads the actual qualification logic from engine.qual.js
+import { startGlobe } from "./visuals/globe.js";
+import { startPlatforms } from "./visuals/platforms.js";
 
-const script = document.createElement('script');
-script.src = '/engine.qual.js';
-document.head.appendChild(script);
+const canvas = document.getElementById("scene");
+
+startGlobe(canvas);
+startPlatforms(canvas);

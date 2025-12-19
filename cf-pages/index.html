@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>LUKAIRO ENGINE</title>
+  <title>LUKAIRO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <script src="/engine.qual.js"></script>
-  <a href="/engine" id="enter-engine">Enter the Engine</a>
-  <script>
-    document.getElementById("enter-engine").addEventListener("click", function () {
-      window.location.href = "/engine";
-    });
-  </script>
+  <canvas id="scene"></canvas>
+
+  <div class="overlay">
+    <h1>LUKAIRO</h1>
+    <p>Infrastructure for modern service businesses.</p>
+    <button disabled>Enter the Engine</button>
+  </div>
+
+  <script type="module" src="/main.js"></script>
 </body>
-<script src="/globe.js"></script>
 </html>
