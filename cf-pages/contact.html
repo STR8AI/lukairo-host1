@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact LUKAIRO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/lukairo-main.css">
+</head>
+<body class="contact-body">
+  <div class="contact-wrapper">
+    <header class="contact-header">
+      <h1>LUKAIRO</h1>
+      <p>Infrastructure for modern service businesses.</p>
+    </header>
+
+    <section class="contact-card">
+      <h2>Contact / Request Access</h2>
+      <p class="contact-sub">
+        Tell us briefly about your service business. We’ll follow up with onboarding options.
+      </p>
+
+      <form class="contact-form">
+        <label>
+          Name
+          <input type="text" name="name" required>
+        </label>
+
+        <label>
+          Work Email
+          <input type="email" name="email" required>
+        </label>
+
+        <label>
+          Company
+          <input type="text" name="company">
+        </label>
+
+        <label>
+          What are you interested in?
+          <select name="interest">
+            <option value="">Select one</option>
+            <option value="engine">Core engine</option>
+            <option value="pricing">Three service models</option>
+            <option value="field-pro">Field Pro / operations</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+
+        <label>
+          Anything else we should know?
+          <textarea name="notes" rows="4"></textarea>
+        </label>
+
+        <button type="submit" disabled>
+          Submit (wire up later)
+        </button>
+      </form>
+    </section>
+  </div>
+</body>
+</html>
+

@@ -1134,3 +1134,23 @@ section {
     scroll-behavior: auto;
   }
 }
+.primary-btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: 1px solid #ffffff55;
+  background: #ffffff10;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.primary-btn:hover {
+  background: #ffffff22;
+}
+.primary-btn:active {
+  background: #ffffff33;
+}
