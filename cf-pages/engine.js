@@ -1,11 +1,3 @@
-<nav class="nav">
-  <a href="/">Home</a>
-  <a href="/pricing.html">Pricing</a>
-  <a href="/engine.html">Engine</a>
-  <a href="/about.html">About</a>
-  <a href="/contact.html">Contact</a>
-</nav>
-
 import { startGlobe } from "./visuals/globe.js";
 import { startPlatforms } from "./visuals/platforms.js";
 
@@ -13,7 +5,8 @@ const canvas = document.getElementById("scene");
 
 startGlobe(canvas);
 startPlatforms(canvas);
-// Central engine orchestrator; wires renderer, state, physics, UI, and modules.
+
+// Central engine orchestrator
 import { Renderer } from "./core/renderer.js";
 import { createState } from "./core/state.js";
 import { Physics } from "./core/physics.js";
@@ -36,7 +29,6 @@ export class Engine {
   }
 
   async start() {
-    // Initialize renderer loop with physics stepping.
     let last = performance.now();
     this.renderer.init({
       onFrame: (now) => {
@@ -46,7 +38,6 @@ export class Engine {
       },
     });
 
-    // Initialize modules.
     for (const [name, factory] of this.modules.entries()) {
       const api = {
         engine: this,
