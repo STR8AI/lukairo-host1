@@ -28,6 +28,6 @@ jobs:
         with:
           apiToken: 
 7suWdzi3rRqwxIzWEHynZbIG87y6dCBW06D9B4YC
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+5d666172fd0919ec532f6ebcd85cbd3d}}
           projectName: 'lukairo-globe'
           directory: './dist'
