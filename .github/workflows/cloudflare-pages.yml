@@ -1,0 +1,33 @@
+name: Build and Deploy to Cloudflare Pages
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: 
+7suWdzi3rRqwxIzWEHynZbIG87y6dCBW06D9B4YC
+5d666172fd0919ec532f6ebcd85cbd3d}}
+          projectName: 'lukairo-globe'
+          directory: './dist'

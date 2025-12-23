@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LUKAIRO - Advanced 3D Globe Visualization Platform">
+  <meta name="keywords" content="LUKAIRO, 3D, Globe, Visualization, Three.js">
+  <meta name="author" content="LUKAIRO">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="LUKAIRO Platform">
+  <meta property="og:description" content="Advanced 3D Globe Visualization Platform">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/preview.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LUKAIRO Platform">
+  <meta name="twitter:description" content="Advanced 3D Globe Visualization Platform">
+  
+  <title>LUKAIRO Platform</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="lukairo-main.css">
+  
+  <!-- Preload Three.js for Globe -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js" as="script">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="/" class="logo">
+        <span class="logo-icon">🌐</span>
+        <span class="logo-text">LUKAIRO</span>
+      </a>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#globe" class="nav-link">Globe</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#integrations" class="nav-link">Integrations</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="hero-title-line">Welcome to</span>
+        <span class="hero-title-highlight">LUKAIRO</span>
+      </h1>
+      <p class="hero-subtitle">
+        Experience the world through our advanced 3D globe visualization platform. 
+        Interactive, beautiful, and powerful.
+      </p>
+      <div class="hero-actions">
+        <a href="#globe" class="btn btn-primary">Explore Globe</a>
+        <a href="#features" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-globe" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title">Features</h2>
+      <p class="section-subtitle">Discover what makes LUKAIRO special</p>
+      
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3 class="feature-title">3D Visualization</h3>
+          <p class="feature-description">
+            Stunning 3D globe rendering powered by Three.js with realistic textures and lighting.
+          </p>
+        </article>
+        
+        <article class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-title">High Performance</h3>
+          <p class="feature-description">
+            Optimized for smooth animations and responsive interactions on any device.
+          </p>
+        </article>
+        
+        <article class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3 class="feature-title">Modern Design</h3>
+          <p class="feature-description">
+            Clean, intuitive interface with beautiful color schemes and animations.
+          </p>
+        </article>
+        
+        <article class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3 class="feature-title">Responsive</h3>
+          <p class="feature-description">
+            Fully responsive design that works seamlessly on desktop, tablet, and mobile.
+          </p>
+        </article>
+        
+        <article class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h3 class="feature-title">Customizable</h3>
+          <p class="feature-description">
+            Easy to customize with CSS variables and modular architecture.
+          </p>
+        </article>
+        
+        <article class="feature-card">
+          <div class="feature-icon">♿</div>
+          <h3 class="feature-title">Accessible</h3>
+          <p class="feature-description">
+            Built with accessibility in mind, following WCAG guidelines.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Globe Section -->
+  <section id="globe" class="globe-section">
+    <div class="container">
+      <h2 class="section-title section-title--light">Interactive Globe</h2>
+      <p class="section-subtitle section-subtitle--light">
+        Press <kbd>Space</kbd> to pause/resume rotation
+      </p>
+    </div>
+    <div class="globe-wrapper">
+      <div id="globe-container" class="globe-container" aria-label="Interactive 3D Globe" role="img">
+        <div class="globe-loading">
+          <div class="globe-spinner"></div>
+          <p>Loading globe...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <h2 class="section-title section-title--left">About LUKAIRO</h2>
+          <p class="about-text">
+            LUKAIRO is a cutting-edge visualization platform that brings the world to your screen. 
+            Our 3D globe technology combines beautiful design with powerful performance.
+          </p>
+          <p class="about-text">
+            Built with modern web technologies including Three.js, our platform delivers 
+            stunning visual experiences that work across all devices and browsers.
+          </p>
+          <ul class="about-list">
+            <li>✓ Real-time 3D rendering</li>
+            <li>✓ Interactive controls</li>
+            <li>✓ High-resolution textures</li>
+            <li>✓ Cross-platform support</li>
+          </ul>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-number">60</span>
+            <span class="stat-label">FPS Performance</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Responsive</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">A+</span>
+            <span class="stat-label">Accessibility</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations Section -->
+  <section id="integrations" class="integrations">
+    <div class="container">
+      <h2 class="section-title">Zoho Integrations</h2>
+      <p class="section-subtitle">Integrate Zoho applications with all the tools for your business needs</p>
+      
+      <!-- Featured Apps -->
+      <div class="integrations-category">
+        <h3 class="category-title">Featured Apps</h3>
+        <div class="integrations-grid">
+          <article class="integration-card">
+            <div class="integration-header">
+              <div class="integration-icon">💼</div>
+              <span class="integration-badge">CRM</span>
+            </div>
+            <h4 class="integration-title">Bluecap for Zoho CRM</h4>
+            <p class="integration-description">Enabling human-like cognitive automation at scale</p>
+            <div class="integration-meta">
+              <span class="integration-category">Marketing</span>
+              <span class="integration-rating" aria-label="5 out of 5 stars, 2 reviews">★★★★★ (2)</span>
+            </div>
+            <button class="btn btn-integration">Install</button>
+          </article>
+          
+          <article class="integration-card featured">
+            <div class="integration-header">
+              <div class="integration-icon">🚀</div>
+              <span class="integration-badge">CRM</span>
+            </div>
+            <h4 class="integration-title">Storm AI Landing Pages</h4>
+            <p class="integration-description">AI-generated landing pages for Zoho CRM instantly—no setup needed.</p>
+            <div class="integration-meta">
+              <span class="integration-category">Marketing</span>
+              <span class="integration-rating" aria-label="5 out of 5 stars, 4 reviews">★★★★★ (4)</span>
+            </div>
+            <div class="integration-actions">
+              <button class="btn btn-integration btn-small">Watch Video</button>
+              <button class="btn btn-integration btn-small">Visit Website</button>
+            </div>
+          </article>
+          
+          <article class="integration-card">
+            <div class="integration-header">
+              <div class="integration-icon">📞</div>
+              <span class="integration-badge">CRM</span>
+            </div>
+            <h4 class="integration-title">Call Agent AI</h4>
+            <p class="integration-description">Call smarter, close faster—automate calls, engage customers, and boost sales</p>
+            <div class="integration-meta">
+              <span class="integration-category">Telephony</span>
+              <span class="integration-rating" aria-label="0 out of 5 stars, 0 reviews">☆☆☆☆☆ (0)</span>
+            </div>
+            <div class="integration-actions">
+              <button class="btn btn-integration btn-small">Watch Video</button>
+              <button class="btn btn-integration btn-small">Visit Website</button>
+            </div>
+          </article>
+          
+          <article class="integration-card">
+            <div class="integration-header">
+              <div class="integration-icon">🤖</div>
+              <span class="integration-badge">Desk</span>
+            </div>
+            <h4 class="integration-title">ChatGPT for Zoho Desk</h4>
+            <p class="integration-description">Now powered by GPT, Zia helps agents elevate the customer experience.</p>
+            <div class="integration-meta">
+              <span class="integration-category">AI</span>
+              <span class="integration-rating" aria-label="5 out of 5 stars, 9 reviews">★★★★★ (9)</span>
+            </div>
+            <button class="btn btn-integration">Install</button>
+          </article>
+        </div>
+      </div>
+      
+      <!-- CRM Extensions -->
+      <div class="integrations-category">
+        <h3 class="category-title">CRM Extensions</h3>
+        <p class="category-description">Extend your CRM functionality to do more than what it could originally</p>
+        <div class="integrations-grid integrations-grid--compact">
+          <article class="integration-card integration-card--compact">
+            <h5 class="integration-title-compact">Credit Data Direct</h5>
+            <span class="integration-rating" aria-label="5 out of 5 stars, 97 reviews">★★★★★ (97)</span>
+          </article>
+          
+          <article class="integration-card integration-card--compact">
+            <h5 class="integration-title-compact">List Manager</h5>
+            <span class="integration-rating" aria-label="5 out of 5 stars, 47 reviews">★★★★★ (47)</span>
+          </article>
+          
+          <article class="integration-card integration-card--compact">
+            <h5 class="integration-title-compact">PowerCall and SMS</h5>
+            <span class="integration-rating" aria-label="5 out of 5 stars, 86 reviews">★★★★★ (86)</span>
+          </article>
+          
+          <article class="integration-card integration-card--compact">
+            <h5 class="integration-title-compact">HelloSend: Call, SMS & WhatsApp</h5>
+            <span class="integration-rating" aria-label="5 out of 5 stars, 37 reviews">★★★★★ (37)</span>
+          </article>
+          
+          <article class="integration-card integration-card--compact">
+            <h5 class="integration-title-compact">Phone Checker</h5>
+            <span class="integration-rating" aria-label="5 out of 5 stars, 36 reviews">★★★★★ (36)</span>
+          </article>
+          
+          <article class="integration-card integration-card--compact">
+            <h5 class="integration-title-compact">PostgreSQL Easy Sync</h5>
+            <span class="integration-rating" aria-label="5 out of 5 stars, 34 reviews">★★★★★ (34)</span>
+          </article>
+        </div>
+        <a href="#" class="view-all-link">View All CRM Extensions →</a>
+      </div>
+      
+      <!-- Other Categories -->
+      <div class="integrations-category">
+        <h3 class="category-title">More Categories</h3>
+        <div class="categories-grid">
+          <a href="#" class="category-card">
+            <div class="category-icon">💼</div>
+            <h4 class="category-name">CRM</h4>
+            <p class="category-count">200+ apps</p>
+          </a>
+          
+          <a href="#" class="category-card">
+            <div class="category-icon">🎫</div>
+            <h4 class="category-name">Desk</h4>
+            <p class="category-count">150+ apps</p>
+          </a>
+          
+          <a href="#" class="category-card">
+            <div class="category-icon">📊</div>
+            <h4 class="category-name">Analytics</h4>
+            <p class="category-count">80+ apps</p>
+          </a>
+          
+          <a href="#" class="category-card">
+            <div class="category-icon">📧</div>
+            <h4 class="category-name">Mail</h4>
+            <p class="category-count">120+ apps</p>
+          </a>
+          
+          <a href="#" class="category-card">
+            <div class="category-icon">📋</div>
+            <h4 class="category-name">Projects</h4>
+            <p class="category-count">100+ apps</p>
+          </a>
+          
+          <a href="#" class="category-card">
+            <div class="category-icon">👥</div>
+            <h4 class="category-name">Recruit</h4>
+            <p class="category-count">60+ apps</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-subtitle">Have questions? We'd love to hear from you.</p>
+      
+      <form class="contact-form" action="#" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" name="message" class="form-input form-textarea" placeholder="Your message..." rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-icon">🌐</span>
+          <span class="logo-text">LUKAIRO</span>
+          <p class="footer-tagline">Visualizing the world in 3D</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4 class="footer-heading">Navigation</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#globe">Globe</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-heading">Resources</h4>
+            <ul>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">API Reference</a></li>
+              <li><a href="#">Tutorials</a></li>
+              <li><a href="#">Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-heading">Legal</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 LUKAIRO. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js" crossorigin="anonymous"></script>
+  <script defer src="globe.js"></script>
+  
+  <!-- Mobile Menu Toggle Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      const nav = document.querySelector('.nav');
+      
+      if (menuBtn && nav) {
+        menuBtn.addEventListener('click', function() {
+          nav.classList.toggle('nav--open');
+          menuBtn.classList.toggle('active');
+        });
+      }
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Close mobile menu if open
+            nav.classList.remove('nav--open');
+            menuBtn.classList.remove('active');
+          }
+        });
+      });
+      
+      // Update active nav link on scroll
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
