@@ -28,7 +28,7 @@ jobs:
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
-          apiToken: ${{ 7suWdzi3rRqwxIzWEHynZbIG87y6dCBW06D9B4YC }}
-          accountId: ${{ 5d666172fd0919ec532f6ebcd85cbd3d }}
-          projectName: 'lukairo-globe'
-          directory: './dist'
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: "lukairo-globe"
+          directory: "./dist"
