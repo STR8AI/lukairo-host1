@@ -5,22 +5,20 @@
   <title>LUKAIRO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link rel="stylesheet" href="lukairo-main.css">
-<script src="main.js"></script>
-
-
-
+  <!-- Correct relative asset paths for Cloudflare Pages -->
+  <link rel="stylesheet" href="lukairo-main.css" />
+  <script src="main.js" defer></script>
 </head>
+
 <body>
+  <!-- GLOBE CANVAS -->
   <canvas id="globe"></canvas>
 
+  <!-- OVERLAY CONTENT -->
   <div class="overlay">
     <h1>LUKAIRO</h1>
     <p>Infrastructure for modern service businesses.</p>
-    <button disabled>Enter the Engine</button>
+    <button id="enter-btn">Enter the Engine</button>
   </div>
-
-  <!-- IMPORTANT: classic script, not module, and root path -->
-  <script src="/main.js"></script>
 </body>
 </html>
