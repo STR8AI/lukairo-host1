@@ -516,6 +516,108 @@ section {
 }
 
 /* ========================================
+   Integrations Section
+   ======================================== */
+.integrations {
+  background: var(--lk-bg-light);
+  padding: var(--lk-spacing-xl) 0;
+}
+
+.integrations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--lk-spacing-lg);
+  margin-bottom: var(--lk-spacing-lg);
+}
+
+.integration-card {
+  background: var(--lk-bg-white);
+  border-radius: var(--lk-border-radius-lg);
+  overflow: hidden;
+  transition: all var(--lk-transition-normal);
+  border: 1px solid #e0e6ee;
+  box-shadow: var(--lk-shadow-sm);
+}
+
+.integration-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--lk-shadow-lg);
+  border-color: var(--lk-primary);
+}
+
+.integration-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e0e6f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.integration-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--lk-transition-normal);
+}
+
+.integration-card:hover .integration-image img {
+  transform: scale(1.05);
+}
+
+.integration-content {
+  padding: var(--lk-spacing-lg);
+}
+
+.integration-title {
+  font-size: 1.25rem;
+  margin-bottom: var(--lk-spacing-sm);
+  color: var(--lk-ink);
+  font-weight: 600;
+}
+
+.integration-description {
+  color: var(--lk-ink-light);
+  margin-bottom: var(--lk-spacing-md);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.integration-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--lk-spacing-sm);
+  padding-top: var(--lk-spacing-sm);
+  border-top: 1px solid #e0e6ee;
+}
+
+.integration-category {
+  display: inline-block;
+  padding: var(--lk-spacing-xs) var(--lk-spacing-sm);
+  background: linear-gradient(135deg, var(--lk-primary-light), var(--lk-primary));
+  color: white;
+  border-radius: var(--lk-border-radius);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.integration-rating {
+  color: #ffb800;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.integrations-cta {
+  text-align: center;
+  margin-top: var(--lk-spacing-xl);
+}
+
+/* ========================================
    Globe Section
    ======================================== */
 .globe-section {
@@ -1088,6 +1190,10 @@ section {
   }
   
   .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .integrations-grid {
     grid-template-columns: 1fr;
   }
   
