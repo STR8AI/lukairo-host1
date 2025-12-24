@@ -5,7 +5,7 @@
   <title>LUKAIRO Engine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Correct CSS path -->
+  <!-- Load shared site styles -->
   <link rel="stylesheet" href="lukairo-main.css">
 
   <style>
@@ -20,13 +20,17 @@
       overflow: hidden;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .sidebar {
       width: 240px;
       background: #111114;
       border-right: 1px solid #222;
       padding: 24px 20px;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
     }
@@ -114,13 +118,15 @@
       border-radius: 6px;
     }
 
-    .btn:hover { background: #ddd; }
+    .btn:hover {
+      background: #ddd;
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- SIDEBAR -->
+  <!-- SIDEBAR NAVIGATION -->
   <div class="sidebar">
     <div class="logo">LUKAIRO ENGINE</div>
 
@@ -141,12 +147,13 @@
     </div>
 
     <div class="content">
+
       <div class="card">
         <h2>Welcome to the LUKAIRO Engine</h2>
         <p>
-          This is the control center for your automated service infrastructure.
-          From here, you can access qualification flows, client onboarding,
-          workflows, automations, and powerful AI tools.
+          This is the command center for your automated service infrastructure.  
+          From here, you can control qualification flows, onboarding,
+          workflows, automations, and AI-powered operations.
         </p>
         <a href="#" class="btn">Get Started</a>
       </div>
@@ -156,14 +163,15 @@
         <p>
           • Add qualification criteria<br>
           • Connect workflows<br>
-          • Enable client routing logic<br>
-          • Deploy integrations for live environments
+          • Enable routing logic<br>
+          • Integrate live service environments
         </p>
       </div>
+
     </div>
   </div>
 
-  <!-- Correct JS path -->
+  <!-- Load shared JS -->
   <script src="main.js"></script>
 
 </body>
