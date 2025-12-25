@@ -24,3 +24,4 @@ npm run build # build to dist/
 - Core modules are stubs; extend with real rendering, physics, and data plumbing.
 - Examples import from the repo root; public assets are available under `/public`.
 - Three.js is installed; integrate it inside `modules/globe` when ready.
+

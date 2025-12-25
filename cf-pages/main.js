@@ -1,112 +1,49 @@
-// Central engine orchestrator; wires renderer, state, physics, UI, and modules.
-import { Renderer } from "./core/renderer.js";
-import { createState } from "./core/state.js";
-import { Physics } from "./core/physics.js";
-import { UISystem } from "./core/ui-system.js";
-import { DataLayer } from "./core/data-layer.js";
+// BASIC ROTATING GLOBE (canvas-based placeholder)
+// Replace later with Three.js if desired
 
-export class Engine {
-  constructor() {
-    this.renderer = new Renderer();
-    this.state = createState();
-    this.physics = new Physics();
-    this.ui = new UISystem();
-    this.data = new DataLayer();
-    this.modules = new Map();
-  }
+const canvas = document.getElementById("globe");
+const ctx = canvas.getContext("2d");
 
-  registerModule(name, factory) {
-    this.modules.set(name, factory);
-    return () => this.modules.delete(name);
-  }
-
-  async start() {
-    // Initialize renderer loop with physics stepping.
-    let last = performance.now();
-    this.renderer.init({
-      onFrame: (now) => {
-        const delta = now - last;
-        this.physics.step(delta);
-        last = now;
-      },
-    });
-
-    // Initialize modules.
-    for (const [name, factory] of this.modules.entries()) {
-      const api = {
-        engine: this,
-        renderer: this.renderer,
-        state: this.state,
-        physics: this.physics,
-        ui: this.ui,
-        data: this.data,
-      };
-      await factory(api);
-      console.info(`Module '${name}' initialized`);
-    }
-  }
-
-  stop() {
-    this.renderer.destroy();
-  }
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
 
-export function createEngine() {
-  return new Engine();
-}
-// Central engine orchestrator; wires renderer, state, physics, UI, and modules.
-import { Renderer } from "./core/renderer.js";
-import { createState } from "./core/state.js";
-import { Physics } from "./core/physics.js";
-import { UISystem } from "./core/ui-system.js";
-import { DataLayer } from "./core/data-layer.js";
+resize();
+window.addEventListener("resize", resize);
 
-export class Engine {
-  constructor() {
-    this.renderer = new Renderer();
-    this.state = createState();
-    this.physics = new Physics();
-    this.ui = new UISystem();
-    this.data = new DataLayer();
-    this.modules = new Map();
+let angle = 0;
+
+function drawGlobe() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const radius = Math.min(canvas.width, canvas.height) * 0.25;
+  const x = canvas.width / 2;
+  const y = canvas.height / 2;
+
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, Math.PI * 2);
+  ctx.strokeStyle = "rgba(255,255,255,0.2)";
+  ctx.lineWidth = 3;
+  ctx.stroke();
+
+  // Rotating latitude lines
+  for (let i = -3; i <= 3; i++) {
+    ctx.beginPath();
+    ctx.ellipse(
+      x,
+      y,
+      radius,
+      radius * Math.cos(angle + i * 0.4),
+      0,
+      0,
+      Math.PI * 2
+    );
+    ctx.stroke();
   }
 
-  registerModule(name, factory) {
-    this.modules.set(name, factory);
-    return () => this.modules.delete(name);
-  }
-
-  async start() {
-    // Initialize renderer loop with physics stepping.
-    let last = performance.now();
-    this.renderer.init({
-      onFrame: (now) => {
-        const delta = now - last;
-        this.physics.step(delta);
-        last = now;
-      },
-    });
-
-    // Initialize modules.
-    for (const [name, factory] of this.modules.entries()) {
-      const api = {
-        engine: this,
-        renderer: this.renderer,
-        state: this.state,
-        physics: this.physics,
-        ui: this.ui,
-        data: this.data,
-      };
-      await factory(api);
-      console.info(`Module '${name}' initialized`);
-    }
-  }
-
-  stop() {
-    this.renderer.destroy();
-  }
+  angle += 0.01;
+  requestAnimationFrame(drawGlobe);
 }
 
-export function createEngine() {
-  return new Engine();
-}
+drawGlobe();

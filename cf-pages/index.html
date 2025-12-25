@@ -2,15 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>LUKAIRO ENGINE</title>
+  <title>LUKAIRO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Correct relative asset paths for Cloudflare Pages -->
+  <link rel="stylesheet" href="lukairo-main.css" />
+  <script src="main.js" defer></script>
 </head>
+
 <body>
-  <script src="/engine.qual.js"></script>
-  <a href="/engine" id="enter-engine">Enter the Engine</a>
-  <script>
-    document.getElementById("enter-engine").addEventListener("click", function () {
-      window.location.href = "/engine";
-    });
-  </script>
+  <!-- GLOBE CANVAS -->
+  <canvas id="globe"></canvas>
+
+  <!-- OVERLAY CONTENT -->
+  <div class="overlay">
+    <h1>LUKAIRO</h1>
+    <p>Infrastructure for modern service businesses.</p>
+    <button id="enter-btn">Enter the Engine</button>
+  </div>
 </body>
 </html>
