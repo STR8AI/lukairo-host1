@@ -1,8 +1,30 @@
-<base href="/lukairo-host1/">
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="refresh" content="0; url=./lukairo-build/" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUKAIRO – Neural Command Engine</title>
+
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
 </head>
-<body></body>
+<body>
+
+  <section id="lukairo-engine">
+    <div class="lukairo-hud">
+      <h1 class="lukairo-title">LUK<span>AIRO</span></h1>
+      <p class="lukairo-sub">THE NEURAL CORE • CONNECTING EVERYTHING</p>
+    </div>
+  </section>
+
+  <!-- ENGINE SCRIPT -->
+  <script>
+    if (!window.THREE) {
+      console.error("Three.js failed to load");
+    }
+  </script>
+
+</body>
 </html>
