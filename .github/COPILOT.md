@@ -81,7 +81,9 @@ gulp.task('build', ['html', 'css', 'js']);
 
 ### 4. Deployment Considerations
 
-- This project deploys to GitHub Pages, not Cloudflare
+- This project supports deployment to both GitHub Pages and Cloudflare Pages
+  - GitHub Pages: see `.github/workflows/` for deployment workflow
+  - Cloudflare Pages: see `.github/workflows/cloudflare-pages.yml`, `wrangler.toml`, and `worker.js` for configuration
 - Build output goes to `dist/` directory
 - All assets must be in dist for deployment
 
