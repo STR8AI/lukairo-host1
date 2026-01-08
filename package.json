@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "vite",
-		"build": "vite build"
+		"dev": "npx gulp dev",
+		"build": "npx gulp build"
 	},
 	"devDependencies": {
 		"gulp": "^4.0.2",
