@@ -24,7 +24,7 @@ node test-logic.js  # Run tests
 
 **Key Files:**
 - `globe.js` - Main 3D visualization logic
-- `index.html` - Application entry point
+- `lukairo-main.html`, `lukairo-demo.html` - Application entry points
 - `gulpfile.js` - Build configuration
 - `style.css` - Styling
 
