@@ -1,0 +1,78 @@
+/* RESET */
+body, html {
+  margin: 0;
+  padding: 0;
+  background: black;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+  color: white;
+}
+
+/* TOP NAV */
+.top-nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 28px;
+  z-index: 20;
+}
+
+.top-nav a {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: .06em;
+  font-weight: 500;
+}
+
+.top-nav a:hover {
+  color: white;
+}
+
+/* GLOBE CANVAS */
+#globe {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 0;
+}
+
+/* HERO OVERLAY */
+.hero {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.hero h1 {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin: 0 0 10px 0;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.primary-btn {
+  padding: 14px 30px;
+  background: white;
+  color: black;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.primary-btn:hover {
+  background: #ddd;
+}

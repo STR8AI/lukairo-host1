@@ -19,21 +19,21 @@ gulp.task('images', function() {
     .pipe(gulp.dest('dist/images'));
 });
 
-// Copy HTML files
+// Copy HTML files from cf-pages
 gulp.task('html', function() {
-  return gulp.src('*.html')
+  return gulp.src('cf-pages/**/*.html')
     .pipe(gulp.dest('dist'));
 });
 
-// Copy CSS files
+// Copy CSS files from cf-pages
 gulp.task('css', function() {
-  return gulp.src('*.css')
+  return gulp.src('cf-pages/**/*.css')
     .pipe(gulp.dest('dist'));
 });
 
-// Copy JavaScript files
+// Copy JavaScript files from cf-pages
 gulp.task('js', function() {
-  return gulp.src(['*.js', '!gulpfile.js'])
+  return gulp.src(['cf-pages/**/*.js', '!cf-pages/**/gulpfile.js'])
     .pipe(gulp.dest('dist'));
 });
 
@@ -50,9 +50,9 @@ gulp.task('serve', function() {
 // Watch task
 gulp.task('watch', function() {
   gulp.watch('images/**/*', gulp.series('images'));
-  gulp.watch('*.html', gulp.series('html'));
-  gulp.watch('*.css', gulp.series('css'));
-  gulp.watch('*.js', gulp.series('js'));
+  gulp.watch('cf-pages/**/*.html', gulp.series('html'));
+  gulp.watch('cf-pages/**/*.css', gulp.series('css'));
+  gulp.watch('cf-pages/**/*.js', gulp.series('js'));
 });
 
 // Default build task
