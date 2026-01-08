@@ -33,7 +33,7 @@ gulp.task('css', function() {
 
 // Copy JavaScript files from cf-pages
 gulp.task('js', function() {
-  return gulp.src('cf-pages/**/*.js')
+  return gulp.src(['cf-pages/**/*.js', '!cf-pages/**/gulpfile.js'])
     .pipe(gulp.dest('dist'));
 });
 
