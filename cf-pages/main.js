@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 ctx.shadowColor = "rgba(69,215,255,0.35)";
 
 // Tunable display/animation knobs
-const MAX_DEVICE_PIXEL_RATIO = 2; // cap DPR to limit rendering cost on hi-DPI displays
+const MAX_DEVICE_PIXEL_RATIO = 2; // cap DPR at 2 to limit render cost while keeping crisp lines
 const POLAR_BIAS_PROBABILITY = 0.5; // chance to keep points closer to equator vs poles
 const dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
 const LAT_FALLOFF = 0.4; // scales down polar density for visual balance
@@ -18,8 +18,13 @@ let width = 0;
 let height = 0;
 let rotationDeg = 0;
 
+function biasedLatitude() {
+  const latScale = Math.random() > POLAR_BIAS_PROBABILITY ? 1 : LAT_FALLOFF;
+  return (Math.random() * 180 - 90) * latScale;
+}
+
 const points = Array.from({ length: POINT_COUNT }, () => ({
-  lat: (Math.random() * 180 - 90) * (Math.random() > POLAR_BIAS_PROBABILITY ? 1 : LAT_FALLOFF),
+  lat: biasedLatitude(),
   lon: Math.random() * 360,
   speed: BASE_SPEED + Math.random() * SPEED_VARIATION,
   size: BASE_SIZE + Math.random() * SIZE_VARIATION
