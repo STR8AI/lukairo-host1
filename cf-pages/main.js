@@ -1,9 +1,8 @@
 const canvas = document.getElementById("globe");
 const ctx = canvas.getContext("2d");
-ctx.shadowColor = "rgba(69,215,255,0.35)";
 
 // Tunable display/animation knobs
-const MAX_DEVICE_PIXEL_RATIO = 2; // cap DPR at 2 to limit render cost while keeping crisp lines
+const MAX_DEVICE_PIXEL_RATIO = 2; // cap DPR at 2 to balance performance with clarity on hi-DPI displays
 const POLAR_BIAS_PROBABILITY = 0.5; // chance to keep points closer to equator vs poles
 const dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
 const LAT_FALLOFF = 0.4; // scales down polar density for visual balance
@@ -78,6 +77,8 @@ function drawLatitudeLines() {
 }
 
 function drawPoints() {
+  ctx.save();
+  ctx.shadowColor = "rgba(69,215,255,0.35)";
   points.forEach((p) => {
     p.lon += p.speed * LONGITUDE_SPEED_MULTIPLIER;
     const { x, y, depth } = project(p.lat, p.lon);
@@ -87,6 +88,7 @@ function drawPoints() {
     ctx.arc(x, y, p.size * (0.6 + depth), 0, Math.PI * 2);
     ctx.fill();
   });
+  ctx.restore();
 }
 
 function drawGlow() {
