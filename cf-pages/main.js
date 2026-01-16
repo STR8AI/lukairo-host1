@@ -20,40 +20,21 @@ const GLOBE_CONFIG = {
   shadowColor: "rgba(69,215,255,0.35)"
 };
 
-const {
-  maxDevicePixelRatio: MAX_DEVICE_PIXEL_RATIO,
-  polarBiasProbability: POLAR_BIAS_PROBABILITY,
-  latFalloff: LAT_FALLOFF,
-  globeScale: GLOBE_SCALE,
-  latitudeLineRadius: LAT_LINE_RADIUS,
-  longitudeSpeedMultiplier: LONGITUDE_SPEED_MULTIPLIER,
-  globeRotationSpeed: GLOBE_ROTATION_SPEED,
-  pointCount: POINT_COUNT,
-  baseSpeed: BASE_SPEED,
-  speedVariation: SPEED_VARIATION,
-  baseSize: BASE_SIZE,
-  sizeVariation: SIZE_VARIATION,
-  pointColor: POINT_COLOR,
-  pointAlphaBase: POINT_ALPHA_BASE,
-  pointAlphaScale: POINT_ALPHA_SCALE,
-  shadowColor: SHADOW_COLOR
-} = GLOBE_CONFIG;
-
-const dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
+const dpr = Math.min(window.devicePixelRatio || 1, GLOBE_CONFIG.maxDevicePixelRatio);
 let width = 0;
 let height = 0;
 let rotationDeg = 0;
 
 function biasedLatitude() {
-  const latScale = Math.random() > POLAR_BIAS_PROBABILITY ? 1 : LAT_FALLOFF;
+  const latScale = Math.random() > GLOBE_CONFIG.polarBiasProbability ? 1 : GLOBE_CONFIG.latFalloff;
   return (Math.random() * 180 - 90) * latScale;
 }
 
-const points = Array.from({ length: POINT_COUNT }, () => ({
+const points = Array.from({ length: GLOBE_CONFIG.pointCount }, () => ({
   lat: biasedLatitude(),
   lon: Math.random() * 360,
-  speed: BASE_SPEED + Math.random() * SPEED_VARIATION,
-  size: BASE_SIZE + Math.random() * SIZE_VARIATION
+  speed: GLOBE_CONFIG.baseSpeed + Math.random() * GLOBE_CONFIG.speedVariation,
+  size: GLOBE_CONFIG.baseSize + Math.random() * GLOBE_CONFIG.sizeVariation
 }));
 
 function resize() {
@@ -72,7 +53,7 @@ function project(lat, lon) {
   const x = Math.cos(radLat) * Math.cos(radLon);
   const y = Math.sin(radLat);
   const z = Math.cos(radLat) * Math.sin(radLon);
-  const scale = Math.min(width, height) * GLOBE_SCALE;
+  const scale = Math.min(width, height) * GLOBE_CONFIG.globeScale;
   return {
     x: x * scale + width / 2,
     y: y * scale + height / 2,
@@ -84,7 +65,7 @@ function drawLatitudeLines() {
   ctx.save();
   ctx.strokeStyle = "rgba(255,255,255,0.08)";
   ctx.lineWidth = 1;
-  const radius = Math.min(width, height) * LAT_LINE_RADIUS;
+  const radius = Math.min(width, height) * GLOBE_CONFIG.latitudeLineRadius;
   const rotationRad = (rotationDeg * Math.PI) / 180;
 
   for (let i = -3; i <= 3; i++) {
@@ -105,14 +86,15 @@ function drawLatitudeLines() {
 
 function drawPoints() {
   ctx.save();
-  ctx.shadowColor = SHADOW_COLOR;
-  for (let i = 0; i < points.length; i++) {
+  ctx.shadowColor = GLOBE_CONFIG.shadowColor;
+  const len = points.length;
+  for (let i = 0; i < len; i++) {
     const p = points[i];
-    p.lon += p.speed * LONGITUDE_SPEED_MULTIPLIER;
+    p.lon += p.speed * GLOBE_CONFIG.longitudeSpeedMultiplier;
     const { x, y, depth } = project(p.lat, p.lon);
-    const alpha = POINT_ALPHA_BASE + depth * POINT_ALPHA_SCALE;
+    const alpha = GLOBE_CONFIG.pointAlphaBase + depth * GLOBE_CONFIG.pointAlphaScale;
     ctx.beginPath();
-    ctx.fillStyle = `rgba(${POINT_COLOR},${alpha})`;
+    ctx.fillStyle = `rgba(${GLOBE_CONFIG.pointColor},${alpha})`;
     ctx.shadowBlur = 6 * depth;
     ctx.arc(x, y, p.size * (0.6 + depth), 0, Math.PI * 2);
     ctx.fill();
@@ -142,7 +124,7 @@ function tick() {
   drawGlow();
   drawLatitudeLines();
   drawPoints();
-  rotationDeg += GLOBE_ROTATION_SPEED;
+  rotationDeg += GLOBE_CONFIG.globeRotationSpeed;
   requestAnimationFrame(tick);
 }
 
