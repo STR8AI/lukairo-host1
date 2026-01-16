@@ -1,23 +1,29 @@
 const canvas = document.getElementById("globe");
 const ctx = canvas.getContext("2d");
+ctx.shadowColor = "rgba(69,215,255,0.35)";
 
-const MAX_DEVICE_PIXEL_RATIO = 2;
-const POLAR_BIAS_PROBABILITY = 0.5;
+// Tunable display/animation knobs
+const MAX_DEVICE_PIXEL_RATIO = 2; // cap to avoid excessive GPU load on hi-DPI screens
+const POLAR_BIAS_PROBABILITY = 0.5; // chance to keep points closer to equator vs poles
 const dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
-const LAT_FALLOFF = 0.4;
-const LONGITUDE_SPEED_MULTIPLIER = 120;
-const GLOBE_ROTATION_SPEED = 0.2;
-const POINT_COUNT = 180;
-const BASE_SPEED = 0.0008;
-const SPEED_VARIATION = 0.001;
-const BASE_SIZE = 1.3;
-const SIZE_VARIATION = 1.7;
+const LAT_FALLOFF = 0.4; // scales down polar density for visual balance
+const LONGITUDE_SPEED_MULTIPLIER = 120; // point drift speed around the globe
+const GLOBE_ROTATION_SPEED = 0.2; // base globe rotation speed (deg/frame)
+const POINT_COUNT = 180; // number of spark points on the globe
+const BASE_SPEED = 0.0008; // base point drift speed
+const SPEED_VARIATION = 0.001; // random speed variance
+const BASE_SIZE = 1.3; // base point size
+const SIZE_VARIATION = 1.7; // random point size variance
 let width = 0;
 let height = 0;
 let rotationDeg = 0;
 
+function latitudeScale() {
+  return Math.random() > POLAR_BIAS_PROBABILITY ? 1 : LAT_FALLOFF;
+}
+
 const points = Array.from({ length: POINT_COUNT }, () => ({
-  lat: (Math.random() * 180 - 90) * (Math.random() > POLAR_BIAS_PROBABILITY ? 1 : LAT_FALLOFF),
+  lat: (Math.random() * 180 - 90) * latitudeScale(),
   lon: Math.random() * 360,
   speed: BASE_SPEED + Math.random() * SPEED_VARIATION,
   size: BASE_SIZE + Math.random() * SIZE_VARIATION
@@ -71,7 +77,6 @@ function drawLatitudeLines() {
 }
 
 function drawPoints() {
-  ctx.shadowColor = "rgba(69,215,255,0.35)";
   points.forEach((p) => {
     p.lon += p.speed * LONGITUDE_SPEED_MULTIPLIER;
     const { x, y, depth } = project(p.lat, p.lon);
