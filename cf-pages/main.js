@@ -1,7 +1,9 @@
 const canvas = document.getElementById("globe");
 const ctx = canvas.getContext("2d");
 
-const dpr = Math.min(window.devicePixelRatio || 1, 2);
+const MAX_DEVICE_PIXEL_RATIO = 2;
+const POLAR_BIAS_PROBABILITY = 0.5;
+const dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
 const LAT_FALLOFF = 0.4;
 const LONGITUDE_SPEED_MULTIPLIER = 120;
 const GLOBE_ROTATION_SPEED = 0.2;
@@ -15,7 +17,7 @@ let height = 0;
 let rotationDeg = 0;
 
 const points = Array.from({ length: POINT_COUNT }, () => ({
-  lat: (Math.random() * 180 - 90) * (Math.random() > 0.5 ? 1 : LAT_FALLOFF),
+  lat: (Math.random() * 180 - 90) * (Math.random() > POLAR_BIAS_PROBABILITY ? 1 : LAT_FALLOFF),
   lon: Math.random() * 360,
   speed: BASE_SPEED + Math.random() * SPEED_VARIATION,
   size: BASE_SIZE + Math.random() * SIZE_VARIATION
