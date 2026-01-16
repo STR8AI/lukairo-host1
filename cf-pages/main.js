@@ -3,11 +3,13 @@ const ctx = canvas.getContext("2d");
 
 const GLOBE_CONFIG = {
   maxDevicePixelRatio: 2, // cap DPR at 2 to balance performance with clarity on hi-DPI displays
-  polarBiasProbability: 0.5, // chance to keep points closer to equator vs poles
-  latFalloff: 0.4, // scales down polar density for visual balance
+  polarBiasProbability: 0.5, // 50/50 bias keeps more points near mid-latitudes
+  latFalloff: 0.4, // reduces polar density so the arc field looks balanced
+  globeScale: 0.38, // fraction of min(viewport) for projected globe radius
+  latitudeLineRadius: 0.36, // fraction of min(viewport) for latitude guides
   longitudeSpeedMultiplier: 120, // point drift speed around the globe
   globeRotationSpeed: 0.2, // base globe rotation speed (deg/frame)
-  pointCount: 180, // number of spark points on the globe
+  pointCount: 180, // enough sparks for texture without overdraw
   baseSpeed: 0.0008, // base point drift speed
   speedVariation: 0.001, // random speed variance
   baseSize: 1.3, // base point size
@@ -22,6 +24,8 @@ const {
   maxDevicePixelRatio: MAX_DEVICE_PIXEL_RATIO,
   polarBiasProbability: POLAR_BIAS_PROBABILITY,
   latFalloff: LAT_FALLOFF,
+  globeScale: GLOBE_SCALE,
+  latitudeLineRadius: LAT_LINE_RADIUS,
   longitudeSpeedMultiplier: LONGITUDE_SPEED_MULTIPLIER,
   globeRotationSpeed: GLOBE_ROTATION_SPEED,
   pointCount: POINT_COUNT,
@@ -68,7 +72,7 @@ function project(lat, lon) {
   const x = Math.cos(radLat) * Math.cos(radLon);
   const y = Math.sin(radLat);
   const z = Math.cos(radLat) * Math.sin(radLon);
-  const scale = Math.min(width, height) * 0.38;
+  const scale = Math.min(width, height) * GLOBE_SCALE;
   return {
     x: x * scale + width / 2,
     y: y * scale + height / 2,
@@ -80,7 +84,7 @@ function drawLatitudeLines() {
   ctx.save();
   ctx.strokeStyle = "rgba(255,255,255,0.08)";
   ctx.lineWidth = 1;
-  const radius = Math.min(width, height) * 0.36;
+  const radius = Math.min(width, height) * LAT_LINE_RADIUS;
   const rotationRad = (rotationDeg * Math.PI) / 180;
 
   for (let i = -3; i <= 3; i++) {
