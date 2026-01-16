@@ -5,15 +5,20 @@ const dpr = Math.min(window.devicePixelRatio || 1, 2);
 const LAT_FALLOFF = 0.4;
 const LONGITUDE_SPEED_MULTIPLIER = 120;
 const GLOBE_ROTATION_SPEED = 0.2;
+const POINT_COUNT = 180;
+const BASE_SPEED = 0.0008;
+const SPEED_VARIATION = 0.001;
+const BASE_SIZE = 1.3;
+const SIZE_VARIATION = 1.7;
 let width = 0;
 let height = 0;
 let rotationDeg = 0;
 
-const points = Array.from({ length: 180 }, () => ({
+const points = Array.from({ length: POINT_COUNT }, () => ({
   lat: (Math.random() * 180 - 90) * (Math.random() > 0.5 ? 1 : LAT_FALLOFF),
   lon: Math.random() * 360,
-  speed: 0.0008 + Math.random() * 0.001,
-  size: 1.3 + Math.random() * 1.7
+  speed: BASE_SPEED + Math.random() * SPEED_VARIATION,
+  size: BASE_SIZE + Math.random() * SIZE_VARIATION
 }));
 
 function resize() {
@@ -64,12 +69,12 @@ function drawLatitudeLines() {
 }
 
 function drawPoints() {
+  ctx.shadowColor = "rgba(69,215,255,0.35)";
   points.forEach((p) => {
     p.lon += p.speed * LONGITUDE_SPEED_MULTIPLIER;
     const { x, y, depth } = project(p.lat, p.lon);
     ctx.beginPath();
     ctx.fillStyle = `rgba(69,215,255,${0.15 + depth * 0.55})`;
-    ctx.shadowColor = "rgba(69,215,255,0.35)";
     ctx.shadowBlur = 6 * depth;
     ctx.arc(x, y, p.size * (0.6 + depth), 0, Math.PI * 2);
     ctx.fill();
