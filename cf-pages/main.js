@@ -2,12 +2,15 @@ const canvas = document.getElementById("globe");
 const ctx = canvas.getContext("2d");
 
 const dpr = Math.min(window.devicePixelRatio || 1, 2);
+const LAT_FALLOFF = 0.4;
+const LONGITUDE_SPEED_MULTIPLIER = 120;
+const GLOBE_ROTATION_SPEED = 0.2;
 let width = 0;
 let height = 0;
 let rotationDeg = 0;
 
 const points = Array.from({ length: 180 }, () => ({
-  lat: (Math.random() * 180 - 90) * (Math.random() > 0.5 ? 1 : 0.4),
+  lat: (Math.random() * 180 - 90) * (Math.random() > 0.5 ? 1 : LAT_FALLOFF),
   lon: Math.random() * 360,
   speed: 0.0008 + Math.random() * 0.001,
   size: 1.3 + Math.random() * 1.7
@@ -62,7 +65,7 @@ function drawLatitudeLines() {
 
 function drawPoints() {
   points.forEach((p) => {
-    p.lon += p.speed * 120;
+    p.lon += p.speed * LONGITUDE_SPEED_MULTIPLIER;
     const { x, y, depth } = project(p.lat, p.lon);
     ctx.beginPath();
     ctx.fillStyle = `rgba(69,215,255,${0.15 + depth * 0.55})`;
@@ -95,7 +98,7 @@ function tick() {
   drawGlow();
   drawLatitudeLines();
   drawPoints();
-  rotationDeg += 0.2;
+  rotationDeg += GLOBE_ROTATION_SPEED;
   requestAnimationFrame(tick);
 }
 
