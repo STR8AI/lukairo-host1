@@ -2,23 +2,184 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>LUKAIRO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maritime HVAC</title>
 
-  <!-- Correct relative asset paths for Cloudflare Pages -->
-  <link rel="stylesheet" href="lukairo-main.css" />
-  <script src="main.js" defer></script>
+  <!-- Inline CSS to avoid MIME-type issues on Cloudflare Pages -->
+  <style>
+    :root {
+      --bg: #040a14;
+      --panel: rgba(6, 15, 26, 0.65);
+      --text: #e6edf5;
+      --muted: #9fb3c5;
+      --accent: #45d7ff;
+      --accent-2: #76f5d0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at 20% 20%, rgba(69,215,255,0.08), transparent 40%),
+                  radial-gradient(circle at 80% 30%, rgba(118,245,208,0.08), transparent 45%),
+                  var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow: hidden;
+    }
+
+    canvas#globe {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: linear-gradient(135deg, #031022 0%, #020814 35%, #030c18 100%);
+      filter: drop-shadow(0 0 12px rgba(69, 215, 255, 0.14));
+    }
+
+    .overlay {
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: clamp(20px, 4vw, 48px);
+      min-height: 100vh;
+      pointer-events: none;
+    }
+
+    .hero {
+      width: min(960px, 100%);
+      background: var(--panel);
+      border: 1px solid rgba(118, 245, 208, 0.12);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      padding: clamp(20px, 4vw, 40px);
+      box-shadow: 0 15px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.02);
+      pointer-events: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(69, 215, 255, 0.12);
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    h1 {
+      margin: 14px 0 12px;
+      font-size: clamp(32px, 6vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+
+    p.lead {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: clamp(16px, 2.4vw, 20px);
+      line-height: 1.6;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0 0 22px;
+    }
+
+    .stat {
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 160ms ease;
+      border: 1px solid transparent;
+    }
+
+    .btn.primary {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      color: #02060b;
+      box-shadow: 0 10px 35px rgba(69,215,255,0.25);
+    }
+
+    .btn.secondary {
+      border-color: rgba(255,255,255,0.15);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+    }
+
+    .note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .hero { padding: 20px; }
+      .cta { flex-direction: column; }
+      .btn { width: 100%; text-align: center; }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- GLOBE CANVAS -->
-  <canvas id="globe"></canvas>
+  <canvas id="globe" aria-hidden="true"></canvas>
 
-  <!-- HERO OVERLAY -->
-  <div class="hero">
-    <h1>LUKAIRO</h1>
-    <p>Infrastructure for modern service businesses.</p>
-    <a href="engine.html" class="primary-btn">Enter the Engine</a>
+  <div class="overlay">
+    <div class="hero">
+      <div class="eyebrow">Maritime HVAC</div>
+      <h1>Comfort engineered for Atlantic weather.</h1>
+      <p class="lead">
+        Heating, ventilation, and air quality specialists serving coastal communities with 24/7 rapid response,
+        precision installs, and proactive maintenance.
+      </p>
+
+      <div class="stats">
+        <div class="stat">24/7 Emergency Dispatch</div>
+        <div class="stat">Heat Pumps &amp; Air Quality</div>
+        <div class="stat">Residential &amp; Commercial</div>
+      </div>
+
+      <div class="cta">
+        <a class="btn primary" href="mailto:service@maritimehvac.ca">Request Service</a>
+        <a class="btn secondary" href="tel:+18882347748">Call 1-888-234-7748</a>
+      </div>
+
+      <p class="note">Licensed, insured, and ready for storms — from Halifax to Saint John.</p>
+    </div>
   </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
