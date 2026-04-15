@@ -1,29 +1,201 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background: #05070b;
-  color: #9ffcff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+/* HIGHLEVEL RESET CSS — builder spacing bug fixes */
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+body {
+    overflow-x: hidden !important;
 }
 
-h1 {
-  font-size: 4rem;
-  letter-spacing: 0.3em;
-  margin: 0;
+body .hl_page-preview,
+body .hl_page-preview * {
+    box-sizing: border-box;
 }
 
-p {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  opacity: 0.8;
+body .hl_page-preview .c-section,
+body .hl_page-preview .c-row,
+body .hl_page-preview .c-column,
+body .hl_page-preview .c-wrapper,
+body .hl_page-preview .inner,
+body .hl_page-preview .container,
+body .hl_page-preview .section-inner,
+body .hl_page-preview .row,
+body .hl_page-preview .col,
+body .hl_page-preview .elContainer,
+body .hl_page-preview .fullSection {
+    max-width: 100%;
+}
+
+body .hl_page-preview .c-section,
+body .hl_page-preview .c-row,
+body .hl_page-preview .c-column,
+body .hl_page-preview .c-wrapper,
+body .hl_page-preview .section-inner,
+body .hl_page-preview .elContainer {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+body .hl_page-preview .c-section > .inner,
+body .hl_page-preview .c-row > .inner,
+body .hl_page-preview .c-column > .inner,
+body .hl_page-preview .c-wrapper > .inner {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+body .hl_page-preview .c-section > *:first-child,
+body .hl_page-preview .c-row > *:first-child,
+body .hl_page-preview .c-column > *:first-child,
+body .hl_page-preview .container > *:first-child {
+    margin-top: 0 !important;
+}
+
+body .hl_page-preview .c-section > *:last-child,
+body .hl_page-preview .c-row > *:last-child,
+body .hl_page-preview .c-column > *:last-child,
+body .hl_page-preview .container > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+body .hl_page-preview img,
+body .hl_page-preview video,
+body .hl_page-preview iframe,
+body .hl_page-preview canvas,
+body .hl_page-preview svg {
+    max-width: 100%;
+    height: auto;
+}
+
+body .hl_page-preview .c-row,
+body .hl_page-preview .row,
+body .hl_page-preview [class*="row-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+body .hl_page-preview,
+body .hl_page-preview .c-section,
+body .hl_page-preview .c-row,
+body .hl_page-preview .c-column,
+body .hl_page-preview .inner {
+    overflow-x: clip;
+}
+
+body .hl_page-preview h1,
+body .hl_page-preview h2,
+body .hl_page-preview h3,
+body .hl_page-preview h4,
+body .hl_page-preview h5,
+body .hl_page-preview h6,
+body .hl_page-preview p,
+body .hl_page-preview ul,
+body .hl_page-preview ol {
+    max-width: 100%;
+}
+
+body .hl_page-preview a,
+body .hl_page-preview button {
+    touch-action: manipulation;
+}
+
+body .hl_page-preview input,
+body .hl_page-preview select,
+body .hl_page-preview textarea {
+    max-width: 100%;
+}
+
+/* POSITIONING SECTION FIXES */
+#positioning .section-split {
+    align-items: start;
+}
+
+#positioning .section-copy-wrap {
+    position: relative;
+    z-index: 2;
+}
+
+#positioning .section-media {
+    margin-top: -56px;
+    position: relative;
+    z-index: 1;
+}
+
+#positioning .section-media-label {
+    bottom: 18px;
+    left: 18px;
+}
+
+#positioning .grid-3 {
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    align-items: stretch;
+    gap: 28px;
+}
+
+#positioning .card {
+    min-width: 0;
+}
+
+#positioning .card-inner {
+    padding: 32px;
+}
+
+#positioning .card h3 {
+    font-size: clamp(1.8rem, 2vw, 2.3rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+    max-width: 10ch;
+}
+
+#positioning .card p {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    max-width: 22ch;
+}
+
+/* tablet */
+@media (max-width: 1100px) {
+    #positioning .grid-3 {
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+    }
+
+    #positioning .section-media {
+        margin-top: 16px;
+    }
+}
+
+/* mobile */
+@media (max-width: 767px) {
+    body .hl_page-preview .c-section,
+  body .hl_page-preview .c-row,
+  body .hl_page-preview .c-column,  
+  body .hl_page-preview .c-wrapper,
+  body .hl_page-preview .inner,
+  body .hl_page-preview .container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    body .hl_page-preview {
+        overflow-x: hidden !important;
+    }
+
+    #positioning .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    #positioning .card h3,
+  #positioning .card p {
+        max-width: none;
+    }
+
+    #positioning .section-media {
+        margin-top: 24px;
+    }
 }
