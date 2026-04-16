@@ -1,22 +1,32 @@
- <div class="orbit-ring ring-3">
-              <div class="orbit-slot" style="--angle: 0deg;">
-                <a class="orbit-icon" href="https://outlook.office.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/732/732223.png" alt="Outlook" /></a>
-              </div>
-              <div class="orbit-slot" style="--angle: 60deg;">
-                <a class="orbit-icon" href="https://www.shopify.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968921.png" alt="Shopify" /></a>
-              </div>
-              <div class="orbit-slot" style="--angle: 120deg;">
-                <a class="orbit-icon" href="https://www.stripe.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968382.png" alt="Stripe" /></a>
-              </div>
-              <div class="orbit-slot" style="--angle: 180deg;">
-                <a class="orbit-icon" href="https://www.meta.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/2504/2504903.png" alt="Meta" /></a>
-              </div>
-              <div class="orbit-slot" style="--angle: 240deg;">
-                <a class="orbit-icon" href="https://calendar.google.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968499.png" alt="Google Calendar" /></a>
-              </div>
-              <div class="orbit-slot" style="--angle: 300deg;">
-                <a class="orbit-icon" href="https://www.zapier.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968863.png" alt="Zapier" /></a>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="orbit-ring ring-3">
+  <div class="orbit-slot" style="--angle: 0deg;">
+    <a class="orbit-icon" href="https://outlook.office.com" target="_blank" rel="noopener noreferrer">
+      <img src="images/icons/outlook.png" alt="Outlook" />
+    </a>
+  </div>
+  <div class="orbit-slot" style="--angle: 60deg;">
+    <a class="orbit-icon" href="https://www.shopify.com" target="_blank" rel="noopener noreferrer">
+      <img src="images/icons/shopify.png" alt="Shopify" />
+    </a>
+  </div>
+  <div class="orbit-slot" style="--angle: 120deg;">
+    <a class="orbit-icon" href="https://www.stripe.com" target="_blank" rel="noopener noreferrer">
+      <img src="images/icons/stripe.png" alt="Stripe" />
+    </a>
+  </div>
+  <div class="orbit-slot" style="--angle: 180deg;">
+    <a class="orbit-icon" href="https://www.meta.com" target="_blank" rel="noopener noreferrer">
+      <img src="images/icons/meta.png" alt="Meta" />
+    </a>
+  </div>
+  <div class="orbit-slot" style="--angle: 240deg;">
+    <a class="orbit-icon" href="https://calendar.google.com" target="_blank" rel="noopener noreferrer">
+      <img src="images/icons/calendar.png" alt="Google Calendar" />
+    </a>
+  </div>
+  <div class="orbit-slot" style="--angle: 300deg;">
+    <a class="orbit-icon" href="https://www.zapier.com" target="_blank" rel="noopener noreferrer">
+      <img src="images/icons/zapier.png" alt="Zapier" />
+    </a>
+  </div>
+</div>
