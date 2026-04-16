@@ -1,404 +1,361 @@
-<base href="/lukairo-host1/"> bc4e8aa350ad0661d2ee99c88d553f298b9c5a66
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LUKAIRO – Neural Command Engine</title>
-
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #05070B;
-      overflow-x: hidden;
-    }
-  </style>
+  <title>LUKAIRO | Practical Systems for Modern Growth</title>
+  <meta
+    name="description"
+    content="LUKAIRO builds practical systems for Alberta businesses across lead capture, automation, follow-up, dispatch, reporting, and revenue operations."
+  />
+  <meta name="theme-color" content="#02070b" />
+  <link rel="stylesheet" href="lukairo-main.css" />
 </head>
 <body>
+  <div class="site">
+    <header class="nav">
+      <div class="container nav-inner">
+        <a href="index.html" class="brand">LUKAIRO</a>
 
-  <!-- === LUKAIRO NEURAL COMMAND ENGINE — GHL-HARDENED VERSION === -->
-  <section id="lukairo-engine">
-    <div class="lukairo-hud">
-      <h2 class="lukairo-title">LUK<span>AIRO</span></h2>
-      <p class="lukairo-sub">THE NEURAL CORE • CONNECTING EVERYTHING</p>
-    </div>
-  </section>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#top">Home</a>
+          <a href="#positioning">What We Do</a>
+          <a href="#explore">Explore</a>
+          <a href="#proof">Why It Matters</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-  <style>
-  @import url("//fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap");
+        <div class="btn-row">
+          <a href="#services" class="btn btn-ghost">Explore Services</a>
+          <a
+            href="https://api.lukairoengine.ca/widget/bookings/discovery/call/lukairo?utm_source=website&utm_medium=cta&utm_campaign=home"
+            class="btn btn-primary"
+          >Book a Discovery Call</a>
+        </div>
+      </div>
+    </header>
 
-  /* Break out of GHL columns and go full-bleed */
-  #lukairo-engine {
-    position: relative !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
-    height: 140vh !important;
-    background: #05070B;
-    overflow: hidden;
-  }
+    <main>
+      <section class="hero" id="top">
+        <div class="hero-overlay">
+          <p>
+            Practical systems for lead capture, automation, follow-up, dispatch,<br>
+            reporting, and revenue visibility.
+          </p>
+          <span>
+            Built around real operations for Alberta businesses that need speed, clarity, and control.
+          </span>
+        </div>
 
-  /* Canvas will be injected by JS */
-  #lukairo-engine canvas {
-    position: absolute;
-    inset: 0;
-    width: 100vw !important;
-    height: 140vh !important;
-    display: block;
-  }
+        <div class="globe-stack">
+          <div class="glow-core"></div>
+          <canvas id="globe" aria-hidden="true"></canvas>
 
-  /* HUD */
-  .lukairo-hud{
-    position:absolute;
-    top:7%;
-    width:100%;
-    text-align:center;
-    color:#e4f7ff;
-    font-family:"Orbitron",system-ui,sans-serif;
-    text-transform:uppercase;
-    z-index:5;
-    pointer-events:none;
-  }
-  .lukairo-title{
-    font-size:clamp(2.5rem,5vw,4.6rem);
-    letter-spacing:0.35em;
-    text-shadow:
-      0 0 22px rgba(0,255,204,0.6),
-      0 0 60px rgba(90,140,255,0.9);
-  }
-  .lukairo-title span{
-    color:#7de5ff;
-  }
-  .lukairo-sub{
-    margin-top:0.35rem;
-    font-size:clamp(.7rem,1vw,.9rem);
-    letter-spacing:.42em;
-    color:#9fd1ff;
-    opacity:.9;
-  }
-  </style>
+          <div class="globe-fallback" id="globeFallback">
+            <div>
+              <div>Practical systems for lead capture, follow-up, dispatch, reporting, and growth.</div>
+            </div>
+          </div>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+          <div class="center-mark">
+            <span>LUKAIRO</span>
+          </div>
 
-  <script>
-  (function(){
-    function init() {
-      const container = document.getElementById("lukairo-engine");
-      if (!container || !window.THREE) return;
+          <div class="orbit-system" aria-hidden="true">
+            <div class="orbit-ring ring-1">
+              <div class="orbit-slot" style="--angle: 10deg;">
+                <a class="orbit-icon" href="https://mail.google.com" target="_blank" rel="noopener noreferrer">
+                  <img src="images/gmail.png" alt="Gmail" />
+                </a>
+              </div>
+              <div class="orbit-slot" style="--angle: 130deg;">
+                <a class="orbit-icon" href="https://slack.com/signin" target="_blank" rel="noopener noreferrer">
+                  <img src="images/slack.png" alt="Slack" />
+                </a>
+              </div>
+              <div class="orbit-slot" style="--angle: 250deg;">
+                <a class="orbit-icon" href="https://zoom.us/signin" target="_blank" rel="noopener noreferrer">
+                  <img src="images/zoom.png" alt="Zoom" />
+                </a>
+              </div>
+            </div>
 
-      const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x05070B);
+            <div class="orbit-ring ring-2">
+              <div class="orbit-slot" style="--angle: 25deg;">
+                <a class="orbit-icon" href="https://www.hubspot.com" target="_blank" rel="noopener noreferrer">
+                  <img src="images/hubspot.png" alt="HubSpot" />
+                </a>
+              </div>
+              <div class="orbit-slot" style="--angle: 95deg;">
+                <a class="orbit-icon" href="https://www.salesforce.com" target="_blank" rel="noopener noreferrer">
+                  <img src="images/salesforce.png" alt="Salesforce" />
+                </a>
+              </div>
+              <div class="orbit-slot" style="--angle: 180deg;">
+                <a class="orbit-icon" href="https://web.whatsapp.com" target="_blank" rel="noopener noreferrer">
+                  <img src="images/whatsapp.png" alt="WhatsApp" />
+                </a>
+              </div>
+              <div class="orbit-slot" style="--angle: 265deg;">
+                <a class="orbit-icon" href="https://github.com/login" target="_blank" rel="noopener noreferrer">
+                  <img src="images/github.png" alt="GitHub" />
+                </a>
+              </div>
+              <div class="orbit-slot" style="--angle: 330deg;">
+                <a class="orbit-icon" href="https://www.notion.so/login" target="_blank" rel="noopener noreferrer">
+                  <img src="images/notion.png" alt="Notion" />
+                </a>
+              </div>
+            </div>
 
-      const SIZE_FACTOR = 1.4;
-      function getSize() {
-        return { w: window.innerWidth, h: window.innerHeight * SIZE_FACTOR };
-      }
-      let { w, h } = getSize();
+            <div class="orbit-ring ring-3">
+              <div class="orbit-slot" style="--angle: 0deg;">
+                <a class="orbit-icon" href="https://outlook.office.com" target="_blank" rel="noopener noreferrer">
+                  <img src="images/outlook.png" alt="Outlook" />
+                </a>
+              </div>
+              <div class="orbit-slot" style="--angle: 60deg;">
+                <a class="orbit-icon" href="https://www.shopify.com" target="_blank" rel="noopener noreferrer">
+                  <img src="images/shopify.png" alt="Shopify" />
+                </a>
+              </div>
+              <div class="orbit-slot" style="--angle: 120deg;">
+                <a class="orbit-icon" href="https://www.stripe.com" target="_blank" rel="noopener noreferrer">
+                  <img src="images/stripe.png" alt="Stripe" />
+                </a>
+              </div>
+              <div class="orbit-slot" style="--angle: 180deg;">
+                <a class="orbit-icon" href="https://www.meta.com" target="_blank" rel="noopener noreferrer">
+                  <img src="images/meta.png" alt="Meta" />
+                </a>
+              </div>
+              <div class="orbit-slot" style="--angle: 240deg;">
+                <a class="orbit-icon" href="https://calendar.google.com" target="_blank" rel="noopener noreferrer">
+                  <img src="images/calendar.png" alt="Google Calendar" />
+                </a>
+              </div>
+              <div class="orbit-slot" style="--angle: 300deg;">
+                <a class="orbit-icon" href="https://www.zapier.com" target="_blank" rel="noopener noreferrer">
+                  <img src="images/zapier.png" alt="Zapier" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      const camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 1000);
-      camera.position.set(0, 0.6, 18);
+        <div class="lk-label top-left">Funnels / Websites</div>
+        <div class="lk-label lk-label--small top-right">CRM / Pipelines</div>
+        <div class="lk-label lk-label--small mid-left">Email / SMS Automation</div>
+        <div class="lk-label lk-label--small mid-right">Calls / Booking Systems</div>
+        <div class="lk-label lk-label--small bottom-left">Analytics / KPI / ROI</div>
+        <div class="lk-label bottom-right">Forecasting / Revenue Ops</div>
+      </section>
 
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(w, h);
-      if (renderer.outputEncoding !== undefined) {
-        renderer.outputEncoding = THREE.sRGBEncoding;
-      }
-      container.appendChild(renderer.domElement);
+      <section class="section" id="positioning">
+        <div class="container">
+          <div class="section-split">
+            <div class="section-copy-wrap">
+              <div class="section-head">
+                <div class="label"><span class="dot"></span> What We Do</div>
+                <h2>Software, automation, and revenue systems tied together properly.</h2>
+                <p class="section-copy">
+                  We do not just install software. We connect the parts that matter: funnels,
+                  CRM, messaging, calls, calendars, automation, dashboards, and reporting so teams
+                  can operate faster and close with more consistency.
+                </p>
+              </div>
 
-      // Lights
-      const ambient = new THREE.AmbientLight(0xb4c4ff, 0.9);
-      scene.add(ambient);
+              <div class="grid-3">
+                <article class="card">
+                  <div class="card-inner">
+                    <div class="icon">A</div>
+                    <h3>Funnels &amp; Websites</h3>
+                    <p>Landing pages, forms, lead capture paths, qualification flows, and booking journeys built to convert.</p>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="card-inner">
+                    <div class="icon">B</div>
+                    <h3>CRM &amp; Pipelines</h3>
+                    <p>Contact records, stage tracking, ownership, notes, follow-up activity, and pipeline control across the team.</p>
+                  </div>
+                </article>
+                <article class="card">
+                  <div class="card-inner">
+                    <div class="icon">C</div>
+                    <h3>Automation &amp; Messaging</h3>
+                    <p>Email, SMS, reminders, nurture, reactivation, missed-call text back, and workflow automation that actually gets used.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
 
-      const key = new THREE.DirectionalLight(0xffffff, 1.3);
-      key.position.set(16, 18, 18);
-      scene.add(key);
+            <div class="section-media">
+              <img src="images/overview.png" alt="LUKAIRO software, automation, and revenue systems visual" loading="lazy" decoding="async" />
+              <div class="section-media-label">What We Do</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      const rim = new THREE.PointLight(0x7de5ff, 1.0, 80);
-      rim.position.set(-18, 4, -12);
-      scene.add(rim);
+      <section class="section" id="explore">
+        <div class="container">
+          <div class="section-head">
+            <div class="label"><span class="dot"></span> Explore</div>
+            <h2>Choose the page that fits what you need.</h2>
+            <p class="section-copy">
+              Learn more about LUKAIRO, explore oilfield and energy systems, or see how consulting is structured.
+            </p>
+          </div>
 
-      // Engine group
-      const engineGroup = new THREE.Group();
-      scene.add(engineGroup);
+          <div class="grid-3">
+            <article class="card">
+              <div class="card-inner">
+                <div class="icon">A</div>
+                <h3>About LUKAIRO</h3>
+                <p>See the founder perspective, company background, and the operating philosophy behind the work.</p>
+              </div>
+            </article>
 
-      const globeRadius = 3.4;
+            <article class="card">
+              <div class="card-inner">
+                <div class="icon">B</div>
+                <h3>Oilfield &amp; Energy</h3>
+                <p>See how LUKAIRO supports field-heavy Alberta businesses with intake, dispatch, follow-up, and visibility.</p>
+              </div>
+            </article>
 
-      // Base globe
-      const globeGeo = new THREE.SphereGeometry(globeRadius, 96, 96);
-      const globeMat = new THREE.MeshStandardMaterial({
-        color: 0x101826,
-        roughness: 0.7,
-        metalness: 0.15
-      });
-      const globe = new THREE.Mesh(globeGeo, globeMat);
-      engineGroup.add(globe);
+            <article class="card">
+              <div class="card-inner">
+                <div class="icon">C</div>
+                <h3>Consulting</h3>
+                <p>See how consulting helps identify workflow gaps, improve control, and prioritize the right system fixes first.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-      const loader = new THREE.TextureLoader();
+      <section class="section" id="proof">
+        <div class="container">
+          <div class="section-split reverse">
+            <div class="section-media">
+              <img src="images/why-it-matters.png" alt="LUKAIRO why it matters visual" loading="lazy" decoding="async" />
+              <div class="section-media-label">Why It Matters</div>
+            </div>
 
-      // Earth texture
-      loader.load("//threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg", tex => {
-        if (tex.encoding !== undefined) tex.encoding = THREE.sRGBEncoding;
-        globe.material.map = tex;
-        globe.material.needsUpdate = true;
-      });
+            <div class="section-copy-wrap">
+              <div class="section-head">
+                <div class="label"><span class="dot"></span> Why It Matters</div>
+                <h2>Clearer systems. Faster follow-up. Better control.</h2>
+                <p class="section-copy">
+                  Most businesses lose momentum between inquiry, response, booking, conversation,
+                  and close. LUKAIRO reduces that gap by tightening the system underneath the work.
+                </p>
+              </div>
 
-      // AI core
-      const coreGeo = new THREE.SphereGeometry(globeRadius * 0.7, 72, 72);
-      const coreMat = new THREE.MeshStandardMaterial({
-        color: 0x8fe7ff,
-        emissive: 0x66ddff,
-        emissiveIntensity: 1.0,
-        transparent: true,
-        opacity: 0.45
-      });
-      const core = new THREE.Mesh(coreGeo, coreMat);
-      engineGroup.add(core);
+              <div class="proof-grid">
+                <article class="proof-card">
+                  <h3 class="proof-headline">Faster Response</h3>
+                  <p class="proof-lead">Connect forms, messages, calls, and automation so leads are handled immediately, not left sitting.</p>
+                </article>
+                <article class="proof-card">
+                  <h3 class="proof-headline">Cleaner Execution</h3>
+                  <p class="proof-lead">Provide clear ownership and structured next steps so follow-up is consistent and measurable.</p>
+                </article>
+                <article class="proof-card">
+                  <h3 class="proof-headline">Better Visibility</h3>
+                  <p class="proof-lead">See pipeline and team performance with simple, actionable dashboards.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      // LUKAIRO engine shell
-      loader.load("//storage.googleapis.com/msgsndr/B47X3dkLb4AkvxzX2Tck/media/68fdb1e49c7b3a610f587b93.png", tex => {
-        if (tex.encoding !== undefined) tex.encoding = THREE.sRGBEncoding;
-        const engineMat = new THREE.MeshBasicMaterial({
-          map: tex,
-          transparent: true,
-          opacity: 0.85,
-          depthWrite: false
-        });
-        const engineShell = new THREE.Mesh(
-          new THREE.SphereGeometry(globeRadius * 0.72, 96, 96),
-          engineMat
-        );
-        engineGroup.add(engineShell);
-        spinningLayers.push({ mesh: engineShell, speed: 0.0009 });
-      });
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-split">
+            <div class="section-copy-wrap">
+              <div class="section-head">
+                <div class="label"><span class="dot"></span> Services</div>
+                <h2>Where LUKAIRO helps operationally.</h2>
+                <p class="section-copy">
+                  The system can be built around front-end lead flow, mid-funnel communication,
+                  or full revenue operations depending on what needs to be fixed first.
+                </p>
+              </div>
 
-      // Grid shell
-      const gridGeo = new THREE.SphereGeometry(globeRadius * 1.02, 64, 64);
-      const gridMat = new THREE.MeshBasicMaterial({
-        color: 0x7ce7ff,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.42
-      });
-      const gridShell = new THREE.Mesh(gridGeo, gridMat);
-      engineGroup.add(gridShell);
+              <div class="grid-4">
+                <article class="card"><div class="card-inner"><h3>Funnels</h3><p>Capture qualified demand and route it into the right path.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>Booking</h3><p>Reduce friction from first inquiry to scheduled conversation.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>Calls &amp; SMS</h3><p>Support communication from one connected system.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>CRM</h3><p>Track stage movement, notes, follow-up, and ownership.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>Email Automation</h3><p>Run nurture, reminders, reactivation, and campaign follow-through.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>Reporting</h3><p>Measure source quality, conversion, response time, and ROI.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>Revenue Ops</h3><p>Connect sales process visibility to real operational decisions.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>System Design</h3><p>Build a cleaner structure so the team can execute consistently.</p></div></article>
+              </div>
+            </div>
 
-      const spinningLayers = [
-        { mesh: globe, speed: 0.0008 },
-        { mesh: core,  speed: -0.0012 },
-        { mesh: gridShell, speed: 0.0015 }
-      ];
+            <div class="section-media">
+              <img src="images/services.png" alt="LUKAIRO services and operational systems visual" loading="lazy" decoding="async" />
+              <div class="section-media-label">Services</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      // Halo
-      const haloCanvas = document.createElement("canvas");
-      haloCanvas.width = haloCanvas.height = 1024;
-      const hctx = haloCanvas.getContext("2d");
-      const haloGrad = hctx.createRadialGradient(512,512,90, 512,512,480);
-      haloGrad.addColorStop(0, "rgba(255,255,255,0.4)");
-      haloGrad.addColorStop(0.35, "rgba(160,210,255,0.30)");
-      haloGrad.addColorStop(0.7, "rgba(80,160,255,0.16)");
-      haloGrad.addColorStop(1, "rgba(0,0,0,0)");
-      hctx.fillStyle = haloGrad;
-      hctx.fillRect(0,0,1024,1024);
-      const haloTex = new THREE.CanvasTexture(haloCanvas);
-      const haloPlane = new THREE.Mesh(
-        new THREE.PlaneGeometry(14,14),
-        new THREE.MeshBasicMaterial({
-          map: haloTex,
-          transparent:true,
-          depthWrite:false,
-          opacity:1
-        })
-      );
-      haloPlane.position.set(0,0,-5);
-      engineGroup.add(haloPlane);
+      <section class="section" id="stack">
+        <div class="container">
+          <div class="section-split reverse">
+            <div class="section-media">
+              <img src="images/stack.jpeg" alt="LUKAIRO tech stack and systems connection visual" loading="lazy" decoding="async" />
+              <div class="section-media-label">The Stack</div>
+            </div>
 
-      // RINGS
-      const rings = [];
-      const ringConfigs = [
-        { radius: globeRadius * 1.45, tiltX: 0.25, tiltY: 0.12, speed: 0.0016 },
-        { radius: globeRadius * 1.8,  tiltX: -0.22, tiltY: 0.45, speed: -0.0012 }
-      ];
-      ringConfigs.forEach(cfg => {
-        const g = new THREE.TorusGeometry(cfg.radius, 0.05, 24, 280);
-        const m = new THREE.MeshBasicMaterial({
-          color: 0x9fe5ff,
-          transparent: true,
-          opacity: 0.5
-        });
-        const ring = new THREE.Mesh(g, m);
-        ring.rotation.x = cfg.tiltX;
-        ring.rotation.y = cfg.tiltY;
-        ring.userData.speed = cfg.speed;
-        engineGroup.add(ring);
-        rings.push(ring);
-      });
+            <div class="section-copy-wrap">
+              <div class="label"><span class="dot"></span> The Stack</div>
+              <h2>The tools matter less than how they connect.</h2>
+              <p class="section-copy">
+                LUKAIRO works across the operating stack: websites, funnels, CRM, calendars,
+                messaging, calls, automation, reporting, and forecasting.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      // DATA PARTICLES
-      const dataParticles = [];
-      const particleGeo = new THREE.SphereGeometry(0.08, 8, 8);
-      const frontColor = new THREE.Color(0xffffff);
-      const backColor  = new THREE.Color(0x7bd7ff);
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-head">
+            <div class="label"><span class="dot"></span> Contact</div>
+            <h2>Start the conversation.</h2>
+            <p class="section-copy">
+              If your lead flow, booking process, dispatch coordination, follow-up, or reporting
+              system is slowing growth, start with a discovery call.
+            </p>
+          </div>
 
-      for(let i=0;i<90;i++){
-        const mat = new THREE.MeshBasicMaterial({
-          color: 0x9fe5ff,
-          transparent:true,
-          opacity:0
-        });
-        const p = new THREE.Mesh(particleGeo, mat);
-        const radius = globeRadius * 1.45 + Math.random()*0.8;
-        const angle  = Math.random()*Math.PI*2;
-        const band   = (Math.random()-0.5)*0.6;
-        p.userData = {
-          angle,
-          radius,
-          band,
-          speed: 0.003 + Math.random()*0.002
-        };
-        engineGroup.add(p);
-        dataParticles.push(p);
-      }
+          <div class="btn-row">
+            <a
+              href="https://api.lukairoengine.ca/widget/bookings/discovery/call/lukairo?utm_source=website&utm_medium=cta&utm_campaign=home"
+              class="btn btn-primary"
+            >Book a Discovery Call</a>
+            <a href="mailto:lukairoteam@outlook.com" class="btn btn-ghost">Email Us</a>
+          </div>
+        </div>
+      </section>
+    </main>
 
-      // ICONS
-      const icons = [
-        "//cdn-icons-png.flaticon.com/512/5968/5968534.png", // Gmail
-        "//cdn-icons-png.flaticon.com/512/732/732223.png",   // Outlook
-        "//cdn-icons-png.flaticon.com/512/5968/5968899.png", // Slack
-        "//cdn-icons-png.flaticon.com/512/733/733585.png",   // WhatsApp
-        "//cdn-icons-png.flaticon.com/512/888/888853.png",   // Zoom
-        "//cdn-icons-png.flaticon.com/512/733/733553.png",   // GitHub
-        "//cdn-icons-png.flaticon.com/512/145/145807.png",   // LinkedIn
-        "//cdn-icons-png.flaticon.com/512/5968/5968759.png"  // Shopify
-      ];
+    <footer class="footer">
+      <div class="container">
+        <div class="legal">© <span id="year"></span> LUKAIRO. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
 
-      const iconSprites = [];
-      const iconGeo = new THREE.PlaneGeometry(0.9,0.9);
-      const orbitRadius = globeRadius * 2.5;
-
-      icons.forEach((url,idx)=>{
-        const tex = loader.load(url);
-        if (tex.encoding !== undefined) tex.encoding = THREE.sRGBEncoding;
-        const mat = new THREE.MeshBasicMaterial({
-          map: tex,
-          transparent:true,
-          opacity:0
-        });
-        const mesh = new THREE.Mesh(iconGeo,mat);
-        const angle = idx * (Math.PI*2/icons.length);
-        mesh.userData = {
-          angle,
-          speed: 0.0009 + Math.random()*0.0005,
-          inclination: (Math.random()-0.5)*0.6,
-          baseScale: 0.9
-        };
-        engineGroup.add(mesh);
-        iconSprites.push(mesh);
-      });
-
-      // BEAMS
-      const beams = [];
-      iconSprites.forEach(sprite=>{
-        const pts = [new THREE.Vector3(0,0,0), sprite.position.clone()];
-        const g = new THREE.BufferGeometry().setFromPoints(pts);
-        const m = new THREE.LineBasicMaterial({
-          color: 0x66ffd8,
-          transparent:true,
-          opacity:0.25
-        });
-        const line = new THREE.Line(g,m);
-        engineGroup.add(line);
-        beams.push(line);
-      });
-
-      // ANIMATE
-      const clock = new THREE.Clock();
-
-      function animate(){
-        requestAnimationFrame(animate);
-        const t = clock.getElapsedTime();
-
-        camera.position.x = Math.sin(t*0.08)*1.0;
-        camera.position.y = 0.6 + Math.sin(t*0.05)*0.4;
-        camera.lookAt(0,0,0);
-
-        engineGroup.rotation.y = Math.sin(t*0.02)*0.06;
-
-        spinningLayers.forEach(layer=>{
-          layer.mesh.rotation.y += layer.speed;
-        });
-
-        haloPlane.rotation.z = Math.sin(t*0.1)*0.08;
-
-        rings.forEach((ring,i)=>{
-          ring.rotation.z += ring.userData.speed;
-          ring.material.opacity = 0.42 + 0.16*Math.sin(t*1.2 + i);
-        });
-
-        dataParticles.forEach(p=>{
-          const d = p.userData;
-          d.angle += d.speed;
-          const x = Math.cos(d.angle)*d.radius;
-          const z = Math.sin(d.angle)*d.radius;
-          const y = d.band + Math.sin(d.angle*2.0)*0.18;
-          p.position.set(x,y,z);
-
-          const dist = p.position.distanceTo(camera.position);
-          const depthFactor = THREE.MathUtils.clamp(22/dist,0.4,1.25);
-          const front = z > 0;
-          p.material.color.copy(front ? frontColor : backColor);
-          const baseOpacity = 0.15 + 0.25*depthFactor + (front ? 0.2 : -0.05);
-          p.material.opacity += (baseOpacity - p.material.opacity)*0.18;
-        });
-
-        iconSprites.forEach((sprite,i)=>{
-          const d = sprite.userData;
-          d.angle += d.speed;
-          const x = Math.cos(d.angle)*orbitRadius*Math.cos(d.inclination);
-          const z = Math.sin(d.angle)*orbitRadius;
-          const y = Math.sin(d.angle*1.3)*globeRadius*0.45*Math.sin(d.inclination);
-          sprite.position.set(x,y,z);
-          sprite.lookAt(camera.position);
-
-          const dist = sprite.position.distanceTo(camera.position);
-          const depthFactor = THREE.MathUtils.clamp(26/dist,0.6,1.3);
-          const front = z > 0;
-          const targetScale = d.baseScale * depthFactor;
-          sprite.scale.set(targetScale,targetScale,1);
-          const baseOpacity = 0.65 + (front ? 0.12 : -0.12);
-          sprite.material.opacity += (baseOpacity - sprite.material.opacity)*0.12;
-
-          const pts = [new THREE.Vector3(0,0,0), sprite.position.clone().multiplyScalar(0.92)];
-          beams[i].geometry.setFromPoints(pts);
-          beams[i].material.opacity = 0.18 + 0.14*Math.sin(t*1.5 + i);
-        });
-
-        renderer.render(scene,camera);
-      }
-      animate();
-
-      window.addEventListener("resize", () => {
-        ({ w, h } = getSize());
-        renderer.setSize(w, h);
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-      }, { passive:true });
-    }
-
-    // Wait for THREE to exist (GHL sometimes defers the CDN script)
-    function waitForThree() {
-      if (window.THREE) {
-        init();
-      } else {
-        setTimeout(waitForThree, 50);
-      }
-    }
-    waitForThree();
-  })();
-  </script>
+  <script src="index.js"></script>
 </body>
 </html>
