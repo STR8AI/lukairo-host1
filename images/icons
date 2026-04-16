@@ -1,19 +1,22 @@
-images/home/overview.png
-images/home/why-it-matters.png
-images/home/services.png
-images/home/stack.jpeg
-
-images/icons/gmail.png
-images/icons/slack.png
-images/icons/zoom.png
-images/icons/hubspot.png
-images/icons/salesforce.png
-images/icons/whatsapp.png
-images/icons/github.png
-images/icons/notion.png
-images/icons/outlook.png
-images/icons/shopify.png
-images/icons/stripe.png
-images/icons/meta.png
-images/icons/calendar.png
-images/icons/zapier.png
+ <div class="orbit-ring ring-3">
+              <div class="orbit-slot" style="--angle: 0deg;">
+                <a class="orbit-icon" href="https://outlook.office.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/732/732223.png" alt="Outlook" /></a>
+              </div>
+              <div class="orbit-slot" style="--angle: 60deg;">
+                <a class="orbit-icon" href="https://www.shopify.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968921.png" alt="Shopify" /></a>
+              </div>
+              <div class="orbit-slot" style="--angle: 120deg;">
+                <a class="orbit-icon" href="https://www.stripe.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968382.png" alt="Stripe" /></a>
+              </div>
+              <div class="orbit-slot" style="--angle: 180deg;">
+                <a class="orbit-icon" href="https://www.meta.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/2504/2504903.png" alt="Meta" /></a>
+              </div>
+              <div class="orbit-slot" style="--angle: 240deg;">
+                <a class="orbit-icon" href="https://calendar.google.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968499.png" alt="Google Calendar" /></a>
+              </div>
+              <div class="orbit-slot" style="--angle: 300deg;">
+                <a class="orbit-icon" href="https://www.zapier.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968863.png" alt="Zapier" /></a>
+              </div>
+            </div>
+          </div>
+        </div>
