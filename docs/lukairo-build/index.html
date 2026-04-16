@@ -4,38 +4,891 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LUKAIRO | Practical Systems for Modern Growth</title>
-  <meta
-    name="description"
-    content="LUKAIRO builds practical systems for Alberta businesses across lead capture, automation, follow-up, dispatch, reporting, and revenue operations."
-  />
+  <meta name="description" content="LUKAIRO builds practical systems for Alberta businesses across lead capture, automation, follow-up, dispatch, reporting, and revenue operations." />
   <meta name="theme-color" content="#02070b" />
-  <link rel="stylesheet" href="lukairo-main.css" />
+  <style>
+    :root {
+      --bg-0: #02070b;
+      --bg-1: #031018;
+      --bg-2: #071722;
+      --teal: #00e5d1;
+      --teal-soft: rgba(0, 229, 209, 0.18);
+      --text: #e9fffc;
+      --muted: rgba(255, 255, 255, 0.74);
+      --muted-2: rgba(255, 255, 255, 0.56);
+      --panel: rgba(4, 16, 24, 0.94);
+      --line: rgba(255, 255, 255, 0.08);
+      --line-2: rgba(255, 255, 255, 0.14);
+      --shadow: 0 18px 70px rgba(0, 0, 0, 0.35);
+      --radius: 28px;
+      --maxw: 1280px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(0, 229, 209, 0.05), transparent 30%),
+        linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 36%, var(--bg-2) 100%);
+      font-family: Inter, system-ui, Arial, sans-serif;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .site {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .site::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      background:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at 50% 20%, black, transparent 80%);
+      -webkit-mask-image: radial-gradient(circle at 50% 20%, black, transparent 80%);
+      z-index: 0;
+    }
+
+    .container {
+      width: min(calc(100% - 2.5rem), var(--maxw));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(2, 7, 11, 0.78);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0.5rem 0;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: #9afcf1;
+      text-shadow: 0 0 14px rgba(0, 229, 209, 0.28);
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: #fff; }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #8ef5e7, #00e5d1, #00cdbb);
+      color: #071517;
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      border: 1px solid var(--line-2);
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 34px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00e5d1, #7ecbff);
+      box-shadow: 0 0 12px rgba(0, 229, 209, .55);
+      flex: 0 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 84px);
+      display: flex;
+      align-items: center;
+      padding: 32px 0 56px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      z-index: 20;
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(760px, 82vw);
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .hero-overlay p {
+      margin: 0 auto 12px;
+      max-width: 760px;
+      font-size: clamp(1.05rem, 1.3vw, 1.18rem);
+      line-height: 1.55;
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+    }
+
+    .hero-overlay span {
+      display: block;
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: clamp(0.95rem, 1vw, 1.02rem);
+      color: rgba(255,255,255,0.64);
+    }
+
+    .globe-stack {
+      position: absolute;
+      left: 50%;
+      top: 60%;
+      transform: translate(-50%, -50%);
+      width: min(900px, 82vw);
+      aspect-ratio: 1;
+      z-index: 10;
+    }
+
+    #globe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 1;
+      cursor: grab;
+    }
+
+    #globe:active { cursor: grabbing; }
+
+    .glow-core {
+      position: absolute;
+      inset: 20%;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(circle at center, rgba(0, 229, 209, 0.24), rgba(0, 229, 209, 0.04) 45%, transparent 68%);
+      filter: blur(16px);
+      animation: pulseGlow 4.5s ease-in-out infinite;
+    }
+
+    .center-mark {
+      position: absolute;
+      inset: 0;
+      z-index: 13;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+
+    .center-mark span {
+      font-size: clamp(2rem, 4.6vw, 4.4rem);
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(210, 255, 249, 0.94);
+      text-shadow:
+        0 0 8px rgba(0, 229, 209, 0.9),
+        0 0 18px rgba(0, 229, 209, 0.5),
+        0 0 44px rgba(0, 229, 209, 0.18);
+    }
+
+    .globe-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: none;
+      place-items: center;
+      padding: 3rem;
+      text-align: center;
+      color: rgba(255,255,255,.84);
+    }
+
+    .orbit-system {
+      position: absolute;
+      inset: 0;
+      z-index: 12;
+      pointer-events: none;
+    }
+
+    .orbit-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(0, 229, 209, 0.1);
+      box-shadow:
+        0 0 16px rgba(0, 229, 209, 0.06),
+        inset 0 0 14px rgba(0, 229, 209, 0.02);
+      animation: spin linear infinite;
+    }
+
+    .orbit-ring::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255,255,255,0.025);
+    }
+
+    .ring-1 { width: 44%; height: 44%; animation-duration: 18s; }
+    .ring-2 { width: 62%; height: 62%; animation-duration: 28s; animation-direction: reverse; }
+    .ring-3 { width: 80%; height: 80%; animation-duration: 40s; }
+
+    .orbit-slot {
+      position: absolute;
+      inset: 0;
+      transform: rotate(var(--angle));
+      transform-origin: 50% 50%;
+    }
+
+    .orbit-icon {
+      --size: 52px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: var(--size);
+      height: var(--size);
+      transform: translate(-50%, -50%) rotate(calc(-1 * var(--angle)));
+      pointer-events: auto;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--panel);
+      border: 1px solid rgba(0, 229, 209, 0.22);
+      box-shadow:
+        0 0 0 6px rgba(0, 229, 209, 0.035),
+        0 0 18px rgba(0, 229, 209, 0.14);
+      backdrop-filter: blur(8px);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .orbit-icon:hover {
+      border-color: rgba(0, 229, 209, 0.5);
+      box-shadow:
+        0 0 0 8px rgba(0, 229, 209, 0.08),
+        0 0 24px rgba(0, 229, 209, 0.24);
+    }
+
+    .orbit-icon img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.08));
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .lk-label {
+      position: absolute;
+      z-index: 25;
+      color: #dffdf8;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      pointer-events: none;
+      text-shadow: 0 0 14px rgba(0, 229, 209, 0.25);
+    }
+
+    .lk-label--small { font-size: 11px; }
+    .top-left { top: 16%; left: 6%; }
+    .top-right { top: 17%; right: 6%; text-align: right; }
+    .mid-left { top: 49%; left: 3.5%; transform: translateY(-50%); }
+    .mid-right { top: 49%; right: 3.5%; transform: translateY(-50%); text-align: right; }
+    .bottom-left { bottom: 10%; left: 7%; }
+    .bottom-right { bottom: 10%; right: 7%; text-align: right; }
+
+    .section {
+      padding: 120px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-head { margin-bottom: 44px; }
+
+    .section-head h2 {
+      margin: 16px 0 0;
+      font-size: clamp(2.4rem, 4.2vw, 4.6rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      max-width: 14ch;
+      text-wrap: balance;
+      font-weight: 900;
+    }
+
+    .section-copy {
+      margin-top: 18px;
+      max-width: 64ch;
+      font-size: 18px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .section-split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .section-split.reverse {
+      grid-template-columns: minmax(360px, 520px) minmax(0, 1fr);
+    }
+
+    .section-copy-wrap { min-width: 0; }
+
+    .section-media {
+      position: relative;
+      min-height: 560px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
+        radial-gradient(circle at top left, rgba(0,229,209,.09), transparent 40%);
+      box-shadow: var(--shadow);
+    }
+
+    .section-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      height: auto;
+    }
+
+    .section-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.14)),
+        radial-gradient(circle at 20% 20%, rgba(0,229,209,0.10), transparent 30%);
+    }
+
+    .section-media-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 34px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(4, 16, 24, 0.72);
+      color: #dffdf8;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .section-media-label::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00e5d1, #7ecbff);
+      box-shadow: 0 0 12px rgba(0, 229, 209, .55);
+      flex: 0 0 auto;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .proof-grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3,
+    .proof-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+    .card,
+    .proof-card,
+    .flow,
+    .contact-shell,
+    .channel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025)),
+        radial-gradient(circle at top left, rgba(0,229,209,.07), transparent 40%);
+      box-shadow: var(--shadow);
+    }
+
+    .card {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .card-inner {
+      padding: 32px;
+      height: 100%;
+    }
+
+    .proof-card {
+      padding: 36px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 12px;
+    }
+
+    .proof-headline {
+      margin: 0 0 8px 0;
+      line-height: 1.05;
+      font-weight: 900;
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+      color: #dffdf8;
+    }
+
+    .proof-lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .proof-card strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 15px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #9afcf1;
+    }
+
+    .proof-stat {
+      margin-top: 12px;
+      font-weight: 800;
+      color: var(--muted-2);
+      font-size: 13px;
+      letter-spacing: .06em;
+    }
+
+    .icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #071517;
+      background: linear-gradient(135deg, #00e5d1, #7ecbff);
+      margin-bottom: 18px;
+      font-size: 18px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2vw, 2.2rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      max-width: 12ch;
+      }
+
+    .card p,
+    .proof-card p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .proof-card strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 15px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #9afcf1;
+    }
+
+    .list {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .list li {
+      display: flex;
+      gap: 10px;
+      color: #d9dee7;
+      line-height: 1.7;
+      align-items: flex-start;
+    }
+
+    .list li::before {
+      content: "";
+      margin-top: 11px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex: 0 0 auto;
+      background: linear-gradient(135deg, #00e5d1, #7ecbff);
+    }
+
+    .flow { overflow: hidden; }
+
+    .flow-top,
+    .contact-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted-2);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .flow-node {
+      background: rgba(5, 11, 18, 0.92);
+      padding: 36px 24px;
+      min-height: 240px;
+    }
+
+    .step {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #00e5d1, #7ecbff);
+      color: #071517;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .contact-shell { overflow: hidden; }
+
+    .contact-body {
+      padding: 30px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-grid-2,
+    .form-grid-wide,
+    .channel-grid,
+    .footer-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .form-grid-2 { grid-template-columns: 1fr 1fr; }
+    .form-grid-wide { grid-template-columns: 1.2fr .8fr; gap: 16px; }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      color: #dbe8ff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .input,
+    .textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    .textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-note,
+    .form-status {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .channel-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .channel {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px;
+    }
+
+    .channel-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #00e5d1, #7ecbff);
+      color: #071517;
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    .footer {
+      padding: 72px 0 56px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    .footer p,
+    .footer li,
+    .footer a { color: var(--muted); }
+
+    .footer h5 {
+      margin: 0 0 10px;
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+
+    .footer ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .legal {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    #explore .card h3 {
+      max-width: 12ch;
+    }
+
+    #explore .card p {
+      max-width: 28ch;
+    }
+
+    @keyframes spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(0.98); opacity: 0.82; }
+      50% { transform: scale(1.03); opacity: 1; }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-overlay { width: 90vw; }
+      .globe-stack {
+        width: min(88vw, 760px);
+        top: 61%;
+      }
+      .section-split,
+      .section-split.reverse { grid-template-columns: 1fr; }
+      .section-media { min-height: 420px; }
+      .section-split.reverse .section-media { order: -1; }
+      .grid-3,
+      .proof-grid,
+      .grid-2,
+      .channel-grid,
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .flow-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .orbit-icon { --size: 42px; }
+      .orbit-icon img {
+        width: 20px;
+        height: 20px;
+      }
+      .lk-label { opacity: 0.78; }
+      .grid-3,
+      .proof-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(calc(100% - 1.25rem), var(--maxw));
+      }
+      .nav-inner {
+        flex-wrap: wrap;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+      .hero { min-height: 100svh; }
+      .hero-overlay {
+        top: 7%;
+        width: 92vw;
+      }
+      .hero-overlay p { font-size: 0.96rem; }
+      .hero-overlay span { font-size: 0.86rem; }
+      .globe-stack {
+        top: 64%;
+        width: min(112vw, 620px);
+      }
+      .ring-1 { width: 46%; height: 46%; }
+      .ring-2 { width: 62%; height: 62%; }
+      .ring-3 { width: 78%; height: 78%; }
+      .mid-left,
+      .mid-right,
+      .bottom-left,
+      .bottom-right { display: none; }
+      .top-left {
+        top: auto;
+        bottom: 7%;
+        left: 5%;
+      }
+      .top-right {
+        top: auto;
+        bottom: 7%;
+        right: 5%;
+      }
+      .grid-2,
+      .form-grid-2,
+      .form-grid-wide,
+      .channel-grid,
+      .footer-grid,
+      .flow-grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      .section { padding: 72px 0; }
+      .section-media { min-height: 300px; }
+    }
+  </style>
 </head>
 <body>
   <div class="site">
     <header class="nav">
       <div class="container nav-inner">
-        <a href="index.html" class="brand">LUKAIRO</a>
+        <a href="#top" class="brand">LUKAIRO</a>
 
-     <nav class="nav">
-  <div class="nav-inner">
-    <div class="brand">LUKAIRO</div>
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#engine">Engine</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="https://lukairoengine.ca/about">About</a>
+          <a href="#positioning">What We Do</a>
+          <a href="#explore">Explore</a>
+          <a href="#proof">Why It Matters</a>
+          <a href="#services">Services</a>
+          <a href="https://lukairo.co/oilfield-and-energy-services">Oilfield</a>
+          <a href="https://lukairoengine.ca/consulting">Consulting</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
         <div class="btn-row">
           <a href="#services" class="btn btn-ghost">Explore Services</a>
-          <a
-            href="https://api.lukairoengine.ca/widget/bookings/discovery/call/lukairo?utm_source=website&utm_medium=cta&utm_campaign=home"
-            class="btn btn-primary"
-          >Book a Discovery Call</a>
+          <a href="https://api.lukairoengine.ca/widget/bookings/discovery/call/lukairo?utm_source=website&utm_medium=cta&utm_campaign=home" class="btn btn-primary">Book a Discovery Call</a>
         </div>
       </div>
     </header>
@@ -44,7 +897,7 @@
       <section class="hero" id="top">
         <div class="hero-overlay">
           <p>
-            Practical systems for lead capture, automation, follow-up, dispatch,<br>
+            Practical systems for lead capture, automation, follow-up, dispatch,
             reporting, and revenue visibility.
           </p>
           <span>
@@ -69,80 +922,52 @@
           <div class="orbit-system" aria-hidden="true">
             <div class="orbit-ring ring-1">
               <div class="orbit-slot" style="--angle: 10deg;">
-                <a class="orbit-icon" href="https://mail.google.com" target="_blank" rel="noopener noreferrer">
-                  <img src="images/gmail.png" alt="Gmail" />
-                </a>
+                <a class="orbit-icon" href="https://mail.google.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" alt="Gmail" /></a>
               </div>
               <div class="orbit-slot" style="--angle: 130deg;">
-                <a class="orbit-icon" href="https://slack.com/signin" target="_blank" rel="noopener noreferrer">
-                  <img src="images/slack.png" alt="Slack" />
-                </a>
+                <a class="orbit-icon" href="https://slack.com/signin" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" alt="Slack" /></a>
               </div>
               <div class="orbit-slot" style="--angle: 250deg;">
-                <a class="orbit-icon" href="https://zoom.us/signin" target="_blank" rel="noopener noreferrer">
-                  <img src="images/zoom.png" alt="Zoom" />
-                </a>
+                <a class="orbit-icon" href="https://zoom.us/signin" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Zoom" /></a>
               </div>
             </div>
 
             <div class="orbit-ring ring-2">
               <div class="orbit-slot" style="--angle: 25deg;">
-                <a class="orbit-icon" href="https://www.hubspot.com" target="_blank" rel="noopener noreferrer">
-                  <img src="images/hubspot.png" alt="HubSpot" />
-                </a>
+                <a class="orbit-icon" href="https://www.hubspot.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968875.png" alt="HubSpot" /></a>
               </div>
               <div class="orbit-slot" style="--angle: 95deg;">
-                <a class="orbit-icon" href="https://www.salesforce.com" target="_blank" rel="noopener noreferrer">
-                  <img src="images/salesforce.png" alt="Salesforce" />
-                </a>
+                <a class="orbit-icon" href="https://www.salesforce.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968914.png" alt="Salesforce" /></a>
               </div>
               <div class="orbit-slot" style="--angle: 180deg;">
-                <a class="orbit-icon" href="https://web.whatsapp.com" target="_blank" rel="noopener noreferrer">
-                  <img src="images/whatsapp.png" alt="WhatsApp" />
-                </a>
+                <a class="orbit-icon" href="https://web.whatsapp.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" /></a>
               </div>
               <div class="orbit-slot" style="--angle: 265deg;">
-                <a class="orbit-icon" href="https://github.com/login" target="_blank" rel="noopener noreferrer">
-                  <img src="images/github.png" alt="GitHub" />
-                </a>
+                <a class="orbit-icon" href="https://github.com/login" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" /></a>
               </div>
               <div class="orbit-slot" style="--angle: 330deg;">
-                <a class="orbit-icon" href="https://www.notion.so/login" target="_blank" rel="noopener noreferrer">
-                  <img src="images/notion.png" alt="Notion" />
-                </a>
+                <a class="orbit-icon" href="https://www.notion.so/login" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968906.png" alt="Notion" /></a>
               </div>
             </div>
 
             <div class="orbit-ring ring-3">
               <div class="orbit-slot" style="--angle: 0deg;">
-                <a class="orbit-icon" href="https://outlook.office.com" target="_blank" rel="noopener noreferrer">
-                  <img src="images/outlook.png" alt="Outlook" />
-                </a>
+                <a class="orbit-icon" href="https://outlook.office.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/732/732223.png" alt="Outlook" /></a>
               </div>
               <div class="orbit-slot" style="--angle: 60deg;">
-                <a class="orbit-icon" href="https://www.shopify.com" target="_blank" rel="noopener noreferrer">
-                  <img src="images/shopify.png" alt="Shopify" />
-                </a>
+                <a class="orbit-icon" href="https://www.shopify.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968921.png" alt="Shopify" /></a>
               </div>
               <div class="orbit-slot" style="--angle: 120deg;">
-                <a class="orbit-icon" href="https://www.stripe.com" target="_blank" rel="noopener noreferrer">
-                  <img src="images/stripe.png" alt="Stripe" />
-                </a>
+                <a class="orbit-icon" href="https://www.stripe.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968382.png" alt="Stripe" /></a>
               </div>
               <div class="orbit-slot" style="--angle: 180deg;">
-                <a class="orbit-icon" href="https://www.meta.com" target="_blank" rel="noopener noreferrer">
-                  <img src="images/meta.png" alt="Meta" />
-                </a>
+                <a class="orbit-icon" href="https://www.meta.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/2504/2504903.png" alt="Meta" /></a>
               </div>
               <div class="orbit-slot" style="--angle: 240deg;">
-                <a class="orbit-icon" href="https://calendar.google.com" target="_blank" rel="noopener noreferrer">
-                  <img src="images/calendar.png" alt="Google Calendar" />
-                </a>
+                <a class="orbit-icon" href="https://calendar.google.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968499.png" alt="Google Calendar" /></a>
               </div>
               <div class="orbit-slot" style="--angle: 300deg;">
-                <a class="orbit-icon" href="https://www.zapier.com" target="_blank" rel="noopener noreferrer">
-                  <img src="images/zapier.png" alt="Zapier" />
-                </a>
+                <a class="orbit-icon" href="https://www.zapier.com" target="_blank" rel="noopener noreferrer"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968863.png" alt="Zapier" /></a>
               </div>
             </div>
           </div>
@@ -156,6 +981,22 @@
         <div class="lk-label bottom-right">Forecasting / Revenue Ops</div>
       </section>
 
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-head">
+            <div class="label"><span class="dot"></span> About</div>
+            <h2>Built from real business experience, not theory.</h2>
+            <p class="section-copy">LUKAIRO was built around a simple idea: businesses do not need more complicated software. They need practical systems that fit how they actually operate. The company is shaped by direct selling and service business experience, enterprise software exposure, and a clear Alberta-first operating perspective.</p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card"><div class="card-inner"><div class="icon">1</div><h3>Practical</h3><p>Systems built to solve real operational problems instead of adding more complexity.</p></div></article>
+            <article class="card"><div class="card-inner"><div class="icon">2</div><h3>Tailored</h3><p>Each setup is shaped around how the business actually runs in the field and in the office.</p></div></article>
+            <article class="card"><div class="card-inner"><div class="icon">3</div><h3>Growth-Focused</h3><p>Lead capture, stronger follow-up, better visibility, and clearer decision support from day one.</p></div></article>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="positioning">
         <div class="container">
           <div class="section-split">
@@ -163,40 +1004,18 @@
               <div class="section-head">
                 <div class="label"><span class="dot"></span> What We Do</div>
                 <h2>Software, automation, and revenue systems tied together properly.</h2>
-                <p class="section-copy">
-                  We do not just install software. We connect the parts that matter: funnels,
-                  CRM, messaging, calls, calendars, automation, dashboards, and reporting so teams
-                  can operate faster and close with more consistency.
-                </p>
+                <p class="section-copy">We do not just install software. We connect the parts that matter: funnels, CRM, messaging, calls, calendars, automation, dashboards, and reporting so teams can operate faster and close with more consistency.</p>
               </div>
 
               <div class="grid-3">
-                <article class="card">
-                  <div class="card-inner">
-                    <div class="icon">A</div>
-                    <h3>Funnels &amp; Websites</h3>
-                    <p>Landing pages, forms, lead capture paths, qualification flows, and booking journeys built to convert.</p>
-                  </div>
-                </article>
-                <article class="card">
-                  <div class="card-inner">
-                    <div class="icon">B</div>
-                    <h3>CRM &amp; Pipelines</h3>
-                    <p>Contact records, stage tracking, ownership, notes, follow-up activity, and pipeline control across the team.</p>
-                  </div>
-                </article>
-                <article class="card">
-                  <div class="card-inner">
-                    <div class="icon">C</div>
-                    <h3>Automation &amp; Messaging</h3>
-                    <p>Email, SMS, reminders, nurture, reactivation, missed-call text back, and workflow automation that actually gets used.</p>
-                  </div>
-                </article>
+                <article class="card"><div class="card-inner"><div class="icon">A</div><h3>Funnels &amp; Websites</h3><p>Landing pages, forms, lead capture paths, qualification flows, and booking journeys built to convert.</p></div></article>
+                <article class="card"><div class="card-inner"><div class="icon">B</div><h3>CRM &amp; Pipelines</h3><p>Contact records, stage tracking, ownership, notes, follow-up activity, and pipeline control across the team.</p></div></article>
+                <article class="card"><div class="card-inner"><div class="icon">C</div><h3>Automation &amp; Messaging</h3><p>Email, SMS, reminders, nurture, reactivation, missed-call text back, and workflow automation that actually gets used.</p></div></article>
               </div>
             </div>
 
             <div class="section-media">
-              <img src="images/overview.png" alt="LUKAIRO software, automation, and revenue systems visual" loading="lazy" decoding="async" />
+              <img src="https://storage.googleapis.com/funnel-ai-production/image-generation/B47X3dkLb4AkvxzX2Tck/legacy-meets-innovation-v1qpejo_fQ.png" alt="LUKAIRO software, automation, and revenue systems visual" loading="lazy" decoding="async" />
               <div class="section-media-label">What We Do</div>
             </div>
           </div>
@@ -219,6 +1038,9 @@
                 <div class="icon">A</div>
                 <h3>About LUKAIRO</h3>
                 <p>See the founder perspective, company background, and the operating philosophy behind the work.</p>
+                <div class="btn-row" style="margin-top:22px;">
+                  <a href="https://lukairoengine.ca/about" class="btn btn-ghost">Learn More</a>
+                </div>
               </div>
             </article>
 
@@ -227,6 +1049,9 @@
                 <div class="icon">B</div>
                 <h3>Oilfield &amp; Energy</h3>
                 <p>See how LUKAIRO supports field-heavy Alberta businesses with intake, dispatch, follow-up, and visibility.</p>
+                <div class="btn-row" style="margin-top:22px;">
+                  <a href="https://lukairo.co/oilfield-and-energy-services" class="btn btn-ghost">Explore Oilfield</a>
+                </div>
               </div>
             </article>
 
@@ -235,6 +1060,9 @@
                 <div class="icon">C</div>
                 <h3>Consulting</h3>
                 <p>See how consulting helps identify workflow gaps, improve control, and prioritize the right system fixes first.</p>
+                <div class="btn-row" style="margin-top:22px;">
+                  <a href="https://lukairoengine.ca/consulting" class="btn btn-ghost">See Consulting</a>
+                </div>
               </div>
             </article>
           </div>
@@ -245,7 +1073,7 @@
         <div class="container">
           <div class="section-split reverse">
             <div class="section-media">
-              <img src="images/why-it-matters.png" alt="LUKAIRO why it matters visual" loading="lazy" decoding="async" />
+              <img src="https://assets.cdn.filesafe.space/B47X3dkLb4AkvxzX2Tck/media/68fdb25182e2e2c1a51e8219.png" alt="LUKAIRO why it matters visual" loading="lazy" decoding="async" />
               <div class="section-media-label">Why It Matters</div>
             </div>
 
@@ -253,25 +1081,13 @@
               <div class="section-head">
                 <div class="label"><span class="dot"></span> Why It Matters</div>
                 <h2>Clearer systems. Faster follow-up. Better control.</h2>
-                <p class="section-copy">
-                  Most businesses lose momentum between inquiry, response, booking, conversation,
-                  and close. LUKAIRO reduces that gap by tightening the system underneath the work.
-                </p>
+                <p class="section-copy">Most businesses lose momentum between inquiry, response, booking, conversation, and close. LUKAIRO reduces that gap by tightening the system underneath the work.</p>
               </div>
 
               <div class="proof-grid">
-                <article class="proof-card">
-                  <h3 class="proof-headline">Faster Response</h3>
-                  <p class="proof-lead">Connect forms, messages, calls, and automation so leads are handled immediately, not left sitting.</p>
-                </article>
-                <article class="proof-card">
-                  <h3 class="proof-headline">Cleaner Execution</h3>
-                  <p class="proof-lead">Provide clear ownership and structured next steps so follow-up is consistent and measurable.</p>
-                </article>
-                <article class="proof-card">
-                  <h3 class="proof-headline">Better Visibility</h3>
-                  <p class="proof-lead">See pipeline and team performance with simple, actionable dashboards.</p>
-                </article>
+                <article class="proof-card"><h3 class="proof-headline">Faster Response</h3><p class="proof-lead">Connect forms, messages, calls, and automation so leads are handled immediately, not left sitting.</p><div class="proof-stat"></div></article>
+                <article class="proof-card"><h3 class="proof-headline">Cleaner Execution</h3><p class="proof-lead">Provide clear ownership and structured next steps so follow-up is consistent and measurable.</p><div class="proof-stat"></div></article>
+                <article class="proof-card"><h3 class="proof-headline">Better Visibility</h3><p class="proof-lead">See pipeline and team performance with simple, actionable dashboards.</p><div class="proof-stat"></div></article>
               </div>
             </div>
           </div>
@@ -285,10 +1101,7 @@
               <div class="section-head">
                 <div class="label"><span class="dot"></span> Services</div>
                 <h2>Where LUKAIRO helps operationally.</h2>
-                <p class="section-copy">
-                  The system can be built around front-end lead flow, mid-funnel communication,
-                  or full revenue operations depending on what needs to be fixed first.
-                </p>
+                <p class="section-copy">The system can be built around front-end lead flow, mid-funnel communication, or full revenue operations depending on what needs to be fixed first.</p>
               </div>
 
               <div class="grid-4">
@@ -304,9 +1117,25 @@
             </div>
 
             <div class="section-media">
-              <img src="images/services.png" alt="LUKAIRO services and operational systems visual" loading="lazy" decoding="async" />
+              <img src="https://storage.googleapis.com/funnel-ai-production/image-generation/B47X3dkLb4AkvxzX2Tck/lukairo-premium-exec-tech-01x9e" alt="LUKAIRO services and operational systems visual" loading="lazy" decoding="async" />
               <div class="section-media-label">Services</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="oilfield">
+        <div class="container">
+          <div class="section-head">
+            <div class="label"><span class="dot"></span> Oilfield &amp; Energy</div>
+            <h2>Systems for field-heavy businesses built for speed, clarity, and follow-through.</h2>
+            <p class="section-copy">Built for Alberta oilfield and energy service businesses that need better intake, dispatch, follow-up, booking, and operational visibility. The focus is practical execution in high-pressure environments where missed calls, slow response, and weak coordination directly impact revenue.</p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card"><div class="card-inner"><div class="icon">1</div><h3>Lead Intake &amp; Response</h3><ul class="list"><li>Missed-call text back workflows</li><li>Lead capture forms and routing</li><li>Notifications and CRM sync</li><li>Response speed tracking</li></ul></div></article>
+            <article class="card"><div class="card-inner"><div class="icon">2</div><h3>Dispatch &amp; Coordination</h3><ul class="list"><li>Job intake workflows</li><li>Booking and scheduling systems</li><li>Internal handoff automation</li><li>Operational visibility</li></ul></div></article>
+            <article class="card"><div class="card-inner"><div class="icon">3</div><h3>Follow-Up &amp; Retention</h3><ul class="list"><li>Quote follow-up sequences</li><li>Repeat service campaigns</li><li>Reactivation workflows</li><li>Customer communication systems</li></ul></div></article>
           </div>
         </div>
       </section>
@@ -315,17 +1144,43 @@
         <div class="container">
           <div class="section-split reverse">
             <div class="section-media">
-              <img src="images/stack.jpeg" alt="LUKAIRO tech stack and systems connection visual" loading="lazy" decoding="async" />
+              <img src="https://assets.cdn.filesafe.space/B47X3dkLb4AkvxzX2Tck/media/68fa802f37fe436acac20b0c.jpeg" alt="LUKAIRO tech stack and systems connection visual" loading="lazy" decoding="async" />
               <div class="section-media-label">The Stack</div>
             </div>
 
             <div class="section-copy-wrap">
               <div class="label"><span class="dot"></span> The Stack</div>
               <h2>The tools matter less than how they connect.</h2>
-              <p class="section-copy">
-                LUKAIRO works across the operating stack: websites, funnels, CRM, calendars,
-                messaging, calls, automation, reporting, and forecasting.
-              </p>
+              <p class="section-copy">LUKAIRO works across the operating stack: websites, funnels, CRM, calendars, messaging, calls, automation, reporting, and forecasting. The value is in the connection layer, not just the tools themselves.</p>
+              <div class="grid-4">
+                <article class="card"><div class="card-inner"><h3>Website</h3><p>Front-end positioning and lead capture.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>Funnels</h3><p>High-intent campaign paths and conversion flow.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>CRM</h3><p>Pipeline, contacts, stages, and ownership.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>Calls</h3><p>Inbound, outbound, missed-call handling, and routing.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>SMS / Email</h3><p>Automated and manual communication from one system.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>Booking</h3><p>Scheduling built directly into the workflow.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>Automation</h3><p>Workflow logic that removes manual gaps.</p></div></article>
+                <article class="card"><div class="card-inner"><h3>Analytics</h3><p>Dashboards for KPI, ROI, and revenue movement.</p></div></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="engagement">
+        <div class="container">
+          <div class="flow">
+            <div class="flow-top">
+              <span>How It Works</span>
+              <span>Assess → Connect → Automate → Track → Improve</span>
+            </div>
+
+            <div class="flow-grid">
+              <div class="flow-node"><div class="step">1</div><h3>Assess</h3><p class="section-copy" style="font-size:16px;margin-top:14px;">Review where leads come in, where follow-up breaks, and where visibility is missing.</p></div>
+              <div class="flow-node"><div class="step">2</div><h3>Connect</h3><p class="section-copy" style="font-size:16px;margin-top:14px;">Tie forms, CRM, calls, messaging, calendars, and campaign activity together.</p></div>
+              <div class="flow-node"><div class="step">3</div><h3>Automate</h3><p class="section-copy" style="font-size:16px;margin-top:14px;">Install reminders, workflows, routing, nurture, and communication logic.</p></div>
+              <div class="flow-node"><div class="step">4</div><h3>Track</h3><p class="section-copy" style="font-size:16px;margin-top:14px;">Build dashboards for response, booking, pipeline, attribution, and performance.</p></div>
+              <div class="flow-node"><div class="step">5</div><h3>Improve</h3><p class="section-copy" style="font-size:16px;margin-top:14px;">Refine the system as the business grows and the team needs better control.</p></div>
             </div>
           </div>
         </div>
@@ -336,30 +1191,578 @@
           <div class="section-head">
             <div class="label"><span class="dot"></span> Contact</div>
             <h2>Start the conversation.</h2>
-            <p class="section-copy">
-              If your lead flow, booking process, dispatch coordination, follow-up, or reporting
-              system is slowing growth, start with a discovery call.
-            </p>
+            <p class="section-copy">If your lead flow, booking process, dispatch coordination, follow-up, or reporting system is slowing growth, start with a discovery call.</p>
           </div>
 
-          <div class="btn-row">
-            <a
-              href="https://api.lukairoengine.ca/widget/bookings/discovery/call/lukairo?utm_source=website&utm_medium=cta&utm_campaign=home"
-              class="btn btn-primary"
-            >Book a Discovery Call</a>
-            <a href="mailto:lukairoteam@outlook.com" class="btn btn-ghost">Email Us</a>
+          <div class="grid-2">
+            <article class="card">
+              <div class="card-inner">
+                <div class="label"><span class="dot"></span> What to Expect</div>
+                <h3 style="margin-top:18px;">Initial conversation.</h3>
+                <ul class="list">
+                  <li>Review of where intake, follow-up, dispatch, or reporting currently breaks</li>
+                  <li>Discussion around what should be connected first</li>
+                  <li>Assessment of what should be automated next</li>
+                  <li>Clear next steps around system design and rollout</li>
+                </ul>
+                <div class="btn-row" style="margin-top:22px;">
+                  <a href="https://api.lukairoengine.ca/widget/bookings/discovery/call/lukairo?utm_source=website&utm_medium=cta&utm_campaign=home" class="btn btn-primary">Book a Discovery Call</a>
+                  <a href="https://lukairoengine.ca/booking-page?utm_source=website&utm_medium=cta&utm_campaign=home" class="btn btn-ghost">Start Here</a>
+                </div>
+              </div>
+            </article>
+
+            <div class="contact-shell">
+              <div class="contact-top"><span>Contact</span><span>LUKAIRO</span></div>
+              <form class="contact-body" id="contactForm">
+                <div class="form-grid-2">
+                  <div class="field"><label for="firstName">First name</label><input class="input" id="firstName" name="firstName" placeholder="First name" /></div>
+                  <div class="field"><label for="lastName">Last name</label><input class="input" id="lastName" name="lastName" placeholder="Last name" /></div>
+                </div>
+
+                <div class="form-grid-wide">
+                  <div class="field"><label for="workEmail">Work email</label><input class="input" id="workEmail" name="workEmail" type="email" placeholder="Work email" /></div>
+                  <div class="field"><label for="phone">Phone</label><input class="input" id="phone" name="phone" type="tel" placeholder="Phone" /></div>
+                </div>
+
+                <div class="field">
+                  <label for="helpNow">What do you need help with?</label>
+                  <textarea class="textarea" id="helpNow" name="helpNow" placeholder="Tell us where the system is breaking down."></textarea>
+                </div>
+
+                <p class="form-note">Privacy and messaging are handled under the site privacy policy.</p>
+
+                <div class="btn-row">
+                  <button class="btn btn-primary" type="submit">Send Inquiry</button>
+                  <a href="https://lukairoengine.ca/booking-page?utm_source=website&utm_medium=cta&utm_campaign=home" class="btn btn-ghost">Start Here</a>
+                </div>
+
+                <div class="form-status" id="formStatus" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
+
+          <div class="channel-grid">
+            <a class="channel" href="sms:+14374947028"><span class="channel-icon">T</span><span><strong>Text</strong><br /><small>+1 (437) 494-7028</small></span></a>
+            <a class="channel" href="tel:+14374947028"><span class="channel-icon">C</span><span><strong>Call</strong><br /><small>+1 (437) 494-7028</small></span></a>
+            <a class="channel" href="mailto:lukairoteam@outlook.com"><span class="channel-icon">E</span><span><strong>Email</strong><br /><small>lukairoteam@outlook.com</small></span></a>
+            <a class="channel" href="https://api.lukairoengine.ca/widget/bookings/discovery/call/lukairo?utm_source=website&utm_medium=cta&utm_campaign=home"><span class="channel-icon">B</span><span><strong>Book</strong><br /><small>Schedule a discovery call</small></span></a>
           </div>
         </div>
       </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="brand">LUKAIRO</div>
+              <p>Practical systems for Alberta businesses across lead capture, follow-up, dispatch, reporting, and modern growth operations.</p>
+            </div>
+
+            <div>
+              <h5>Navigation</h5>
+              <ul>
+                <li><a href="https://lukairoengine.ca/home">Home</a></li>
+                <li><a href="https://lukairoengine.ca/about">About</a></li>
+                <li><a href="https://lukairo.co/oilfield-and-energy-services">Oilfield &amp; Energy</a></li>
+                <li><a href="https://lukairoengine.ca/consulting">Consulting</a></li>
+                <li><a href="https://lukairoengine.ca/booking-page">Start Here</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h5>Legal &amp; Contact</h5>
+              <ul>
+                <li><a href="https://lukairoengine.ca/privacy">Privacy Policy</a></li>
+                <li><a href="https://lukairoengine.ca/terms-5343">Terms of Service</a></li>
+                <li><a href="tel:+14374947028">+1 (437) 494-7028</a></li>
+                <li><a href="mailto:lukairoteam@outlook.com">lukairoteam@outlook.com</a></li>
+                <li><a href="https://api.lukairoengine.ca/widget/bookings/discovery/call/lukairo?utm_source=website&utm_medium=cta&utm_campaign=home">Book a Call</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="legal">© <span id="year"></span> LUKAIRO. All rights reserved.</div>
+        </div>
+      </footer>
     </main>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="legal">© <span id="year"></span> LUKAIRO. All rights reserved.</div>
-      </div>
-    </footer>
-  </div>
+  <script>
+    function showFallback() {
+      const fallback = document.getElementById("globeFallback");
+      if (fallback) fallback.style.display = "grid";
+    }
 
-  <script src="index.js"></script>
+    function setYear() {
+      const year = document.getElementById("year");
+      if (year) year.textContent = String(new Date().getFullYear());
+    }
+
+    function initContactForm() {
+      const form = document.getElementById("contactForm");
+      const status = document.getElementById("formStatus");
+      if (!(form instanceof HTMLFormElement) || !status) return;
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const data = new FormData(form);
+        const firstName = String(data.get("firstName") || "").trim();
+        const lastName = String(data.get("lastName") || "").trim();
+        const fullName = [firstName, lastName].filter(Boolean).join(" ");
+
+        const lines = [
+          "New LUKAIRO homepage inquiry",
+          "",
+          `Name: ${fullName || "N/A"}`,
+          `Email: ${String(data.get("workEmail") || "").trim()}`,
+          `Phone: ${String(data.get("phone") || "").trim()}`,
+          "",
+          "Inquiry:",
+          String(data.get("helpNow") || "").trim()
+        ];
+
+        const subject = encodeURIComponent(`LUKAIRO Inquiry | ${fullName || "New Lead"}`);
+        const body = encodeURIComponent(lines.join("\n"));
+        const href = `mailto:lukairoteam@outlook.com?subject=${subject}&body=${body}`;
+
+        status.textContent = "Opening your email draft...";
+        window.location.href = href;
+
+        window.setTimeout(() => {
+          status.textContent = "If your email app did not open, email lukairoteam@outlook.com directly.";
+        }, 300);
+      });
+    }
+
+    function createShader(gl, type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        throw new Error(gl.getShaderInfoLog(shader) || "Shader compile failed");
+      }
+      return shader;
+    }
+
+    function createProgram(gl, vertexSource, fragmentSource) {
+      const program = gl.createProgram();
+      const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexSource);
+      const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentSource);
+      gl.attachShader(program, vertexShader);
+      gl.attachShader(program, fragmentShader);
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        throw new Error(gl.getProgramInfoLog(program) || "Program link failed");
+      }
+      return program;
+    }
+
+    function mat4Identity() {
+      const out = new Float32Array(16);
+      out[0] = 1; out[5] = 1; out[10] = 1; out[15] = 1;
+      return out;
+    }
+
+    function mat4Perspective(out, fovy, aspect, near, far) {
+      const f = 1 / Math.tan(fovy / 2);
+      out[0] = f / aspect;
+      out[1] = 0;
+      out[2] = 0;
+      out[3] = 0;
+      out[4] = 0;
+      out[5] = f;
+      out[6] = 0;
+      out[7] = 0;
+      out[8] = 0;
+      out[9] = 0;
+      out[10] = (far + near) / (near - far);
+      out[11] = -1;
+      out[12] = 0;
+      out[13] = 0;
+      out[14] = (2 * far * near) / (near - far);
+      out[15] = 0;
+      return out;
+    }
+
+    function mat4LookAt(out, eye, center, up) {
+      let z0 = eye[0] - center[0];
+      let z1 = eye[1] - center[1];
+      let z2 = eye[2] - center[2];
+      let len = 1 / Math.hypot(z0, z1, z2);
+      z0 *= len;
+      z1 *= len;
+      z2 *= len;
+
+      let x0 = up[1] * z2 - up[2] * z1;
+      let x1 = up[2] * z0 - up[0] * z2;
+      let x2 = up[0] * z1 - up[1] * z0;
+      len = Math.hypot(x0, x1, x2);
+
+      if (len !== 0) {
+        len = 1 / len;
+        x0 *= len;
+        x1 *= len;
+        x2 *= len;
+      }
+
+      const y0 = z1 * x2 - z2 * x1;
+      const y1 = z2 * x0 - z0 * x2;
+      const y2 = z0 * x1 - z1 * x0;
+
+      out[0] = x0; out[1] = y0; out[2] = z0; out[3] = 0;
+      out[4] = x1; out[5] = y1; out[6] = z1; out[7] = 0;
+      out[8] = x2; out[9] = y2; out[10] = z2; out[11] = 0;
+      out[12] = -(x0 * eye[0] + x1 * eye[1] + x2 * eye[2]);
+      out[13] = -(y0 * eye[0] + y1 * eye[1] + y2 * eye[2]);
+      out[14] = -(z0 * eye[0] + z1 * eye[1] + z2 * eye[2]);
+      out[15] = 1;
+      return out;
+    }
+
+    function mat4Multiply(out, a, b) {
+      const a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3];
+      const a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7];
+      const a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11];
+      const a30 = a[12], a31 = a[13], a32 = a[14], a33 = a[15];
+
+      const b00 = b[0], b01 = b[1], b02 = b[2], b03 = b[3];
+      const b10 = b[4], b11 = b[5], b12 = b[6], b13 = b[7];
+      const b20 = b[8], b21 = b[9], b22 = b[10], b23 = b[11];
+      const b30 = b[12], b31 = b[13], b32 = b[14], b33 = b[15];
+
+      out[0] = b00 * a00 + b01 * a10 + b02 * a20 + b03 * a30;
+      out[1] = b00 * a01 + b01 * a11 + b02 * a21 + b03 * a31;
+      out[2] = b00 * a02 + b01 * a12 + b02 * a22 + b03 * a32;
+      out[3] = b00 * a03 + b01 * a13 + b02 * a23 + b03 * a33;
+      out[4] = b10 * a00 + b11 * a10 + b12 * a20 + b13 * a30;
+      out[5] = b10 * a01 + b11 * a11 + b12 * a21 + b13 * a31;
+      out[6] = b10 * a02 + b11 * a12 + b12 * a22 + b13 * a32;
+      out[7] = b10 * a03 + b11 * a13 + b12 * a23 + b13 * a33;
+      out[8] = b20 * a00 + b21 * a10 + b22 * a20 + b23 * a30;
+      out[9] = b20 * a01 + b21 * a11 + b22 * a21 + b23 * a31;
+      out[10] = b20 * a02 + b21 * a12 + b22 * a22 + b23 * a32;
+      out[11] = b20 * a03 + b21 * a13 + b22 * a23 + b23 * a33;
+      out[12] = b30 * a00 + b31 * a10 + b32 * a20 + b33 * a30;
+      out[13] = b30 * a01 + b31 * a11 + b32 * a21 + b33 * a31;
+      out[14] = b30 * a02 + b31 * a12 + b32 * a22 + b33 * a32;
+      out[15] = b30 * a03 + b31 * a13 + b32 * a23 + b33 * a33;
+      return out;
+    }
+
+    function mat4RotateX(out, a, rad) {
+      const s = Math.sin(rad);
+      const c = Math.cos(rad);
+      const rot = mat4Identity();
+      rot[5] = c;
+      rot[6] = s;
+      rot[9] = -s;
+      rot[10] = c;
+      return mat4Multiply(out, a, rot);
+    }
+
+    function mat4RotateY(out, a, rad) {
+      const s = Math.sin(rad);
+      const c = Math.cos(rad);
+      const rot = mat4Identity();
+      rot[0] = c;
+      rot[2] = -s;
+      rot[8] = s;
+      rot[10] = c;
+      return mat4Multiply(out, a, rot);
+    }
+
+    function createSphereGeometry(radius, latBands, longBands) {
+      const positions = [];
+      const indices = [];
+
+      for (let lat = 0; lat <= latBands; lat += 1) {
+        const theta = (lat * Math.PI) / latBands;
+        const sinTheta = Math.sin(theta);
+        const cosTheta = Math.cos(theta);
+
+        for (let lon = 0; lon <= longBands; lon += 1) {
+          const phi = (lon * 2 * Math.PI) / longBands;
+          const sinPhi = Math.sin(phi);
+          const cosPhi = Math.cos(phi);
+
+          positions.push(radius * cosPhi * sinTheta, radius * cosTheta, radius * sinPhi * sinTheta);
+        }
+      }
+
+      for (let lat = 0; lat < latBands; lat += 1) {
+        for (let lon = 0; lon < longBands; lon += 1) {
+          const first = lat * (longBands + 1) + lon;
+          const second = first + longBands + 1;
+          indices.push(first, second);
+          indices.push(first, first + 1);
+        }
+      }
+
+      return { positions, indices };
+    }
+
+    function createSpherePoints(radius, count) {
+      const points = [];
+      for (let i = 0; i < count; i += 1) {
+        const u = Math.random();
+        const v = Math.random();
+        const theta = 2 * Math.PI * u;
+        const phi = Math.acos(2 * v - 1);
+
+        points.push(
+          radius * Math.sin(phi) * Math.cos(theta),
+          radius * Math.cos(phi),
+          radius * Math.sin(phi) * Math.sin(theta)
+        );
+      }
+      return points;
+    }
+
+    function createRing(radius, segments) {
+      const positions = [];
+      for (let i = 0; i <= segments; i += 1) {
+        const t = (i / segments) * Math.PI * 2;
+        positions.push(Math.cos(t) * radius, 0, Math.sin(t) * radius);
+      }
+      return positions;
+    }
+
+    function initGlobe() {
+      const canvas = document.getElementById("globe");
+      if (!(canvas instanceof HTMLCanvasElement)) {
+        showFallback();
+        return;
+      }
+
+      const gl = canvas.getContext("webgl", { alpha: true, antialias: true });
+      if (!gl) {
+        showFallback();
+        return;
+      }
+
+      const lineVertex = `
+        attribute vec3 aPosition;
+        uniform mat4 uModel;
+        uniform mat4 uView;
+        uniform mat4 uProjection;
+        void main() {
+          gl_Position = uProjection * uView * uModel * vec4(aPosition, 1.0);
+        }
+      `;
+
+      const lineFragment = `
+        precision mediump float;
+        uniform vec4 uColor;
+        void main() {
+          gl_FragColor = uColor;
+        }
+      `;
+
+      const pointVertex = `
+        attribute vec3 aPosition;
+        uniform mat4 uModel;
+        uniform mat4 uView;
+        uniform mat4 uProjection;
+        uniform float uPointSize;
+        void main() {
+          gl_Position = uProjection * uView * uModel * vec4(aPosition, 1.0);
+          gl_PointSize = uPointSize;
+        }
+      `;
+
+      const pointFragment = `
+        precision mediump float;
+        uniform vec4 uColor;
+        void main() {
+          vec2 uv = gl_PointCoord.xy - 0.5;
+          float d = length(uv);
+          float alpha = smoothstep(0.5, 0.0, d);
+          gl_FragColor = vec4(uColor.rgb, uColor.a * alpha);
+        }
+      `;
+
+      const lineProgram = createProgram(gl, lineVertex, lineFragment);
+      const pointProgram = createProgram(gl, pointVertex, pointFragment);
+
+      const lineLoc = {
+        position: gl.getAttribLocation(lineProgram, "aPosition"),
+        model: gl.getUniformLocation(lineProgram, "uModel"),
+        view: gl.getUniformLocation(lineProgram, "uView"),
+        projection: gl.getUniformLocation(lineProgram, "uProjection"),
+        color: gl.getUniformLocation(lineProgram, "uColor")
+      };
+
+      const pointLoc = {
+        position: gl.getAttribLocation(pointProgram, "aPosition"),
+        model: gl.getUniformLocation(pointProgram, "uModel"),
+        view: gl.getUniformLocation(pointProgram, "uView"),
+        projection: gl.getUniformLocation(pointProgram, "uProjection"),
+        pointSize: gl.getUniformLocation(pointProgram, "uPointSize"),
+        color: gl.getUniformLocation(pointProgram, "uColor")
+      };
+
+      const sphere = createSphereGeometry(1.1, 28, 28);
+      const nodes = createSpherePoints(1.1, 500);
+      const ring1 = createRing(1.52, 180);
+      const ring2 = createRing(1.82, 220);
+      const ring3 = createRing(2.15, 260);
+
+      function makeArrayBuffer(data) {
+        const buffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(data), gl.STATIC_DRAW);
+        return buffer;
+      }
+
+      const spherePositionBuffer = makeArrayBuffer(sphere.positions);
+      const nodeBuffer = makeArrayBuffer(nodes);
+      const ring1Buffer = makeArrayBuffer(ring1);
+      const ring2Buffer = makeArrayBuffer(ring2);
+      const ring3Buffer = makeArrayBuffer(ring3);
+
+      const sphereIndexBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, sphereIndexBuffer);
+      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(sphere.indices), gl.STATIC_DRAW);
+
+      const projection = mat4Identity();
+      const view = mat4Identity();
+      const eye = [0, 0, 4.7];
+      const center = [0, 0, 0];
+      const up = [0, 1, 0];
+
+      let rotationX = -0.35;
+      let rotationY = 0.25;
+      let isDragging = false;
+      let prevX = 0;
+      let prevY = 0;
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+        canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        mat4Perspective(projection, Math.PI / 4, canvas.width / canvas.height, 0.1, 100);
+        mat4LookAt(view, eye, center, up);
+      }
+
+      resize();
+      window.addEventListener("resize", resize, { passive: true });
+
+      canvas.addEventListener("pointerdown", (event) => {
+        isDragging = true;
+        prevX = event.clientX;
+        prevY = event.clientY;
+        canvas.setPointerCapture?.(event.pointerId);
+      });
+
+      const stopDragging = (event) => {
+        isDragging = false;
+        if (event && canvas.hasPointerCapture?.(event.pointerId)) {
+          canvas.releasePointerCapture(event.pointerId);
+        }
+      };
+
+      canvas.addEventListener("pointerup", stopDragging);
+      canvas.addEventListener("pointercancel", stopDragging);
+      canvas.addEventListener("pointerleave", () => {
+        isDragging = false;
+      });
+
+      canvas.addEventListener("pointermove", (event) => {
+        if (!isDragging) return;
+        rotationY += (event.clientX - prevX) * 0.01;
+        rotationX += (event.clientY - prevY) * 0.01;
+        rotationX = Math.max(-1.35, Math.min(1.35, rotationX));
+        prevX = event.clientX;
+        prevY = event.clientY;
+      });
+
+      function drawLines(buffer, count, model, color, mode) {
+        gl.useProgram(lineProgram);
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+        gl.enableVertexAttribArray(lineLoc.position);
+        gl.vertexAttribPointer(lineLoc.position, 3, gl.FLOAT, false, 0, 0);
+        gl.uniformMatrix4fv(lineLoc.model, false, model);
+        gl.uniformMatrix4fv(lineLoc.view, false, view);
+        gl.uniformMatrix4fv(lineLoc.projection, false, projection);
+        gl.uniform4fv(lineLoc.color, color);
+        gl.drawArrays(mode, 0, count);
+      }
+
+      function drawSphereWireframe(model) {
+        gl.useProgram(lineProgram);
+        gl.bindBuffer(gl.ARRAY_BUFFER, spherePositionBuffer);
+        gl.enableVertexAttribArray(lineLoc.position);
+        gl.vertexAttribPointer(lineLoc.position, 3, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, sphereIndexBuffer);
+        gl.uniformMatrix4fv(lineLoc.model, false, model);
+        gl.uniformMatrix4fv(lineLoc.view, false, view);
+        gl.uniformMatrix4fv(lineLoc.projection, false, projection);
+        gl.uniform4fv(lineLoc.color, [0.32, 0.9, 0.82, 0.18]);
+        gl.drawElements(gl.LINES, sphere.indices.length, gl.UNSIGNED_SHORT, 0);
+      }
+
+      function drawPoints(model) {
+        gl.useProgram(pointProgram);
+        gl.bindBuffer(gl.ARRAY_BUFFER, nodeBuffer);
+        gl.enableVertexAttribArray(pointLoc.position);
+        gl.vertexAttribPointer(pointLoc.position, 3, gl.FLOAT, false, 0, 0);
+        gl.uniformMatrix4fv(pointLoc.model, false, model);
+        gl.uniformMatrix4fv(pointLoc.view, false, view);
+        gl.uniformMatrix4fv(pointLoc.projection, false, projection);
+        gl.uniform1f(pointLoc.pointSize, Math.max(2.2, canvas.width * 0.0032));
+        gl.uniform4fv(pointLoc.color, [0.56, 1.0, 0.92, 0.72]);
+        gl.drawArrays(gl.POINTS, 0, nodes.length / 3);
+      }
+
+      function render(time) {
+        const t = time * 0.001;
+        if (!isDragging) rotationY += 0.0021;
+
+        gl.clearColor(0, 0, 0, 0);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.enable(gl.DEPTH_TEST);
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        gl.disable(gl.CULL_FACE);
+
+        const globeModel = mat4Identity();
+        mat4RotateY(globeModel, globeModel, rotationY);
+        mat4RotateX(globeModel, globeModel, rotationX);
+
+        drawSphereWireframe(globeModel);
+        drawPoints(globeModel);
+
+        const ringModel1 = mat4Identity();
+        mat4RotateY(ringModel1, ringModel1, rotationY * 0.8 + t * 0.7);
+        mat4RotateX(ringModel1, ringModel1, 0.75);
+        drawLines(ring1Buffer, ring1.length / 3, ringModel1, [0.48, 0.95, 0.88, 0.22], gl.LINE_STRIP);
+
+        const ringModel2 = mat4Identity();
+        mat4RotateY(ringModel2, ringModel2, -rotationY * 0.55 - t * 0.9);
+        mat4RotateX(ringModel2, ringModel2, -0.95);
+        drawLines(ring2Buffer, ring2.length / 3, ringModel2, [0.36, 0.86, 1.0, 0.16], gl.LINE_STRIP);
+
+        const ringModel3 = mat4Identity();
+        mat4RotateY(ringModel3, ringModel3, rotationY * 0.3 + t * 0.45);
+        mat4RotateX(ringModel3, ringModel3, 1.2);
+        drawLines(ring3Buffer, ring3.length / 3, ringModel3, [0.72, 1.0, 0.95, 0.1], gl.LINE_STRIP);
+
+        requestAnimationFrame(render);
+      }
+
+      requestAnimationFrame(render);
+    }
+
+    setYear();
+    initContactForm();
+
+    try {
+      initGlobe();
+    } catch {
+      showFallback();
+    }
+  </script>
 </body>
 </html>
